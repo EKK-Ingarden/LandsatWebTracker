@@ -7,6 +7,11 @@
     "frontend:fix": "pnpm --prefix ./frontend/ fix",
     "backend:dev": "cd backend && poetry run uvicorn src.main:app --reload",
     "dev": "pnpm run /:dev$/",
-    "postinstall": "poetry install"
+    "lint": "pnpm run /:lint$/",
+    "postinstall": "poetry install",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.6"
   }
 }
