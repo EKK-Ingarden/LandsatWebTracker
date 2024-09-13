@@ -1,0 +1,13 @@
+name: 📖 Non-Technical Task
+description: "Task not related to code changes."
+title: "[Non-Technical]: "
+labels: [ "documentation" ]
+body:
+  - type: textarea
+    id: todo
+    attributes:
+      label: Task description
+      description: Describe the task to be done.
+      placeholder: "Write a description of the task to be done."
+    validations:
+      required: true
