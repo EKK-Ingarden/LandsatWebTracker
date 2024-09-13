@@ -4,7 +4,7 @@ import {
     presetTagify,
     presetTypography,
     presetUno,
-    presetWebFonts,
+    presetWebFonts
 } from "unocss";
 
 export default defineConfig({
@@ -13,6 +13,6 @@ export default defineConfig({
         presetTagify(),
         presetAttributify(),
         presetTypography(),
-        presetWebFonts(),
+        presetWebFonts()
     ]
-})
+});
