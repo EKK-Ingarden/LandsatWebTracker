@@ -4,6 +4,7 @@
   "scripts": {
     "frontend:dev": "pnpm --prefix ./frontend/ dev",
     "backend:dev": "cd backend && poetry run uvicorn src.main:app --reload",
-    "postinstall": "cd backend && poetry install"
+    "dev": "pnpm run /:dev$/",
+    "postinstall": "poetry install"
   }
 }

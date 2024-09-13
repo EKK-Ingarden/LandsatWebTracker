@@ -1,16 +1,20 @@
+# This configuration idealy should be in backend/
+# But Pycharm doesn't correctly recognize it
+
 [tool.poetry]
-name = "landsat-web-tracker-backend"
+name = "landsat-web-tracker"
 version = "0.0.1"
 description = ""
 authors = ["EKK Ingarden"]
 license = "GPL-3.0"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
 fastapi = {extras = ["standard"], version = "^0.114.1"}
-uvicorn = { extras = ["standard"], version = "^0.25.0" }
-structlog = "^23.2.0"
+uvicorn = { extras = ["standard"], version = "^0.30.6" }
+structlog = "^24.4.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.1.9"

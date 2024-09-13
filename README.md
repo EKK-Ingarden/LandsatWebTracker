@@ -14,5 +14,12 @@ pnpm install
 
 ## Running
 ```bash
+# Frontend
 pnpm frontend:dev
+
+# Backend
+pnpm backend:dev
+
+# Everything
+pnpm dev
 ```
