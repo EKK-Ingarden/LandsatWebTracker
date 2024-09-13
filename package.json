@@ -1,0 +1,7 @@
+{
+  "name": "landsat-web-tracker",
+  "private": true,
+  "scripts": {
+    "frontend:dev": "pnpm --prefix ./frontend/ dev"
+  }
+}

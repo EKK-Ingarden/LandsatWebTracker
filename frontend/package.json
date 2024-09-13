@@ -1,5 +1,5 @@
 {
-  "name": "landsat-web-tracker",
+  "name": "landsat-web-tracker-frontende",
   "private": true,
   "type": "module",
   "scripts": {
