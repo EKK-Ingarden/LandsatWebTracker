@@ -1,6 +1,5 @@
 <template>
   <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+    <h1 text-green>LandsatWebTracker</h1>
   </div>
 </template>
