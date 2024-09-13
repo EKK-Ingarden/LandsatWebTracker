@@ -4,10 +4,11 @@
   "scripts": {
     "frontend:dev": "pnpm --prefix ./frontend/ dev",
     "frontend:lint": "pnpm --prefix ./frontend/ lint",
-    "frontend:fix": "pnpm --prefix ./frontend/ fix",
+    "frontend:format": "pnpm --prefix ./frontend/ format",
     "backend:dev": "cd backend && poetry run uvicorn src.main:app --reload",
     "dev": "pnpm run /:dev$/",
     "lint": "pnpm run /:lint$/",
+    "format": "pnpm run /:format$/",
     "postinstall": "poetry install",
     "prepare": "husky"
   },
