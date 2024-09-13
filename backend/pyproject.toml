@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "landsat-web-tracker-backend"
+version = "0.0.1"
+description = ""
+authors = ["EKK Ingarden"]
+license = "GPL-3.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["standard"], version = "^0.114.1"}
+uvicorn = { extras = ["standard"], version = "^0.25.0" }
+structlog = "^23.2.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.9"
+
+[tool.ruff]
+line-length = 120
+select = [
+    # Pyflakes
+    "F",
+    # Pycodestyle
+    "E",
+    "W",
+    # isort
+    "I001",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
