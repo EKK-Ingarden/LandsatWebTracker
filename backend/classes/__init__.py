@@ -1,5 +1,5 @@
-from backend.classes.LandSatAPI import LandSatAPI
-from backend.classes.LandSatData import LandSatData
+from backend.classes.LandsatAPI import LandsatAPI
+from backend.classes.LandsatData import LandsatData
 
-LandSatAPI = LandSatAPI
-LandSatData = LandSatData
+LandsatAPI = LandsatAPI
+LandsatData = LandsatData

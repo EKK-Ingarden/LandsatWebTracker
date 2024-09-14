@@ -1,3 +1,5 @@
 from typing import Tuple
 
-bbox_type = Tuple[int, int, int, int]
+# Bounding box type
+# Tuple of 4 integers: (x1, y1, x2, y2)
+BBoxType = Tuple[int, int, int, int]

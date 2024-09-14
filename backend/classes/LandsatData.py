@@ -1,2 +1,2 @@
-class LandSatData:
+class LandsatData:
     raise NotImplementedError
