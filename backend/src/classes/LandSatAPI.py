@@ -1,7 +1,9 @@
 import datetime
-from typing import List
+from datetime import datetime
 
-bbox_type = List[int, int, int, int]
+from backend.src.classes import LandSatData
+from backend.src.types import bbox_type
+
 
 class LandSatAPI:
     base_url = NotImplementedError
@@ -10,17 +12,17 @@ class LandSatAPI:
         raise NotImplementedError
 
     def search(self, bbox: bbox_type,
-               start_date: datetime.datetime,
-               end_date: datetime.datetime,
+               start_date: datetime,
+               end_date: datetime,
                limit: int,
                cloud_cover,
-               sort_by):
+               sort_by) -> [LandSatData]:
 
         raise NotImplementedError
 
     def fetch(self, bbox: bbox_type,
-              start_date: datetime.datetime,
-              end_date: datetime.datetime,
-              limit: int):
+              start_date: datetime,
+              end_date: datetime,
+              limit: int) -> LandSatData:
 
         raise NotImplementedError
