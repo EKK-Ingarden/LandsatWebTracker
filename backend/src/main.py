@@ -1,45 +1,19 @@
 import uuid
-
 import structlog
 from fastapi import FastAPI, Request, Response
 
-app = FastAPI()
-logger = structlog.get_logger()
+from backend.src.middleware import logger_middleware
+from backend.src.routers import index_router, coordinates_router
+import uvicorn
+
+if __name__ == '__main__':
+    app = FastAPI(prefix="/api")
+    logger = structlog.get_logger()
+
+    app.middleware("http")(logger_middleware)
+
+    app.include_router(index_router,        prefix="")
+    app.include_router(coordinates_router,  prefix="/coordinates")
 
 
-@app.middleware("http")
-async def logger_middleware(request: Request, call_next):
-    structlog.contextvars.clear_contextvars()
-    structlog.contextvars.bind_contextvars(
-        path=request.url.path,
-        method=request.method,
-        client_host=request.client.host,
-        request_id=str(uuid.uuid4()),
-    )
-    response = await call_next(request)
-
-    structlog.contextvars.bind_contextvars(
-        status_code=response.status_code,
-    )
-
-    # Exclude /healthcheck endpoint from producing logs
-    if request.url.path != "/healthcheck":
-        if 400 <= response.status_code < 500:
-            logger.warn("Client error")
-        elif response.status_code >= 500:
-            logger.error("Server error")
-        else:
-            logger.info("OK")
-
-    return response
-
-
-@app.get("/healthcheck")
-async def healthcheck():
-    return Response()
-
-
-@app.get("/")
-async def read_main():
-    logger.info("In root path")
-    return {"msg": "Hello World"}
+    uvicorn.run(app, host="localhost", port=8000)
