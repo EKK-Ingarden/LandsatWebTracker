@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from backend.domain_types import BBoxType
 from backend.entities import LandsatData
+from backend.entities.BorderBox import BorderBox
 
 
 class LandsatAPI:
@@ -10,7 +10,7 @@ class LandsatAPI:
     def __init__(self):
         raise NotImplementedError
 
-    def search(self, bbox: BBoxType,
+    def search(self, bbox: BorderBox,
                start_date: datetime,
                end_date: datetime,
                limit: int,
@@ -19,7 +19,7 @@ class LandsatAPI:
 
         raise NotImplementedError
 
-    def fetch(self, bbox: BBoxType,
+    def fetch(self, bbox: BorderBox,
               start_date: datetime,
               end_date: datetime,
               limit: int) -> LandsatData:
