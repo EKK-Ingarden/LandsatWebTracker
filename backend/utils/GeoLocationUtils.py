@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from backend.domain_types import BBoxType
+from backend.entities.BorderBox import BorderBox
 
 
 class WRS2Utils:
@@ -31,7 +31,7 @@ class WRS2Utils:
         raise NotImplementedError
 
     @staticmethod
-    def get_available_scenes(bbox: BBoxType, start_date: datetime, end_date: datetime):
+    def get_available_scenes(bbox: BorderBox, start_date: datetime, end_date: datetime):
         """
         Get available scenes for a given bounding box and date range.
         """
