@@ -1,7 +1,8 @@
 import structlog
 import uvicorn
-from backend.middleware import logger_middleware
-from backend.routers import coordinates_router, index_router
+from backend.middleware.logger_middleware import logger_middleware
+from backend.routers.coordinates_router import coordinates_router
+from backend.routers.index_router import index_router
 from fastapi import FastAPI
 
 app = FastAPI()
