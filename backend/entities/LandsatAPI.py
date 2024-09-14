@@ -14,7 +14,7 @@ class LandsatAPI:
                start_date: datetime,
                end_date: datetime,
                limit: int,
-               cloud_cover,
+               cloud_cover: float,
                sort_by) -> [LandsatData]:
 
         raise NotImplementedError

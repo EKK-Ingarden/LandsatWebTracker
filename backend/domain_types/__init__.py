@@ -1,5 +1,9 @@
-from typing import Tuple
+from dataclasses import dataclass
 
-# Bounding box type
-# Tuple of 4 integers: (x1, y1, x2, y2)
-BBoxType = Tuple[int, int, int, int]
+
+@dataclass
+class BBoxType:
+    x_min: int
+    y_min: int
+    x_max: int
+    y_max: int

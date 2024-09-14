@@ -1,3 +1,0 @@
-from NotificationService import NotificationService
-
-NotificationService = NotificationService
