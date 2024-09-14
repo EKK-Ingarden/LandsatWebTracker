@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from backend.types import BBoxType
+from backend.domain_types import BBoxType
 
 
 class WRS2Utils:

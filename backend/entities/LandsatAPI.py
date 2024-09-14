@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from backend.classes import LandsatData
-from backend.types import BBoxType
+from backend.domain_types import BBoxType
+from backend.entities import LandsatData
 
 
 class LandsatAPI:

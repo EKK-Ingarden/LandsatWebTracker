@@ -8,8 +8,8 @@ class Notification(Enum):
 
 class NotificationService:
     @staticmethod
-    def sendNotification(user, message, notificationType: Notification):
-        match notificationType:
+    def sendNotification(user, message, notification_type: Notification):
+        match notification_type:
             case Notification.EMAIL:
                 NotificationService.sendEmailNotification(user, message)
                 return
