@@ -1,0 +1,2 @@
+class LandsatData:
+    raise NotImplementedError
