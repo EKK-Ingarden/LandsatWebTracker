@@ -7,10 +7,10 @@ logger = structlog.get_logger()
 coordinates_router = APIRouter()
 
 @coordinates_router.get("/lookup")
-async def healthcheck():
+async def coordinates_lookup():
     return {"msg": "Coordinates lookup"}
 
 
 @coordinates_router.get("/scene-detection")
-async def read_main():
+async def scene_detection():
     return {"msg": "Scene detection"}

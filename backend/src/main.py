@@ -7,7 +7,7 @@ from backend.src.routers import index_router, coordinates_router
 import uvicorn
 
 if __name__ == '__main__':
-    app = FastAPI(prefix="/api")
+    app = FastAPI()
     logger = structlog.get_logger()
 
     app.middleware("http")(logger_middleware)
