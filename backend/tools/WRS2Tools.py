@@ -1,6 +1,6 @@
 from datetime import datetime
+from types import bbox_type
 
-from backend.src.types import bbox_type
 
 class WRS2Tools:
     @staticmethod

@@ -1,6 +1,5 @@
 import structlog
-from fastapi import APIRouter
-from fastapi import FastAPI, Request, Response
+from fastapi import APIRouter, Response
 
 logger = structlog.get_logger()
 

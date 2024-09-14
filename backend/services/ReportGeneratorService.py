@@ -1,4 +1,4 @@
-from backend.src.classes import LandSatData
+from classes import LandSatData
 
 
 class ReportGeneratorService:

@@ -1,2 +1,0 @@
-class LandSatData:
-    raise NotImplementedError
