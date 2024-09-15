@@ -5,6 +5,7 @@ logger = structlog.get_logger()
 
 coordinates_router = APIRouter()
 
+
 @coordinates_router.get("/lookup")
 async def coordinates_lookup():
     return {"msg": "Coordinates lookup"}

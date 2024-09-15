@@ -16,6 +16,7 @@ class WRS2Utils:
     surface along that path.
 
     """
+
     @staticmethod
     def get_wrs2_path(row, path):
         """
