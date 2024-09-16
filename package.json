@@ -11,6 +11,7 @@
     "dev": "pnpm run /:dev$/",
     "lint": "pnpm run /:lint$/",
     "format": "pnpm run /:format$/",
+    "test": "echo silly tests",
     "postinstall": "poetry install",
     "prepare": "husky"
   },
