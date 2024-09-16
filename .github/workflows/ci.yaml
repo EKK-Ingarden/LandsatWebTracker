@@ -27,14 +27,6 @@ jobs:
 
       - run: pnpm install
 
-  test:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
       - run: pnpm test
 
-  lint:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
       - run: pnpm lint
