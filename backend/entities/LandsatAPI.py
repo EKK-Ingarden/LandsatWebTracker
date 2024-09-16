@@ -16,12 +16,10 @@ class LandsatAPI:
                limit: int,
                cloud_cover: float,
                sort_by) -> [LandsatData]:
-
         raise NotImplementedError
 
     def fetch(self, bbox: BorderBox,
               start_date: datetime,
               end_date: datetime,
               limit: int) -> LandsatData:
-
         raise NotImplementedError

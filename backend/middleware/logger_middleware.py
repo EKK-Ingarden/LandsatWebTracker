@@ -5,6 +5,7 @@ from fastapi import Request
 
 logger = structlog.get_logger()
 
+
 async def logger_middleware(request: Request, call_next):
     structlog.contextvars.clear_contextvars()
     structlog.contextvars.bind_contextvars(
