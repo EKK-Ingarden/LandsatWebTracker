@@ -1,6 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@unocss/nuxt", "shadcn-nuxt", "@nuxt/eslint"],
+  modules: [
+    "@unocss/nuxt",
+    "shadcn-nuxt",
+    "@nuxt/eslint",
+    "@nuxtjs/leaflet"
+  ],
   css: [
     "@unocss/reset/tailwind.css"
   ],
