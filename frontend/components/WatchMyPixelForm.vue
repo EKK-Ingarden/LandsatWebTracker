@@ -5,15 +5,15 @@
         Watch my pixel form
       </div>
       <div mt-8 flex flex-col items-center text-lg>
-        <form flex flex-col items-center w="15svw" @submit.prevent="submitForm">
-          <FormField name="username" :validate-on-blur="!isFieldDirty">
+        <form flex flex-col items-center w="15svw" @submit="submitForm">
+          <FormField v-slot="{ componentField }" name="username" :validate-on-blur="!isFieldDirty">
             <FormItem w="full">
               <FormControl>
-                <Input v-model="formData.name" type="text" placeholder="Name" !w="full" />
+                <Input v-bind="componentField" type="text" placeholder="Name" !w="full" />
               </FormControl>
             </FormItem>
           </FormField>
-          <FormField name="username" :validate-on-blur="!isFieldDirty">
+          <FormField v-slot="{ componentField }" name="date" :validate-on-blur="!isFieldDirty">
             <FormItem w="full" flex flex-col items-center>
               <FormControl>
                 <Popover>
@@ -24,24 +24,24 @@
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent class="w-auto" p-0>
-                    <Calendar v-model="formData.date" initial-focus />
+                    <Calendar v-bind="componentField" initial-focus />
                   </PopoverContent>
                 </Popover>
               </FormControl>
             </FormItem>
           </FormField>
           <div mt-4 flex gap-2>
-            <FormField name="latitude" :validate-on-blur="!isFieldDirty">
+            <FormField v-slot="{ componentField }" name="latitude" :validate-on-blur="!isFieldDirty">
               <FormItem>
                 <FormControl>
-                  <Input v-model="formData.lat" type="text" placeholder="Latitude" !w="full" />
+                  <Input v-bind="componentField" type="text" placeholder="Latitude" !w="full" />
                 </FormControl>
               </FormItem>
             </FormField>
-            <FormField name="longtitude" :validate-on-blur="!isFieldDirty">
+            <FormField v-slot="{ componentField }" name="longtitude" :validate-on-blur="!isFieldDirty">
               <FormItem>
                 <FormControl>
-                  <Input v-model="formData.lng" type="text" placeholder="Longtitude" !w="full" />
+                  <Input v-bind="componentField" type="text" placeholder="Longtitude" !w="full" />
                 </FormControl>
               </FormItem>
             </FormField>
@@ -61,7 +61,6 @@ import { toTypedSchema } from "@vee-validate/zod";
 import { useForm } from "vee-validate";
 import * as z from "zod";
 import { CalendarIcon } from "@radix-icons/vue";
-import { toast } from "~/components/ui/toast/index.ts";
 
 const df = new DateFormatter("en-US", {
   dateStyle: "long"
@@ -75,7 +74,10 @@ const formData = ref({
 });
 
 const formSchema = toTypedSchema(z.object({
-  username: z.string().min(2).max(50)
+  name: z.string().min(2).max(50),
+  date: z.string().date(),
+  lat: z.number().min(-90).max(90),
+  lng: z.number().min(-180).max(180)
 }));
 
 const { isFieldDirty, handleSubmit } = useForm({
@@ -83,9 +85,7 @@ const { isFieldDirty, handleSubmit } = useForm({
 });
 
 const submitForm = handleSubmit((values) => {
-  toast({
-    title: "You submitted the following values:",
-    description: h("pre", { class: "mt-2 w-[340px] rounded-md bg-slate-950 p-4" }, h("code", { class: "text-white" }, JSON.stringify(values, null, 2)))
-  });
+  console.log("dziengiel");
+  console.log(values);
 });
 </script>
