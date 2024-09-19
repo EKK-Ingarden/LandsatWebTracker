@@ -1,6 +1,8 @@
+from typing import List
+
 import structlog
+from backend import models, schemas
 from backend.database import get_db
-from backend.models.user import User
 from fastapi import APIRouter, Depends, Response
 from sqlalchemy.orm import Session
 
@@ -20,7 +22,7 @@ async def read_main():
     return {"msg": "Hello World"}
 
 
-@index_router.get("/get_users")
+@index_router.get("/get_users", response_model=List[schemas.User])
 def get_users(db: Session = Depends(get_db)):
-    users = db.query(User).all()
+    users = db.query(models.User).all()
     return users

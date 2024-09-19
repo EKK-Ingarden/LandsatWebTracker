@@ -32,5 +32,11 @@ export default eslintConfig(
     }
   },
 
+  {
+    ignores: [
+      "openapi/api/openapi.json"
+    ]
+  },
+
   nuxtConfig()
 );

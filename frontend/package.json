@@ -29,6 +29,7 @@
     "@unocss/eslint-plugin": "^0.61.9",
     "@unocss/nuxt": "^0.62.3",
     "eslint": "^8.57.0",
+    "nuxt-open-fetch": "^0.9.2",
     "sass": "^1.77.8",
     "shadcn-nuxt": "^0.10.4",
     "unocss": "^0.62.3",
