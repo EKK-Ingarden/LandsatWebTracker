@@ -6,13 +6,14 @@
     "frontend:lint": "pnpm --prefix ./frontend/ lint",
     "frontend:format": "pnpm --prefix ./frontend/ format",
     "backend:dev": "poetry run uvicorn backend.main:app --port 8000 --reload --reload-dir ./backend",
+    "backend:openapi": "poetry run openapi",
     "backend:lint": "poetry run ruff check",
     "backend:format": "poetry run ruff check --fix",
     "dev": "pnpm run /:dev$/",
     "lint": "pnpm run /:lint$/",
     "format": "pnpm run /:format$/",
     "test": "echo silly tests",
-    "postinstall": "poetry install",
+    "postinstall": "poetry install && poetry run openapi",
     "prepare": "husky"
   },
   "devDependencies": {

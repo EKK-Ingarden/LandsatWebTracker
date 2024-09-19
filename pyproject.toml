@@ -12,15 +12,21 @@ packages = [{include = "backend"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
-fastapi = {extras = ["standard"], version = "^0.114.2"}
+fastapi = {extras = ["standard"], version = "^0.115.0"}
 uvicorn = { extras = ["standard"], version = "^0.30.6" }
 structlog = "^24.4.0"
-sqlalchemy = "^2.0.34"
+sqlalchemy = "^2.0.35"
 psycopg2 = "^2.9.9"
 pydantic-settings = "^2.5.2"
 
+[tool.poetry.scripts]
+openapi = "backend.utils.utils:write_openapi"
+
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.1.9"
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
 
 [tool.ruff]
 line-length = 120
