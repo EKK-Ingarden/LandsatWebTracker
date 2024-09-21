@@ -5,7 +5,7 @@
         Watch my pixel form
       </div>
       <div mt-8 flex flex-col items-center text-lg>
-        <form flex flex-col items-center w="15svw" @submit="submitForm">
+        <form flex flex-col items-center w="15svw" @submit.prevent="submitForm">
           <FormField v-slot="{ componentField }" name="name" :validate-on-blur="!isFieldDirty">
             <FormItem w="full">
               <FormMessage />
@@ -22,7 +22,7 @@
                   <PopoverTrigger as-child>
                     <Button variant="outline" mt-4 w-full bg-black>
                       <CalendarIcon mr-2 h-4 w-4 />
-<!--                      {{ // dateValue.date ? df.format(toDate(dateValue)) : "Date to capture pixel" }}-->
+                      {{ dateValue ? df.format(toDate(dateValue)) : "Date to capture pixel" }}
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent class="w-auto" p-0>
@@ -37,7 +37,8 @@
                         else {
                           setFieldValue('date', undefined)
                         }
-                      }" />
+                      }"
+                    />
                   </PopoverContent>
                 </Popover>
               </FormControl>
@@ -52,7 +53,7 @@
                 </FormControl>
               </FormItem>
             </FormField>
-            <FormField v-slot="{ componentField }" name="long" :validate-on-blur="!isFieldDirty">
+            <FormField v-slot="{ componentField }" name="lng" :validate-on-blur="!isFieldDirty">
               <FormItem>
                 <FormMessage />
                 <FormControl>
@@ -71,18 +72,16 @@
 </template>
 
 <script setup>
-import {DateFormatter, getLocalTimeZone, parseDate} from "@internationalized/date";
+import { DateFormatter, parseDate } from "@internationalized/date";
 import { toTypedSchema } from "@vee-validate/zod";
 import { useForm } from "vee-validate";
 import * as z from "zod";
 import { CalendarIcon } from "@radix-icons/vue";
-import {toDate} from "radix-vue/date";
+import { toDate } from "radix-vue/date";
 
 const df = new DateFormatter("en-US", {
   dateStyle: "long"
 });
-
-
 
 const formSchema = toTypedSchema(z.object({
   name: z.string().min(2).max(50),
@@ -95,13 +94,30 @@ const { isFieldDirty, handleSubmit, setFieldValue, values } = useForm({
   validationSchema: formSchema
 });
 
+watch(
+  () => values.lat,
+  (newLat) => {
+    if (newLat !== undefined) {
+      setFieldValue("lat", Number(newLat));
+    }
+  }
+);
+
+watch(
+  () => values.lng,
+  (newLng) => {
+    if (newLng !== undefined) {
+      setFieldValue("lng", Number(newLng));
+    }
+  }
+);
+
 const dateValue = computed({
   get: () => values.date ? parseDate(values.date) : undefined,
-  set: (val) => val,
-})
+  set: (val) => val
+});
 
 const submitForm = handleSubmit((values) => {
-  console.log("dziengiel");
   console.log(values);
 });
 </script>
