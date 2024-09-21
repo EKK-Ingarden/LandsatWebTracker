@@ -12,7 +12,12 @@ Project made by EKK Ingarden for [Nasa Space Apps 2024](https://www.spaceappscha
 pnpm install
 ```
 
-## Running
+## Development
+Start database
+```bash
+docker compose up -d
+```
+Running the project
 ```bash
 # Frontend
 pnpm frontend:dev

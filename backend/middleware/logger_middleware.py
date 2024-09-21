@@ -1,13 +1,11 @@
 import uuid
 
 import structlog
-from fastapi import FastAPI, Request, Response
+from fastapi import Request
 
-app = FastAPI()
 logger = structlog.get_logger()
 
 
-@app.middleware("http")
 async def logger_middleware(request: Request, call_next):
     structlog.contextvars.clear_contextvars()
     structlog.contextvars.bind_contextvars(
@@ -32,14 +30,3 @@ async def logger_middleware(request: Request, call_next):
             logger.info("OK")
 
     return response
-
-
-@app.get("/healthcheck")
-async def healthcheck():
-    return Response()
-
-
-@app.get("/")
-async def read_main():
-    logger.info("In root path")
-    return {"msg": "Hello World"}

@@ -3,8 +3,21 @@
   "private": true,
   "scripts": {
     "frontend:dev": "pnpm --prefix ./frontend/ dev",
-    "backend:dev": "cd backend && poetry run uvicorn src.main:app --reload",
+    "frontend:lint": "pnpm --prefix ./frontend/ lint",
+    "frontend:format": "pnpm --prefix ./frontend/ format",
+    "backend:dev": "poetry run uvicorn backend.main:app --port 8000 --reload --reload-dir ./backend",
+    "backend:openapi": "poetry run openapi",
+    "backend:lint": "poetry run ruff check",
+    "backend:format": "poetry run ruff check --fix",
+    "backend:test": "poetry run pytest ./backend.test/",
     "dev": "pnpm run /:dev$/",
-    "postinstall": "poetry install"
+    "lint": "pnpm run /:lint$/",
+    "format": "pnpm run /:format$/",
+    "test": "pnpm run /:test$/",
+    "postinstall": "poetry install && poetry run openapi",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.6"
   }
 }
