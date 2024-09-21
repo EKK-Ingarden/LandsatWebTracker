@@ -12,7 +12,11 @@
     "format": "eslint . --fix"
   },
   "dependencies": {
+    "@internationalized/date": "^3.5.5",
     "@nuxtjs/leaflet": "^1.2.3",
+    "@radix-icons/vue": "^1.0.0",
+    "@vee-validate/zod": "^4.13.2",
+    "@vueuse/core": "^11.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "leaflet-geosearch": "^4.0.0",
@@ -20,8 +24,10 @@
     "nuxt": "^3.13.0",
     "radix-vue": "^1.9.5",
     "tailwind-merge": "^2.5.2",
+    "vee-validate": "^4.13.2",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.24.1",
