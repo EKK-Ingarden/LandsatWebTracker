@@ -18,29 +18,31 @@
             <FormItem w="full" flex flex-col items-center>
               <FormMessage />
               <FormControl>
-                <Popover>
-                  <PopoverTrigger as-child>
-                    <Button variant="outline" mt-4 w-full bg-black>
-                      <CalendarIcon mr-2 h-4 w-4 />
-                      {{ dateValue ? df.format(toDate(dateValue)) : "Date to capture pixel" }}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent class="w-auto" p-0>
-                    <Calendar
-                      v-bind="componentField"
-                      v-model="dateValue"
-                      initial-focus
-                      @update:model-value="(v) => {
-                        if (v) {
-                          setFieldValue('date', v.toString())
-                        }
-                        else {
-                          setFieldValue('date', undefined)
-                        }
-                      }"
-                    />
-                  </PopoverContent>
-                </Popover>
+                <div>
+                  <Popover>
+                    <PopoverTrigger as-child>
+                      <Button variant="outline" mt-4 w-full bg-black>
+                        <CalendarIcon mr-2 h-4 w-4 />
+                        {{ dateValue ? df.format(toDate(dateValue)) : "Date to capture pixel" }}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent class="w-auto" p-0>
+                      <Calendar
+                        v-bind="componentField"
+                        v-model="dateValue"
+                        initial-focus
+                        @update:model-value="(v) => {
+                          if (v) {
+                            setFieldValue('date', v.toString())
+                          }
+                          else {
+                            setFieldValue('date', undefined)
+                          }
+                        }"
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
               </FormControl>
             </FormItem>
           </FormField>
