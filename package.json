@@ -19,6 +19,5 @@
   },
   "devDependencies": {
     "husky": "^9.1.6"
-  },
-  "packageManager": "pnpm@9"
+  }
 }
