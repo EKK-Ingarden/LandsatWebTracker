@@ -9,10 +9,11 @@
     "backend:openapi": "poetry run openapi",
     "backend:lint": "poetry run ruff check",
     "backend:format": "poetry run ruff check --fix",
+    "backend:test": "poetry run pytest ./backend.test/",
     "dev": "pnpm run /:dev$/",
     "lint": "pnpm run /:lint$/",
     "format": "pnpm run /:format$/",
-    "test": "echo silly tests",
+    "test": "pnpm run /:test$/",
     "postinstall": "poetry install && poetry run openapi",
     "prepare": "husky"
   },

@@ -13,7 +13,7 @@ pnpm install
 ```
 
 ## Development
-Start database (does not work on windows)
+Start database
 ```bash
 docker compose up -d
 ```
