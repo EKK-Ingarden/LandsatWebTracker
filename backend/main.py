@@ -1,9 +1,10 @@
 import structlog
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
+
 from backend.database import Base, engine
 from backend.middleware.logger_middleware import logger_middleware
 from backend.utils.utils import create_app, write_openapi
-from fastapi.middleware.cors import CORSMiddleware
 
 Base.metadata.create_all(bind=engine)
 

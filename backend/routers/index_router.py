@@ -1,10 +1,11 @@
 from typing import List
 
 import structlog
-from backend import models, schemas
-from backend.database import get_db
 from fastapi import APIRouter, Depends, Response
 from sqlalchemy.orm import Session
+
+from backend import models, schemas
+from backend.database import get_db
 
 logger = structlog.get_logger()
 
