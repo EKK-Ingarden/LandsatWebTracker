@@ -7,6 +7,10 @@
 </template>
 
 <script setup lang="ts">
+import { useColorMode } from "@vueuse/core";
+
+useColorMode().preference = "dark";
+
 useHead({
   meta: [
     { charset: "utf-8" },
