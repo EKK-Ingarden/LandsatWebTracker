@@ -1,0 +1,14 @@
+diff --git a/dist/runtime/plugins/supabase.server.js b/dist/runtime/plugins/supabase.server.js
+index 55ecfe0c29f22c0dfee14251989be503d853ec98..f3333c297dd8c602435dc91f34b0feb37a9f21dc 100644
+--- a/dist/runtime/plugins/supabase.server.js
++++ b/dist/runtime/plugins/supabase.server.js
+@@ -28,6 +28,9 @@ export default defineNuxtPlugin({
+         data: { user }
+       }
+     ] = await Promise.all([client.auth.getSession(), client.auth.getUser()]);
++    // Fix from: https://github.com/nuxt-modules/supabase/pull/418/files
++    // @ts-expect-error we need to delete user from the session object here to suppress the warning coming from GoTrueClient
++    delete session?.user
+     useSupabaseSession().value = session;
+     useSupabaseUser().value = user;
+     return {

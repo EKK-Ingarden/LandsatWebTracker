@@ -3,8 +3,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
+    "build": "nuxt build --dotenv ../.env",
+    "dev": "nuxt dev --dotenv ../.env",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -14,6 +14,7 @@
   "dependencies": {
     "@internationalized/date": "^3.5.5",
     "@nuxtjs/leaflet": "^1.2.3",
+    "@nuxtjs/supabase": "^1.4.0",
     "@radix-icons/vue": "^1.0.0",
     "@vee-validate/zod": "^4.13.2",
     "@vueuse/core": "^11.1.0",

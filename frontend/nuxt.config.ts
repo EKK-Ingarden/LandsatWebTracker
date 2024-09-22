@@ -5,7 +5,8 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@nuxt/eslint",
     "@nuxtjs/leaflet",
-    "nuxt-open-fetch"
+    "nuxt-open-fetch",
+    "@nuxtjs/supabase"
   ],
   css: [
     "@unocss/reset/tailwind.css"
@@ -14,13 +15,22 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   runtimeConfig: {
     public: {
-      apiBase: "http://localhost:8000/"
+      //     apiBase: "http://localhost:8000/",
+      baseUrl: process.env.BASE_URL || "http://localhost:3000"
     }
   },
 
   eslint: {
     config: {
       standalone: false
+    }
+  },
+
+  supabase: {
+    redirectOptions: {
+      login: "/login",
+      callback: "/confirm",
+      include: ["/panel(/*)?"]
     }
   },
 
