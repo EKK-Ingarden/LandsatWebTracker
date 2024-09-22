@@ -8,13 +8,7 @@
         Work in progress! View source code <a font-bold underline href="https://github.com/EKK-Ingarden/LandsatWebTracker">here</a><br>
         Project made by EKK Ingarden for Nasa Space Apps 2024.
       </div>
-      <li v-for="item in data" :key="item.username">
-        Email: {{ item.email }} Username: {{ item.username }}
-      </li>
+      <a href="/login" font-bold underline>Login</a>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const { data } = await useApi("/get_users");
-</script>
