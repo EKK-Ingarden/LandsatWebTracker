@@ -8,6 +8,7 @@ Project made by EKK Ingarden for [Nasa Space Apps 2024](https://www.spaceappscha
 - Poetry
 
 ## Installation
+Remember to provide all environment variables in `.env` file!
 ```bash
 pnpm install
 ```

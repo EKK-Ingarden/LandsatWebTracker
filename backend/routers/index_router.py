@@ -23,7 +23,7 @@ async def read_main():
     return {"msg": "Hello World"}
 
 
-@index_router.get("/get_users", response_model=List[schemas.User])
-def get_users(db: Session = Depends(get_db)):
-    users = db.query(models.User).all()
+@index_router.get("/get_pixel_watch", response_model=List[schemas.PixelWatch])
+def get_pixel_watch(db: Session = Depends(get_db)):
+    users = db.query(models.PixelWatch).all()
     return users

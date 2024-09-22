@@ -19,7 +19,6 @@ async def search(latitude: float,
                  max_cloud_cover: CloudCoverageRatio = 0.2,
                  max_items: int = 5,
                  limit: int = 5) -> List[LandsatItem]:
-
     landsat_api = LandsatAPI(
         coordinates=Coordinates(lat=latitude, lon=longitude),
         start_date=start_date,

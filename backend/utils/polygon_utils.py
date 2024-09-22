@@ -1,4 +1,3 @@
-
 from backend.schemas.structures.coordinates import Coordinates
 from backend.schemas.structures.polygon import Polygon
 
