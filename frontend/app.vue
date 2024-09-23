@@ -1,8 +1,10 @@
 <template>
-  <div h-full>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+  <div class="bg-[url(public/background.png)]" h-full bg-cover bg-no-repeat>
+    <div bg-black bg-opacity-85>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
   </div>
 </template>
 

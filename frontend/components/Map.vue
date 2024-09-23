@@ -15,7 +15,7 @@
         name="OpenStreetMap"
       />
 
-      <LMarker :lat-lng="[50.9, 15.73]">
+      <LMarker :lat-lng="[50.90473781103003, 15.731811290627371]">
         <LTooltip> Best place on Earth! </LTooltip>
       </LMarker>
     </LMap>
