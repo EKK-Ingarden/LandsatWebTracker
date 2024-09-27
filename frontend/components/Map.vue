@@ -15,6 +15,17 @@
         name="OpenStreetMap"
       />
 
+      <LPolygon
+        v-if="selectedPolygon"
+        :lat-lngs="selectedPolygon"
+        color="#41b782"
+        :fill="true"
+        :fill-opacity="0.5"
+        fill-color="#41b782"
+      />
+
+      <LImageOverlay v-if="imageOverlay" :url="imageOverlay.url" :bounds="imageOverlay.bounds" />
+
       <LMarker :lat-lng="[50.90473781103003, 15.731811290627371]">
         <LTooltip> Best place on Earth! </LTooltip>
       </LMarker>
@@ -26,6 +37,14 @@
 import type { LatLng, Map } from "leaflet";
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
 import "leaflet-geosearch/dist/geosearch.css";
+
+defineProps<{
+  selectedPolygon?: LatLng[]
+  imageOverlay?: {
+    url: string
+    bounds: L.LatLngBoundsLiteral
+  }
+}>();
 
 defineEmits<{
   (event: "mapClick", latlng: LatLng): void
