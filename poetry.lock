@@ -1038,6 +1038,32 @@ files = [
 ]
 
 [[package]]
+name = "planetary-computer"
+version = "1.0.0"
+description = "Planetary Computer SDK for Python"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "planetary-computer-1.0.0.tar.gz", hash = "sha256:5958a8e1d8ba1aafc7ac45878df2d7d03405806ae31ed2e675333faebca960cc"},
+    {file = "planetary_computer-1.0.0-py3-none-any.whl", hash = "sha256:7af5839f9346c1d23d53fff4e80e955db18a2d81992877816e22dcbc2f90c40d"},
+]
+
+[package.dependencies]
+click = ">=7.1"
+packaging = "*"
+pydantic = ">=1.7.3"
+pystac = ">=1.0.0"
+pystac-client = ">=0.2.0"
+python-dotenv = "*"
+pytz = ">=2020.5"
+requests = ">=2.25.1"
+
+[package.extras]
+adlfs = ["adlfs"]
+azure = ["azure-storage-blob"]
+dev = ["black", "flake8", "mypy", "pytest", "responses", "setuptools", "types-requests"]
+
+[[package]]
 name = "pluggy"
 version = "1.5.0"
 description = "plugin and hook calling mechanisms for python"
@@ -1354,6 +1380,17 @@ files = [
 
 [package.extras]
 dev = ["atomicwrites (==1.4.1)", "attrs (==23.2.0)", "coverage (==7.4.1)", "hatch", "invoke (==2.2.0)", "more-itertools (==10.2.0)", "pbr (==6.0.0)", "pluggy (==1.4.0)", "py (==1.11.0)", "pytest (==8.0.0)", "pytest-cov (==4.1.0)", "pytest-timeout (==2.2.0)", "pyyaml (==6.0.1)", "ruff (==0.2.1)"]
+
+[[package]]
+name = "pytz"
+version = "2024.2"
+description = "World timezone definitions, modern and historical"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pytz-2024.2-py2.py3-none-any.whl", hash = "sha256:31c7c1817eb7fae7ca4b8c7ee50c72f93aa2dd863de768e1ef4245d426aa0725"},
+    {file = "pytz-2024.2.tar.gz", hash = "sha256:2aa355083c50a0f93fa581709deac0c9ad65cca8a9e9beac660adcbd493c798a"},
+]
 
 [[package]]
 name = "pyyaml"
@@ -2243,4 +2280,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "bd30f776c78a16aae501e31d1c518605033707b2fe1ffe05601ee1898613e635"
+content-hash = "8d864278e53e64a916d11fb6bef6ab016d1007592f7f36d75c1de18cd7843717"
