@@ -12,7 +12,7 @@ from backend.settings import settings
 from backend.utils.polygon_utils import polygon_from_nested_list
 
 
-class LandsatAPI(BaseModel):
+class LandsatBaseAPI(BaseModel):
     coordinates: Coordinates
     start_date: datetime
     end_date: datetime
@@ -45,6 +45,7 @@ class LandsatAPI(BaseModel):
     def _landsat_item_builder(item: Item):
         return LandsatItem(
             id=item.id,
+            scene_id=item.properties["landsat:scene_id"],
             datetime=item.datetime,
             eo_cloud_cover=item.properties["eo:cloud_cover"] / 100,
             wrs_coordinates=WrsCoordinates(
