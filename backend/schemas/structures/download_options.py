@@ -38,3 +38,10 @@ class DownloadOptions(BaseModel):
     downloadSystem: str
     secondaryDownloads: List[SecondaryDownload]
     fileGroups: None
+
+class AvailableBandMetadata(BaseModel):
+    productId: str
+    entityId: str
+
+    def to_dict(self):
+        return self.model_dump()

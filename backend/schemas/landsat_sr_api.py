@@ -1,24 +1,33 @@
 import json
+from typing import List
 
 import requests
 from fastapi import HTTPException
 from pydantic import BaseModel
 
-from backend.schemas.structures.download_options import DownloadOptions
+from backend.schemas.structures.download_options import AvailableBandMetadata, DownloadOptions, SecondaryDownload
+from backend.schemas.structures.download_request import BandReadyToDownload
 from backend.settings import settings
 
+
+class DownloadOptionsFilter:
+    @staticmethod
+    def RGB_ONLY(secondary_download: SecondaryDownload):
+        return secondary_download.entityId[-6:] in ("B2_TIF", "B3_TIF", "B4_TIF")
+
+    @staticmethod
+    def ALL(secondary_download: SecondaryDownload):
+        return True
 
 class LandsatSRAPI(BaseModel):
     scene_id: str
     base_url: str = "https://m2m.cr.usgs.gov/api/api/json/stable/"
     dataset_name: str = "landsat_ot_c2_l2"
-    api_key: str = None
+    _api_key: str = None
 
     def __init__(self, **data):
         super().__init__(**data)
-        self.api_key = self._login_token()
-
-        print(self._get_download_options())
+        self._api_key = self._login_token()
 
     def _send_request(self, path, data, api_key):
         url = self.base_url + path
@@ -64,17 +73,57 @@ class LandsatSRAPI(BaseModel):
 
         return self._send_request(path, payload, None)
 
-    def _get_download_options(self):
+    def _download_options(self, data_filter = DownloadOptionsFilter.ALL) -> List[AvailableBandMetadata]:
+
         path = "download-options"
         payload = {
             "datasetName": self.dataset_name,
             "entityIds": self.scene_id
         }
 
-        data = self._send_request(path, payload, self.api_key)
+        data = DownloadOptions.model_validate(
+            # This api returns few versions of one scene not sure why, for our purposes we only need the first one
+            self._send_request(path, payload, self._api_key)[0]
+        )
 
-        json.dump(data, open("dwnld-options-2.json", "w"))
+        print(data)
 
-        data = DownloadOptions.model_validate(data[0])
+        availible_entity_metadata: List[AvailableBandMetadata] = []
 
-        return data
+        for secondary_download in data.secondaryDownloads:
+            if secondary_download.available and data_filter(secondary_download):
+                availible_entity_metadata.append(
+                    AvailableBandMetadata(productId=secondary_download.id, entityId=secondary_download.entityId)
+                )
+
+        return availible_entity_metadata
+
+    def _download_request(self, download_list: List[AvailableBandMetadata]) -> List[BandReadyToDownload]:
+        path = "download-request"
+        payload = {
+            "downloads": [item.to_dict() for item in download_list]
+        }
+
+        data = self._send_request(path, payload, self._api_key)
+        available_downloads: List[BandReadyToDownload] = []
+
+        for download in data["availableDownloads"]:
+            available_downloads.append(BandReadyToDownload.model_validate(download))
+
+        return available_downloads
+
+    @property
+    def all_bands(self):
+        download_options = self._download_options(data_filter=DownloadOptionsFilter.ALL)
+        download_request = self._download_request(download_options)
+
+        for band in download_request:
+            yield band
+
+    @property
+    def rgb_bands(self):
+        download_options = self._download_options(data_filter=DownloadOptionsFilter.RGB_ONLY)
+        download_request = self._download_request(download_options)
+
+        for band in download_request:
+            yield band
