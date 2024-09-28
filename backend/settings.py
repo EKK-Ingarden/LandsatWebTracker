@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     landsat_provider_url: str = "https://planetarycomputer.microsoft.com/api/stac/v1"
     supabase_url: str = "https://<id>.supabase.co"
     supabase_key: str = "<secret key>"
-
+    nuxt_open_fetch_api_base_url: str = "http://localhost:8000"
     model_config = SettingsConfigDict(env_file=(".env", ".env.production"))
 
 

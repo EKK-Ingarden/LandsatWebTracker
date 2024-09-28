@@ -1,5 +1,6 @@
 from datetime import datetime
 
+import planetary_computer
 from pydantic import BaseModel
 from pystac import Item
 from pystac_client import Client
@@ -24,7 +25,7 @@ class LandsatAPI(BaseModel):
 
     def __init__(self, **data):
         super().__init__(**data)
-        self._catalog = Client.open(self.base_url)
+        self._catalog = Client.open(self.base_url, modifier=planetary_computer.sign_inplace)
         self._result = self._catalog.search(
             collections=["landsat-c2-l2"],
             limit=self.limit,
@@ -52,7 +53,10 @@ class LandsatAPI(BaseModel):
                 row=item.properties["landsat:wrs_row"],
             ),
             rendered_preview=item.assets["rendered_preview"].href,
-            polygon=polygon_from_nested_list(item.geometry["coordinates"])
+            polygon=polygon_from_nested_list(item.geometry["coordinates"]),
+            green=item.assets["green"].href,
+            red=item.assets["red"].href,
+            blue=item.assets["blue"].href,
         )
 
     @property

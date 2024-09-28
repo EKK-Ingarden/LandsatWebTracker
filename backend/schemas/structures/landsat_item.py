@@ -14,3 +14,6 @@ class LandsatItem(BaseModel):
     wrs_coordinates: WrsCoordinates
     rendered_preview: str
     polygon: Polygon
+    green: str
+    red: str
+    blue: str
