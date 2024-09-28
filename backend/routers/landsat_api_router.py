@@ -4,7 +4,7 @@ from typing import List
 import structlog
 from fastapi import APIRouter
 
-from backend.schemas import CloudCoverageRatio, Coordinates, LandsatAPI, LandsatItem
+from backend.schemas import CloudCoverageRatio, Coordinates, LandsatBaseAPI, LandsatItem
 
 logger = structlog.get_logger()
 
@@ -19,7 +19,7 @@ async def search(latitude: float,
                  max_cloud_cover: CloudCoverageRatio = 0.2,
                  max_items: int = 5,
                  limit: int = 5) -> List[LandsatItem]:
-    landsat_api = LandsatAPI(
+    landsat_api = LandsatBaseAPI(
         coordinates=Coordinates(lat=latitude, lon=longitude),
         start_date=start_date,
         end_date=end_date,

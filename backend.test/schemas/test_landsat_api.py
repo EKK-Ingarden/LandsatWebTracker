@@ -1,7 +1,7 @@
 from datetime import datetime
 
 import pytest
-from backend.schemas.landsat_api import LandsatAPI
+from backend.schemas.landsat_base_api import LandsatBaseAPI
 from backend.schemas.structures.coordinates import Coordinates
 from pydantic import ValidationError
 
@@ -16,7 +16,7 @@ class TestLandsatAPI:
 
         # Act / Assert
         with pytest.raises(ValidationError):
-            LandsatAPI(
+            LandsatBaseAPI(
                 coordinates=coordinates,
                 start_date=start_date,
                 end_date=end_date,

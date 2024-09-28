@@ -1,2 +1,0 @@
-class LandsatData:
-    raise NotImplementedError

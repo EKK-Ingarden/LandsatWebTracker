@@ -1,4 +1,4 @@
-from .landsat_api import LandsatAPI
+from .landsat_base_api import LandsatBaseAPI
 from .structures.border_box import BorderBox
 from .structures.cloud_coverage_ratio import CloudCoverageRatio
 from .structures.coordinates import Coordinates

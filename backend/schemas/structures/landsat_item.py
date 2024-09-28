@@ -9,6 +9,7 @@ from backend.schemas.structures.wrs_coordinates import WrsCoordinates
 
 class LandsatItem(BaseModel):
     id: str
+    scene_id: str
     datetime: datetime
     eo_cloud_cover: CloudCoverageRatio
     wrs_coordinates: WrsCoordinates
