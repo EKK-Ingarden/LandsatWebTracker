@@ -1,14 +1,9 @@
 from datetime import date, datetime
-from enum import Enum
 from typing import Dict, List
 
 from pydantic import BaseModel, RootModel, field_validator, model_validator
 
-
-class Satellite(str, Enum):
-    Landsat9 = "landsat_9"
-    Landsat8 = "landsat_8"
-    Landsat7 = "landsat_7"
+from backend.schemas.structures.satellite import Satellite
 
 
 class AcquisitionDetails(BaseModel):
