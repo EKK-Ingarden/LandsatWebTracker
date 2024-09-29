@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from backend.entities.BorderBox import BorderBox
+from backend.schemas import BorderBox
 
 
 class WRS2Utils:
