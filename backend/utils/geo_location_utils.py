@@ -5,6 +5,7 @@ import httpx
 
 from backend.schemas import TileAttributes, WrsCoordinates
 from backend.schemas.structures.border_box import BorderBox
+from backend.schemas.structures.tile_attributes import Mode
 from backend.utils.polygon_utils import polygon_from_nested_list
 
 
@@ -30,7 +31,7 @@ class WRS2Utils:
         raise NotImplementedError
 
     @staticmethod
-    async def get_wrs2_tiles(lat: float, lon: float, mode: Optional[str] = None):
+    async def get_wrs2_tiles(lat: float, lng: float, mode: Optional[Mode] = None):
         """
         Get the WRS-2 tile for a given latitude and longitude.
         """
@@ -39,7 +40,7 @@ class WRS2Utils:
         url = "https://nimbus.cr.usgs.gov/arcgis/rest/services/LLook_Outlines/MapServer/1/query"
 
         params = {
-            "geometry": f"{lon}, {lat}",
+            "geometry": f"{lng}, {lat}",
             "geometryType": "esriGeometryPoint",
             "spatialRel": "esriSpatialRelIntersects",
             "outFields": "*",
