@@ -7,7 +7,7 @@ from pystac_client import Client
 
 from backend.schemas.structures.cloud_coverage_ratio import CloudCoverageRatio
 from backend.schemas.structures.coordinates import Coordinates
-from backend.schemas.structures.landsat_item import LandsatItem
+from backend.schemas.structures.landsat_item import Bands, LandsatItem
 from backend.schemas.structures.wrs_coordinates import WrsCoordinates
 from backend.settings import settings
 from backend.utils.polygon_utils import polygon_from_nested_list
@@ -54,9 +54,13 @@ class LandsatAPI(BaseModel):
             ),
             rendered_preview=item.assets["rendered_preview"].href,
             polygon=polygon_from_nested_list(item.geometry["coordinates"]),
-            green=item.assets["green"].href,
-            red=item.assets["red"].href,
-            blue=item.assets["blue"].href,
+            bands=Bands(
+                **{
+                    key.replace(".", "_"): value.href
+                    for key, value in item.assets.items()
+                }
+            )
+
         )
 
     @property
