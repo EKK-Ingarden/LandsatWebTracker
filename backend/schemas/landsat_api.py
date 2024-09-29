@@ -1,12 +1,13 @@
 from datetime import datetime
 
+import planetary_computer
 from pydantic import BaseModel
 from pystac import Item
 from pystac_client import Client
 
 from backend.schemas.structures.cloud_coverage_ratio import CloudCoverageRatio
 from backend.schemas.structures.coordinates import Coordinates
-from backend.schemas.structures.landsat_item import LandsatItem
+from backend.schemas.structures.landsat_item import Bands, LandsatItem
 from backend.schemas.structures.wrs_coordinates import WrsCoordinates
 from backend.settings import settings
 from backend.utils.polygon_utils import polygon_from_nested_list
@@ -24,7 +25,7 @@ class LandsatAPI(BaseModel):
 
     def __init__(self, **data):
         super().__init__(**data)
-        self._catalog = Client.open(self.base_url)
+        self._catalog = Client.open(self.base_url, modifier=planetary_computer.sign_inplace)
         self._result = self._catalog.search(
             collections=["landsat-c2-l2"],
             limit=self.limit,
@@ -52,7 +53,14 @@ class LandsatAPI(BaseModel):
                 row=item.properties["landsat:wrs_row"],
             ),
             rendered_preview=item.assets["rendered_preview"].href,
-            polygon=polygon_from_nested_list(item.geometry["coordinates"])
+            polygon=polygon_from_nested_list(item.geometry["coordinates"]),
+            bands=Bands(
+                **{
+                    key.replace(".", "_"): value.href
+                    for key, value in item.assets.items()
+                }
+            )
+
         )
 
     @property
