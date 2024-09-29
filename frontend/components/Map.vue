@@ -15,6 +15,13 @@
         name="OpenStreetMap"
       />
 
+      <LTileLayer
+        url="https://planetarycomputer.microsoft.com/api/data/v1/mosaic/41a94eed11ae5df9b6a03cfd5806c0c0/tiles/WebMercatorQuad/{z}/{x}/{y}?assets=nir08&assets=red&assets=green&color_formula=gamma+RGB+2.7%2C+saturation+1.5%2C+sigmoidal+RGB+15+0.55&nodata=0&collection=landsat-c2-l2&format=png"
+        layer-type="base"
+        name="Landsat"
+        :min-zoom="8"
+      />
+
       <LPolygon
         v-if="selectedPolygon"
         :lat-lngs="selectedPolygon"
