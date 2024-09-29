@@ -1,6 +1,11 @@
 from datetime import datetime
+from typing import Optional
 
+import httpx
+
+from backend.schemas import TileAttributes, WrsCoordinates
 from backend.schemas.structures.border_box import BorderBox
+from backend.utils.polygon_utils import polygon_from_nested_list
 
 
 class WRS2Utils:
@@ -25,11 +30,40 @@ class WRS2Utils:
         raise NotImplementedError
 
     @staticmethod
-    def get_wrs2_tile(lat, lon):
+    async def get_wrs2_tiles(lat: float, lon: float, mode: Optional[str] = None):
         """
         Get the WRS-2 tile for a given latitude and longitude.
         """
-        raise NotImplementedError
+        tiles = []
+
+        url = "https://nimbus.cr.usgs.gov/arcgis/rest/services/LLook_Outlines/MapServer/1/query"
+
+        params = {
+            "geometry": f"{lon}, {lat}",
+            "geometryType": "esriGeometryPoint",
+            "spatialRel": "esriSpatialRelIntersects",
+            "outFields": "*",
+            "f": "json",
+        }
+
+        if mode is not None:
+            params["where"] = f"MODE='{mode}'"
+
+        async with httpx.AsyncClient() as client:
+            response = await client.get(url, params=params)
+            data = response.json()["features"]
+
+            for tile in data:
+                attributes = tile["attributes"]
+                tiles.append(TileAttributes(
+                    coordinates=WrsCoordinates(
+                        path=attributes["PATH"],
+                        row=attributes["ROW"]
+                    ),
+                    mode=attributes["MODE"],
+                    polygon=polygon_from_nested_list(tile["geometry"]["rings"]),
+                ))
+        return tiles
 
     @staticmethod
     def get_available_scenes(bbox: BorderBox, start_date: datetime, end_date: datetime):
