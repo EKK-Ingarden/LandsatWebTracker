@@ -31,7 +31,7 @@ class LandsatAPI(BaseModel):
             max_items=self.max_items,
             intersects={
                 "type": "Point",
-                "coordinates": [self.coordinates.latitude, self.coordinates.longitude]
+                "coordinates": [self.coordinates.longitude, self.coordinates.latitude]
             },
             query={
                 "eo:cloud_cover": {
