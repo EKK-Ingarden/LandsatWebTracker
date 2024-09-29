@@ -7,8 +7,8 @@ class TestPolygonUtils:
         polygon = polygon_from_nested_list([[[1, 2], [3, 4], [5, 6]]])
         assert polygon == Polygon(
             coordinates=[
-                Coordinates(lat=1, lon=2),
-                Coordinates(lat=3, lon=4),
-                Coordinates(lat=5, lon=6),
+                Coordinates(lat=2, lon=1),
+                Coordinates(lat=4, lon=3),
+                Coordinates(lat=6, lon=5),
             ]
         )
