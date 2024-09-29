@@ -1,13 +1,14 @@
+
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    database_url: str = "postgresql://user:password@localhost:5432/landsat_web_tracker_db"
     landsat_provider_url: str = "https://planetarycomputer.microsoft.com/api/stac/v1"
-    supabase_url: str = "https://<id>.supabase.co"
-    supabase_key: str = "<secret key>"
+    database_url: str = Field()
+    supabase_url: str = Field()
+    supabase_key: str = Field()
 
-    model_config = SettingsConfigDict(env_file=(".env", ".env.production"))
-
+    model_config = SettingsConfigDict(env_file=(".env", ".env.production"), extra="ignore")
 
 settings = Settings()

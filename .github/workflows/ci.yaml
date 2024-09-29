@@ -25,6 +25,13 @@ jobs:
         with:
           poetry-version: 1.8
 
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+          echo SUPABASE_URL=${{ secrets.SUPABASE_URL }} >> .env
+          echo SUPABASE_KEY=${{ secrets.SUPABASE_KEY }} >> .env
+
       - run: pnpm install
 
       - run: pnpm test
