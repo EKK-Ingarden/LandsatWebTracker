@@ -1,8 +1,7 @@
 <template>
   <NuxtLayout>
     <div class="bg-[url(assets/img/background.png)]" h-screen max-w-screen bg-cover bg-no-repeat>
-      <Navbar />
-      <div h="90vh" w-full flex flex-col items-center justify-center bg-black bg-opacity-85>
+      <div h-screen w-full flex flex-col items-center justify-center bg-black bg-opacity-85>
         <h1 text-7xl>
           Error {{ error?.statusCode }}
         </h1>

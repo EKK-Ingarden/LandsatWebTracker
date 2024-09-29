@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar fixed/>
+    <Navbar fixed />
     <slot />
   </div>
 </template>
@@ -18,7 +18,7 @@ useHead({
     lang: "en"
   },
   bodyAttrs: {
-    class: "dark dark-mode"
+    class: "dark dark-mode font-sans"
   }
 });
 

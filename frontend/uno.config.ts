@@ -16,7 +16,12 @@ export default defineConfig({
     presetTagify(),
     presetAttributify(),
     presetTypography(),
-    presetWebFonts(),
+    presetWebFonts({
+      provider: "google",
+      fonts: {
+        sans: "Inter",
+      }
+    }),
     presetShadcn({
       color: "neutral"
     })
