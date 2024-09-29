@@ -5,5 +5,6 @@ from .structures.coordinates import Coordinates
 from .structures.landsat_item import LandsatItem
 from .structures.pixel_watch import PixelWatch
 from .structures.polygon import Polygon
+from .structures.tile_attributes import TileAttributes
 from .structures.user import User, UserBase
 from .structures.wrs_coordinates import WrsCoordinates
