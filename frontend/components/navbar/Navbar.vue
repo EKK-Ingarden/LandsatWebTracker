@@ -8,7 +8,7 @@
         </p>
       </NuxtLink>
       <Button size="icon" variant="ghost" md="hidden" @click="isExpanded = !isExpanded">
-        <img src="~/assets/img/options.svg">
+        <span class="i-ci:hamburger" text-2xl />
       </Button>
       <NavbarLinks />
     </div>
@@ -23,13 +23,4 @@
 
 <script setup lang="ts">
 const isExpanded = ref(false);
-
-// const isUserLoggedIn = ref(false);
-// const user = useSupabaseUser();
-//
-// watch (user, () => {
-//   if (user.id) {
-//     isUserLoggedIn.value = true;
-//   }
-// });
 </script>

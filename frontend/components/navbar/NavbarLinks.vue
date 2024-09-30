@@ -11,8 +11,11 @@
     <NavbarLink url="#" :variant="linksVariant">
       About us
     </NavbarLink>
-    <!--    <img v-if="isUserLoggedIn" h="5vh" alt="User profile picture" src="~/assets/img/placeholder_pfp.png" rounded-full> -->
-    <NavbarLink url="/register" :variant="linksVariant">
+    <img
+      v-if="isUserLoggedIn" h="5vh" alt="User profile picture"
+      :src="isUserLoggedIn ? user.avatar.url : '~/assets/img/placeholder_pfp.png'" rounded-full
+    >
+    <NavbarLink v-if="!isUserLoggedIn" url="/register" :variant="linksVariant">
       Sign in
     </NavbarLink>
   </div>
@@ -33,4 +36,22 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   as: "navbar-links"
 });
+
+const isUserLoggedIn = ref(false);
+
+async function getUser() {
+  console.log(useSupabaseSession().value?.access_token);
+  const { data, error } = await useApi("/auth/get_user", {
+    headers: {
+      Authorization: `Bearer ${useSupabaseSession().value?.access_token}`
+    }
+  });
+  console.log(data, error);
+}
+
+const user = getUser();
+
+if (user.value !== undefined) {
+  isUserLoggedIn.value = true;
+}
 </script>

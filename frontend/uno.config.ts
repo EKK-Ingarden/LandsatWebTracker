@@ -1,6 +1,7 @@
 import {
   defineConfig,
   presetAttributify,
+  presetIcons,
   presetTagify,
   presetTypography,
   presetUno,
@@ -22,6 +23,7 @@ export default defineConfig({
         sans: "Inter"
       }
     }),
+    presetIcons(),
     presetShadcn({
       color: "neutral"
     })
@@ -60,6 +62,7 @@ export default defineConfig({
     "before:duration-200",
     "before:ease-linear",
     "before:content-['']",
-    "hover:before:scale-x-100"
+    "hover:before:scale-x-100",
+    "relative"
   ]
 });
