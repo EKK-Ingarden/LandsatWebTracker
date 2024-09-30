@@ -12,8 +12,9 @@
       About us
     </NavbarLink>
     <img
-      v-if="isUserLoggedIn" h="5vh" alt="User profile picture"
-      :src="isUserLoggedIn ? user.avatar.url : '~/assets/img/placeholder_pfp.png'" rounded-full
+      v-if="isUserLoggedIn" h="5vh" alt="User profile picture" rounded-full
+      :src="isUserLoggedIn ? user.avatar.url : ''"
+      :class="isUserLoggedIn ? user.avatar.url ? '' : 'i-carbon:user-avatar-filled' : ''"
     >
     <NavbarLink v-if="!isUserLoggedIn" url="/register" :variant="linksVariant">
       Sign in
@@ -39,19 +40,9 @@ const props = withDefaults(defineProps<Props>(), {
 
 const isUserLoggedIn = ref(false);
 
-async function getUser() {
-  console.log(useSupabaseSession().value?.access_token);
-  const { data, error } = await useApi("/auth/get_user", {
-    headers: {
-      Authorization: `Bearer ${useSupabaseSession().value?.access_token}`
-    }
-  });
-  console.log(data, error);
-}
+const user = useSupabaseUser();
 
-const user = getUser();
-
-if (user.value !== undefined) {
+if (user.value !== null) {
   isUserLoggedIn.value = true;
 }
 </script>

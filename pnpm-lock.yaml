@@ -74,6 +74,9 @@ importers:
       '@antfu/eslint-config':
         specifier: ^2.24.1
         version: 2.27.3(@typescript-eslint/utils@8.5.0(eslint@8.57.0)(typescript@5.6.2))(@unocss/eslint-plugin@0.61.9(eslint@8.57.0)(typescript@5.6.2))(@vue/compiler-sfc@3.5.10)(eslint@8.57.0)(typescript@5.6.2)
+      '@iconify-json/carbon':
+        specifier: ^1.2.1
+        version: 1.2.1
       '@iconify-json/ci':
         specifier: ^1.2.0
         version: 1.2.0
@@ -840,6 +843,9 @@ packages:
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
+
+  '@iconify-json/carbon@1.2.1':
+    resolution: {integrity: sha512-dIMY6OOY9LnwR3kOqAtfz4phGFG+KNfESEwSL6muCprBelSlSPpRXtdqvEEO/qWhkf5AJ9hWrOV3Egi5Z2IuKA==}
 
   '@iconify-json/ci@1.2.0':
     resolution: {integrity: sha512-6kHk5m4ZdPad/YOwlpqHTf3gpfiBc0MknR25JvYZmI5vnasejkb7maq/axjzUIGHBKDcaiS8D0bi/ZTb36V6CA==}
@@ -5467,6 +5473,10 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/object-schema@2.0.3': {}
+
+  '@iconify-json/carbon@1.2.1':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify-json/ci@1.2.0':
     dependencies:

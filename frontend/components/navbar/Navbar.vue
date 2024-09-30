@@ -13,8 +13,8 @@
       <NavbarLinks />
     </div>
     <div
-      md="hidden" top="10vh"
-      :class="isExpanded ? '' : 'translate-x-100vw'" fixed h-screen w-screen overflow-auto bg-gray-900 duration-300
+      md="hidden" top="10vh" fixed h-screen w-screen
+      :class="isExpanded ? '' : 'translate-x-100vw'" overflow-auto bg-gray-900 duration-300
     >
       <NavbarLinks variant="sidebar" links-variant="sidebar" first-link-variant="firstSidebar" />
     </div>
