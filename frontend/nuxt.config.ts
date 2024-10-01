@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
     "@nuxtjs/leaflet",
     "nuxt-open-fetch",
-    "@nuxtjs/supabase"
+    "@nuxtjs/supabase",
+    "nuxt-aos"
   ],
   css: [
     "@unocss/reset/tailwind.css"
