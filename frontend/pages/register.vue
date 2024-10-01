@@ -1,9 +1,5 @@
 <template>
-  <AuthForm :is-login="false" />
+  <div h-90vh>
+    <AuthForm :is-login="false" />
+  </div>
 </template>
-
-<script setup lang="ts">
-definePageMeta({
-  layout: "no-scrollable"
-});
-</script>

@@ -1,5 +1,5 @@
 <template>
-  <div h-screen flex items-center justify-center>
+  <div h-90vh      flex items-center justify-center>
     <div mx-auto max-w-xl text-center>
       <div text-5xl>
         Landsat Web Tracker
@@ -12,9 +12,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-definePageMeta({
-  layout: "no-scrollable"
-});
-</script>

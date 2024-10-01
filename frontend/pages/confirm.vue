@@ -3,10 +3,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  layout: "no-scrollable"
-});
-
 const user = useSupabaseUser();
 
 watch(user, () => {
