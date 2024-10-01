@@ -1,5 +1,3 @@
 <template>
-  <div h-90vh>
-    <AuthForm :is-login="true" />
-  </div>
+  <AuthForm h-[calc(100%-5rem)] :is-login="true" />
 </template>

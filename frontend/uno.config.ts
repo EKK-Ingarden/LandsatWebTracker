@@ -20,7 +20,7 @@ export default defineConfig({
     presetWebFonts({
       provider: "google",
       fonts: {
-        sans: "Inter"
+        inter: "Inter"
       }
     }),
     presetIcons(),

@@ -1,6 +1,6 @@
 <template>
-  <div h-90vh      flex items-center justify-center>
-    <div mx-auto max-w-xl text-center>
+  <div h="[calc(100%-5rem)]" flex items-center justify-center>
+    <div text-center>
       <div text-5xl>
         Landsat Web Tracker
       </div>
@@ -12,3 +12,6 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+</script>

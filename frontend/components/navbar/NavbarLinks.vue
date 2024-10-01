@@ -12,9 +12,9 @@
       About us
     </NavbarLink>
     <img
-      v-if="isUserLoggedIn" h="5vh" alt="User profile picture" rounded-full
-      :src="isUserLoggedIn ? user?.user_metadata.avatar.url : ''"
-      :class="isUserLoggedIn ? user?.user_metadata.avatar.url ? '' : 'i-carbon:user-avatar-filled' : ''"
+      v-if="user" h="5vh" alt="User profile picture" rounded-full
+      :src="user ? user?.user_metadata.avatar_url : ''"
+      :class="user ? user?.user_metadata.avatar_url ? '' : 'i-carbon:user-avatar-filled' : ''"
     >
     <NavbarLink v-if="!isUserLoggedIn" url="/register" :variant="linksVariant">
       Sign in
@@ -41,8 +41,4 @@ const props = withDefaults(defineProps<Props>(), {
 const isUserLoggedIn = ref(false);
 
 const user = useSupabaseUser();
-
-if (user.value !== null) {
-  isUserLoggedIn.value = true;
-}
 </script>
