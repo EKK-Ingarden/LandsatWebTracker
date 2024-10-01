@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Navbar sticky top-0 />
-    <slot />
+    <Navbar fixed />
+    <slot mt-10vh max-h-90vh />
   </div>
 </template>
 

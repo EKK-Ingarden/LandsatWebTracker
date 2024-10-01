@@ -12,8 +12,8 @@ export const navbarLinkVariants = cva(
         default: "relative text-center text-white no-underline before:absolute before:bottom-0 before:left-0 "
           + "before:block before:h-[2px] before:w-full before:scale-x-0 before:bg-white before:transition-transform "
           + "before:duration-200 before:ease-linear before:content-[''] hover:before:scale-x-100",
-        sidebar: "border-b-2 pb-4 border-gray-500 w-full",
-        firstSidebar: "border-y-2 py-4 border-gray-500 w-full"
+        sidebar: "border-b-1 pb-4 border-gray-500 w-full",
+        firstSidebar: "border-y-1 py-4 border-gray-500 w-full"
       }
     },
     defaultVariants: {

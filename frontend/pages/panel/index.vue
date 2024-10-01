@@ -14,9 +14,13 @@
 </template>
 
 <script setup lang="ts">
-const user = useSupabaseUser();
-const { auth } = useSupabaseClient();
+definePageMeta({
+  layout: "no-scrollable"
+});
 
+const user = useSupabaseUser();
+
+const { auth } = useSupabaseClient();
 async function getUser() {
   console.log(useSupabaseSession().value?.access_token);
   const { data, error } = await useApi("/auth/get_user", {
@@ -26,7 +30,6 @@ async function getUser() {
   });
   console.log(data, error);
 }
-
 function signOut() {
   auth.signOut();
   navigateTo("/");
