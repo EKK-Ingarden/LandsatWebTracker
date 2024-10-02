@@ -10,4 +10,5 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=(".env", ".env.production"), extra="ignore")
 
+
 settings = Settings()

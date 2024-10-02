@@ -38,6 +38,7 @@ class Bands(BaseModel):
     def __init__(self, /, **data):
         super().__init__(**data)
 
+
 class LandsatItem(BaseModel):
     id: str
     datetime: datetime

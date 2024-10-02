@@ -17,8 +17,5 @@ class TestLandsatAPI:
         # Act / Assert
         with pytest.raises(ValidationError):
             LandsatAPI(
-                coordinates=coordinates,
-                start_date=start_date,
-                end_date=end_date,
-                max_cloud_cover=max_cloud_cover
+                coordinates=coordinates, start_date=start_date, end_date=end_date, max_cloud_cover=max_cloud_cover
             )

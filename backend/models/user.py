@@ -4,12 +4,10 @@ from backend.database import Base
 
 
 class User(Base):
-    __tablename__ = 'users'
-    __table_args__ = {'schema': 'auth'}
+    __tablename__ = "users"
+    __table_args__ = {"schema": "auth"}
 
-    id = Column(UUID,
-                server_default=text('auth.gen_random_uuid()'),
-                primary_key=True)
+    id = Column(UUID, server_default=text("auth.gen_random_uuid()"), primary_key=True)
     email = Column(String, unique=True)
     encrypted_password = Column(String)
     role = Column(String, nullable=False)

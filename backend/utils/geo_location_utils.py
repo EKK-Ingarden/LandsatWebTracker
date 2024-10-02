@@ -56,14 +56,13 @@ class WRS2Utils:
 
             for tile in data:
                 attributes = tile["attributes"]
-                tiles.append(TileAttributes(
-                    coordinates=WrsCoordinates(
-                        path=attributes["PATH"],
-                        row=attributes["ROW"]
-                    ),
-                    mode=attributes["MODE"],
-                    polygon=polygon_from_nested_list(tile["geometry"]["rings"]),
-                ))
+                tiles.append(
+                    TileAttributes(
+                        coordinates=WrsCoordinates(path=attributes["PATH"], row=attributes["ROW"]),
+                        mode=attributes["MODE"],
+                        polygon=polygon_from_nested_list(tile["geometry"]["rings"]),
+                    )
+                )
         return tiles
 
     @staticmethod
