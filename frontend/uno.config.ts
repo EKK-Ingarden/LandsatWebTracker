@@ -1,6 +1,7 @@
 import {
   defineConfig,
   presetAttributify,
+  presetIcons,
   presetTagify,
   presetTypography,
   presetUno,
@@ -16,10 +17,19 @@ export default defineConfig({
     presetTagify(),
     presetAttributify(),
     presetTypography(),
-    presetWebFonts(),
+    presetWebFonts({
+      provider: "google",
+      fonts: {
+        inter: "Inter"
+      }
+    }),
+    presetIcons(),
     presetShadcn({
       color: "neutral"
     })
+  ],
+  rules: [
+    ["full-height-without-header", { height: "calc(100% - 5rem)" }]
   ],
   transformers: [
     transformerDirectives(),
@@ -31,7 +41,7 @@ export default defineConfig({
         // the default
         /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
         // include js/ts files
-        "components/ui/**/*.{js,ts}"
+        "components/**/*.{js,ts}"
       ]
     }
   }

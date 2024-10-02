@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div h-screen>
+    <Navbar sticky top-0 />
     <slot />
   </div>
 </template>
@@ -18,7 +19,7 @@ useHead({
     lang: "en"
   },
   bodyAttrs: {
-    class: "dark dark-mode"
+    class: "dark dark-mode font-inter"
   }
 });
 

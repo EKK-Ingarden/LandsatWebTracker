@@ -19,8 +19,8 @@
 
 <script setup lang="ts">
 const user = useSupabaseUser();
-const { auth } = useSupabaseClient();
 
+const { auth } = useSupabaseClient();
 async function getUser() {
   console.log(useSupabaseSession().value?.access_token);
   const { data, error } = await useApi("/auth/get_user", {
@@ -30,7 +30,6 @@ async function getUser() {
   });
   console.log(data, error);
 }
-
 function signOut() {
   auth.signOut();
   navigateTo("/");

@@ -1,13 +1,13 @@
 <template>
-  <div class="h-screen flex items-center justify-center">
-    <div class="mx-auto max-w-xl text-center">
-      <div class="mb-5 text-5xl">
+  <div flex items-center justify-center full-height-without-header>
+    <div mx-auto max-w-xl text-center>
+      <div mb-5 text-5xl>
         {{ props.isLogin ? 'Login' : 'Register' }}
       </div>
 
-      <div class="mx-20">
-        <input v-model="email" type="email" placeholder="Email" class="mx-auto my-5 block">
-        <input v-model="password" type="password" placeholder="Password" class="mx-auto my-5 block">
+      <div mx-20>
+        <input v-model="email" type="email" placeholder="Email" mx-auto my-5 block>
+        <input v-model="password" type="password" placeholder="Password" mx-auto my-5 block>
       </div>
 
       <span v-if="error" my-5 text-red>{{ error }}</span>
