@@ -17,5 +17,5 @@ def create_app():
 
 
 def write_openapi():
-    with open('frontend/openapi/api/openapi.json', 'w') as f:
+    with open("frontend/openapi/api/openapi.json", "w") as f:
         json.dump(create_app().openapi(), f)

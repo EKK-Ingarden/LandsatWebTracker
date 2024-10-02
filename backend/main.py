@@ -27,5 +27,5 @@ app.middleware("http")(logger_middleware)
 
 write_openapi()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

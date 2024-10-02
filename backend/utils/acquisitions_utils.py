@@ -24,11 +24,9 @@ class AcquisitionsUtils:
         acquisitions = self.get_acquisitions(path, date.today())
         return acquisitions[0] if acquisitions else None
 
-    def get_acquisitions(self,
-                         path: int,
-                         from_date: date,
-                         to_date: Optional[date] = None,
-                         satellites: Optional[List[Satellite]] = None) -> List[tuple[str, date, AcquisitionDetails]]:
+    def get_acquisitions(
+        self, path: int, from_date: date, to_date: Optional[date] = None, satellites: Optional[List[Satellite]] = None
+    ) -> List[tuple[str, date, AcquisitionDetails]]:
         if not self.acquisitions_data:
             raise ValueError("Acquisitions data is not loaded")
 
@@ -50,4 +48,3 @@ class AcquisitionsUtils:
         acquisitions.sort(key=lambda x: x[1])
 
         return acquisitions
-

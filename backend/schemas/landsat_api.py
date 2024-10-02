@@ -30,14 +30,9 @@ class LandsatAPI(BaseModel):
             collections=["landsat-c2-l2"],
             limit=self.limit,
             max_items=self.max_items,
-            intersects={
-                "type": "Point",
-                "coordinates": [self.coordinates.longitude, self.coordinates.latitude]
-            },
+            intersects={"type": "Point", "coordinates": [self.coordinates.longitude, self.coordinates.latitude]},
             query={
-                "eo:cloud_cover": {
-                    "lt": self.max_cloud_cover * 100
-                },
+                "eo:cloud_cover": {"lt": self.max_cloud_cover * 100},
             },
             datetime=f"{self.start_date.isoformat()}/{self.end_date.isoformat()}",
         )
@@ -54,13 +49,7 @@ class LandsatAPI(BaseModel):
             ),
             rendered_preview=item.assets["rendered_preview"].href,
             polygon=polygon_from_nested_list(item.geometry["coordinates"]),
-            bands=Bands(
-                **{
-                    key.replace(".", "_"): value.href
-                    for key, value in item.assets.items()
-                }
-            )
-
+            bands=Bands(**{key.replace(".", "_"): value.href for key, value in item.assets.items()}),
         )
 
     @property

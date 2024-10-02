@@ -35,15 +35,17 @@ def get_my_pixel_watches(user: UserResponse = Depends(get_current_user), db: Ses
 
 
 @index_router.post("/watch_my_pixel")
-async def watch_my_pixel(params: WatchPixelParams,
-                         user: UserResponse = Depends(get_current_user),
-                         db: Session = Depends(get_db)):
-    db.add(PixelWatch(
-        latitude=params.coordinates.latitude,
-        longitude=params.coordinates.longitude,
-        path=params.wrs_coordinates.wrs_path,
-        row=params.wrs_coordinates.wrs_row,
-        datetime=params.date,
-        user_id=user.user.id
-    ))
+async def watch_my_pixel(
+    params: WatchPixelParams, user: UserResponse = Depends(get_current_user), db: Session = Depends(get_db)
+):
+    db.add(
+        PixelWatch(
+            latitude=params.coordinates.latitude,
+            longitude=params.coordinates.longitude,
+            path=params.wrs_coordinates.wrs_path,
+            row=params.wrs_coordinates.wrs_row,
+            datetime=params.date,
+            user_id=user.user.id,
+        )
+    )
     db.commit()

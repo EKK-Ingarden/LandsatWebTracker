@@ -10,4 +10,3 @@ class WatchPixelParams(BaseModel):
     coordinates: Coordinates
     wrs_coordinates: WrsCoordinates
     date: datetime
-
