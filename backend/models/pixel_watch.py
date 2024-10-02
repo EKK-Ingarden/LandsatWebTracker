@@ -17,3 +17,5 @@ class PixelWatch(Base):
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
     datetime = Column(DateTime, nullable=False)
+    path = Column(Integer, nullable=False)
+    row = Column(Integer, nullable=False)

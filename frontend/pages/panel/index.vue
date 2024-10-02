@@ -10,6 +10,10 @@
     <Button @click="signOut">
       Sign out
     </Button>
+
+    <Button>
+      <a href="/panel/wmpform" font-bold underline>WMP Form</a>
+    </Button>
   </div>
 </template>
 
