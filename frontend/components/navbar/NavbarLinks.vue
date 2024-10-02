@@ -12,7 +12,7 @@
       About us
     </NavbarLink>
     <img
-      v-if="user" h="5vh" alt="User profile picture" rounded-full
+      v-if="user" h="5vh" aria-label="User profile picture" rounded-full
       :src="user ? user?.user_metadata.avatar_url : ''"
       :class="user ? user?.user_metadata.avatar_url ? '' : 'i-carbon:user-avatar-filled' : ''"
     >
