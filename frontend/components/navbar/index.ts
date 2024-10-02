@@ -1,8 +1,8 @@
 import { type VariantProps, cva } from "class-variance-authority";
 
-export { default as Navbar } from "./Navbar";
-export { default as NavbarLink } from "./NavbarLink";
-export { default as NavbarLinks } from "./NavbarLinks";
+export { default as Navbar } from "./Navbar.vue";
+export { default as NavbarLink } from "./NavbarLink.vue";
+export { default as NavbarLinks } from "./NavbarLinks.vue";
 
 export const navbarLinkVariants = cva(
   "items-center",
@@ -41,8 +41,7 @@ export const navbarLinksVariants = cva(
     },
     defaultVariants: {
       variant: "default",
-      linksVariant: "default",
-      firstLinksVariant: "default"
+      linksVariant: "default"
     }
   }
 );

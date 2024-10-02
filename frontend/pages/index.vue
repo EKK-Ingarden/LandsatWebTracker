@@ -1,5 +1,5 @@
 <template>
-  <div h="[calc(100%-5rem)]" flex items-center justify-center>
+  <div flex items-center justify-center full-height-without-header>
     <div text-center>
       <div text-5xl>
         Landsat Web Tracker

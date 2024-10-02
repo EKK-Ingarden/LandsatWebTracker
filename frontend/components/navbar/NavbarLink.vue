@@ -15,10 +15,8 @@ import { cn } from "@/lib/utils";
 interface Props {
   variant?: NavbarLinkVariants["variant"]
   class?: HTMLAttributes["class"]
-  url?: string
+  url: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  as: "navbar-link"
-});
+const props = defineProps<Props>();
 </script>

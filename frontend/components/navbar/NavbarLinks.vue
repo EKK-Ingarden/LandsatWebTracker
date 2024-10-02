@@ -8,15 +8,17 @@
     <NavbarLink url="#" :variant="linksVariant">
       Search for data
     </NavbarLink>
-    <NavbarLink url="#" :variant="linksVariant">
-      About us
+    <NavbarLink url="/map" :variant="linksVariant">
+      Map
     </NavbarLink>
-    <img
-      v-if="user" h="5vh" aria-label="User profile picture" rounded-full
-      :src="user ? user?.user_metadata.avatar_url : ''"
-      :class="user ? user?.user_metadata.avatar_url ? '' : 'i-carbon:user-avatar-filled' : ''"
-    >
-    <NavbarLink v-if="!isUserLoggedIn" url="/register" :variant="linksVariant">
+    <NuxtLink v-if="user" to="/panel">
+      <img
+        h="5vh" aria-label="User profile picture" alt="" rounded-full
+        :src="user?.user_metadata.avatar_url"
+        :class="user?.user_metadata.avatar_url ? '' : 'i-carbon:user-avatar-filled'"
+      >
+    </NuxtLink>
+    <NavbarLink v-else url="/register" :variant="linksVariant">
       Sign in
     </NavbarLink>
   </div>
@@ -34,11 +36,7 @@ interface Props {
   class?: HTMLAttributes["class"]
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  as: "navbar-links"
-});
-
-const isUserLoggedIn = ref(false);
+const props = defineProps<Props>();
 
 const user = useSupabaseUser();
 </script>

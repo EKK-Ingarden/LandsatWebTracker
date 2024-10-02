@@ -28,6 +28,9 @@ export default defineConfig({
       color: "neutral"
     })
   ],
+  rules: [
+    ["full-height-without-header", { height: "calc(100% - 5rem)" }]
+  ],
   transformers: [
     transformerDirectives(),
     transformerVariantGroup({ separators: [":"] })
