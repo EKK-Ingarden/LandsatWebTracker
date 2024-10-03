@@ -18,37 +18,18 @@
               </NuxtLink>
             </Button>
           </div>
-          <svg class="arch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" preserveAspectRatio="none" mb="-20vh" md="block" hidden w-screen>
-            <path d="M 0 20 Q 50 15 100 20" stroke="url(#grad1)" stroke-width="0.2" fill="transparent" />
-            <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#6983EA; stop-opacity:1" />
-                <stop offset="25%" style="stop-color:#5BC0BE; stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#9EF01A; stop-opacity:1" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <svg class="arch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" preserveAspectRatio="none" mb="-10vh" md="hidden" block w-screen>
-            <path d="M 0 20 Q 50 15 100 20" stroke="url(#grad2)" stroke-width="0.5" fill="transparent" />
-            <defs>
-              <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#6983EA; stop-opacity:1" />
-                <stop offset="25%" style="stop-color:#5BC0BE; stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#9EF01A; stop-opacity:1" />
-              </linearGradient>
-            </defs>
-          </svg>
+          <Arch stroke-width="0.2" mb="-20vh" md="block" hidden w-screen />
+          <Arch stroke-width="0.5" mb="-10vh" md="hidden" block w-screen />
         </div>
       </div>
     </div>
     <div h-40vh md="-mt-15vh" mt="-30vh">
-      <SlidingTextBlock data-aos="fade-right" header="Our mission" md="ml-20vw" ml-10vw mr-auto>
+      <SlidingTextBlock data-aos="fade-right" header="Our mission">
         is to grant users the access to the corresponding Landsat SR data.
       </SlidingTextBlock>
       <SlidingTextBlock
-        data-aos="fade-left"
+        data-aos="fade-left" is-right
         header="Get your results in a couple of easy steps!"
-        md="mr-20vw" mr-10vw ml-auto
       >
         <ul ml-3 list-disc>
           <li>Choose a target location</li>

@@ -16,12 +16,10 @@
       </NuxtLink>
     </div>
     <hr w="80%" b-1 border-gray-700>
-    <div flex md="gap-10" gap-5 text-2xl>
+    <div>
+      Made by EKK Ingarden for Nasa Space Apps 2024. Website is
       <NuxtLink to="https://github.com/EKK-Ingarden/LandsatWebTracker">
-        <p class="i-lucide:github" />
-      </NuxtLink>
-      <NuxtLink to="#">
-        <p class="i-ci:mail" />
+        open source
       </NuxtLink>
     </div>
   </div>
