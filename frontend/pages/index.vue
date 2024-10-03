@@ -42,10 +42,14 @@
       </div>
     </div>
     <div h-40vh md="-mt-15vh" mt="-30vh">
-      <SlidingTextBlock data-aos="fade-right" header="Our mission">
+      <SlidingTextBlock data-aos="fade-right" header="Our mission" md="ml-20vw" ml-10vw mr-auto>
         is to grant users the access to the corresponding Landsat SR data.
       </SlidingTextBlock>
-      <SlidingTextBlock data-aos="fade-left" direction="right" header="Get your results in a couple of easy steps!">
+      <SlidingTextBlock
+        data-aos="fade-left"
+        header="Get your results in a couple of easy steps!"
+        md="mr-20vw" mr-10vw ml-auto
+      >
         <ul ml-3 list-disc>
           <li>Choose a target location</li>
           <li>etc</li>
