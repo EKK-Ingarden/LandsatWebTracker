@@ -18,12 +18,12 @@
               </NuxtLink>
             </Button>
           </div>
-          <Arch stroke-width="0.2" mb="-20vh" md="block" hidden w-screen />
-          <Arch stroke-width="0.5" mb="-10vh" md="hidden" block w-screen />
+          <Arch stroke-width="0.2" mb="-20vh" md="block" arch-number="1" hidden w-screen />
+          <Arch stroke-width="0.5" mb="-10vh" md="hidden" block arch-number="2" w-screen />
         </div>
       </div>
     </div>
-    <div h-40vh md="-mt-15vh" mt="-30vh">
+    <div h-50vh md="h-40vh -mt-15vh" mt="-30vh">
       <SlidingTextBlock data-aos="fade-right" header="Our mission">
         is to grant users the access to the corresponding Landsat SR data.
       </SlidingTextBlock>
