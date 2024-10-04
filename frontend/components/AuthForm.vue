@@ -1,27 +1,36 @@
 <template>
-  <div flex items-center justify-center full-height-without-header>
-    <div mx-auto max-w-xl text-center>
-      <div mb-5 text-5xl>
-        {{ props.isLogin ? 'Login' : 'Register' }}
-      </div>
-
-      <div mx-20>
-        <input v-model="email" type="email" placeholder="Email" mx-auto my-5 block>
-        <input v-model="password" type="password" placeholder="Password" mx-auto my-5 block>
-      </div>
-
-      <span v-if="error" my-5 text-red>{{ error }}</span>
-
-      <div>
-        <Button @click="auth.signInWithOAuth({ provider: 'google', options: { redirectTo } })">
-          Google
+  <div class="bg-[url(assets/img/background.png)]" bg-cover bg-center full-height-without-header>
+    <div h-full flex items-center justify-center bg-black bg-opacity-85>
+      <div h-90 w-80 flex flex-col items-center rounded-lg bg-black bg-opacity-50 mb="20vh">
+        <div mb-5 self-start p-5 text-2xl font-bold>
+          {{ props.isLogin ? 'Sign in' : 'Register' }}
+        </div>
+        <div w-full flex justify-center>
+          <div w="90%" flex flex-col gap-3>
+            <Input v-model="email" type="email" placeholder="Email" border-1 border-gray-400 bg-gray-900 placeholder:text-white />
+            <Input v-model="password" type="password" placeholder="Password" border-1 border-gray-400 bg-gray-900 placeholder:text-white />
+          </div>
+        </div>
+        <span :class="error ? '' : 'invisible'" h-7 text-red>{{ error }}</span>
+        <Button w="90%" size="default" bg-color="gray300" @click="props.isLogin ? signIn() : signUp()">
+          Continue
         </Button>
-        <Button mx-3 @click="auth.signInWithOAuth({ provider: 'github', options: { redirectTo } })">
-          Github
-        </Button>
-        <Button @click="props.isLogin ? signIn() : signUp()">
-          Sign {{ props.isLogin ? 'in' : 'up' }} with password
-        </Button>
+        <div mt-5 flex gap-2>
+          <button
+            class="i-ci:google"
+            text-5xl @click="auth.signInWithOAuth({ provider: 'google', options: { redirectTo } })"
+          />
+          <button
+            class="i-ci:github"
+            text-5xl @click="auth.signInWithOAuth({ provider: 'github', options: { redirectTo } })"
+          />
+        </div>
+        <p mt-3 text-sm>
+          {{ props.isLogin ? "New to our site?" : "Already a user?" }}
+          <NuxtLink font-bold :to="props.isLogin ? 'register' : 'login'">
+            {{ props.isLogin ? "Sign up now!" : "Login now!" }}
+          </NuxtLink>
+        </p>
       </div>
     </div>
   </div>
