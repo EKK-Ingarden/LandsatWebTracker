@@ -18,9 +18,9 @@ export default defineConfig({
     presetAttributify(),
     presetTypography(),
     presetWebFonts({
-      provider: "google",
+      provider: "none",
       fonts: {
-        inter: "Inter"
+        inter: "assets/fonts/Inter-Font.ttf"
       }
     }),
     presetIcons(),
