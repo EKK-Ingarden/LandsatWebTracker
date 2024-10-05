@@ -1,6 +1,6 @@
 <template>
   <div w-full overflow-x-hidden bg-black>
-    <div class="bg-[url(assets/img/background.png)]" bg-cover bg-center full-height-without-header>
+    <div class="bg-[url(assets/img/background.webp)]" bg-cover bg-center full-height-without-header>
       <div flex flex-col items-center justify-center bg-black bg-opacity-85 full-height-without-header>
         <div flex flex-col items-center justify-center text-center text-gray-100>
           <div md="text-5xl leading-14" text-3xl font-bold w="55%">

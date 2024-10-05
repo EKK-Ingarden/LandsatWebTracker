@@ -5,6 +5,7 @@
     "frontend:dev": "pnpm --prefix ./frontend/ dev",
     "frontend:lint": "pnpm --prefix ./frontend/ lint",
     "frontend:format": "pnpm --prefix ./frontend/ format",
+    "frontend:build": "pnpm --prefix ./frontend/ build",
     "backend:dev": "poetry run uvicorn backend.main:app --port 8000 --reload",
     "backend:openapi": "poetry run openapi",
     "backend:lint": "poetry run ruff check && poetry run ruff format --check",
