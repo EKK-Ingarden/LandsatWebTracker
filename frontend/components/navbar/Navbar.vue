@@ -2,7 +2,7 @@
   <div h-20 w-full bg-black>
     <div mx-5 h-full flex items-center justify-between>
       <NuxtLink to="/" flex items-center gap-3>
-        <img alt="LandsatWebTracker logo" src="~/assets/img/logo.svg" h-9>
+        <img alt="LandsatWebTracker logo" src="~/assets/img/logo.svg" h-11>
         <p font-700>
           Landsat Web Tracker
         </p>

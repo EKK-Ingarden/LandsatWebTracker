@@ -1,27 +1,45 @@
 <template>
-  <div flex items-center justify-center full-height-without-header>
-    <div mx-auto max-w-xl text-center>
-      <div mb-5 text-5xl>
-        {{ props.isLogin ? 'Login' : 'Register' }}
-      </div>
-
-      <div mx-20>
-        <input v-model="email" type="email" placeholder="Email" mx-auto my-5 block>
-        <input v-model="password" type="password" placeholder="Password" mx-auto my-5 block>
-      </div>
-
-      <span v-if="error" my-5 text-red>{{ error }}</span>
-
-      <div>
-        <Button @click="auth.signInWithOAuth({ provider: 'google', options: { redirectTo } })">
-          Google
+  <div class="bg-[url(assets/img/background.png)]" bg-cover bg-center full-height-without-header>
+    <div h-full flex items-center justify-center bg-black bg-opacity-85>
+      <div h-95 w-85 flex flex-col items-center rounded-lg bg-black bg-opacity-60 mb="20vh" p-5>
+        <div w="90%" mb-5 ml-3 self-start text-2xl font-bold>
+          {{ props.isLogin ? 'Sign in' : 'Sign up' }}
+        </div>
+        <div w-full flex justify-center>
+          <div w="90%" flex flex-col gap-3>
+            <Input
+              v-model="email" type="email" placeholder="Email"
+              size="authForm" bg-color="gray900" border-setup="border1Gray400" placeholder:text-white
+            />
+            <Input
+              v-model="password" type="password" placeholder="Password"
+              size="authForm" bg-color="gray900" border-setup="border1Gray400" placeholder:text-white
+            />
+          </div>
+        </div>
+        <span :class="error ? '' : 'invisible'" h-7 text-red>{{ error }}</span>
+        <Button w="90%" size="default" bg-color="gray300" @click="passwordAuth(isLogin)">
+          Continue
         </Button>
-        <Button mx-3 @click="auth.signInWithOAuth({ provider: 'github', options: { redirectTo } })">
-          Github
-        </Button>
-        <Button @click="props.isLogin ? signIn() : signUp()">
-          Sign {{ props.isLogin ? 'in' : 'up' }} with password
-        </Button>
+        <div mt-7 flex gap-2>
+          <button
+            hover="brightness-120"
+            class="i-logos:google-icon" scale-85 rounded-full text-5xl
+            @click="auth.signInWithOAuth({ provider: 'google', options: { redirectTo } })"
+          />
+          <button
+            rounded-full hover="bg-white" bg-gray-300
+            class="i-ci:github" text-5xl
+            @click="auth.signInWithOAuth({ provider: 'github', options: { redirectTo } })"
+          />
+        </div>
+
+        <p mt-5 text-sm>
+          {{ props.isLogin ? "New to our site?" : "Already a user?" }}
+          <NuxtLink font-bold :to="props.isLogin ? 'register' : 'login'" underline>
+            {{ props.isLogin ? "Sign up now!" : "Sign in now!" }}
+          </NuxtLink>
+        </p>
       </div>
     </div>
   </div>
@@ -40,18 +58,17 @@ const error = ref("");
 
 const redirectTo = `${useRuntimeConfig().public.baseUrl}/confirm`;
 
-async function signIn() {
-  const value = await auth.signInWithPassword({ email: email.value, password: password.value });
-
-  if (value.error) {
-    error.value = value.error.message;
-  } else {
-    navigateTo("/confirm");
+async function passwordAuth(isLogin: boolean) {
+  let value;
+  if (error.value) {
+    error.value = "";
   }
-}
 
-async function signUp() {
-  const value = await auth.signUp({ email: email.value, password: password.value });
+  if (isLogin) {
+    value = await auth.signInWithPassword({ email: email.value, password: password.value });
+  } else {
+    value = await auth.signUp({ email: email.value, password: password.value });
+  }
 
   if (value.error) {
     error.value = value.error.message;

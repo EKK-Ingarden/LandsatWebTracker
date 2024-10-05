@@ -13,7 +13,7 @@
     </NavbarLink>
     <NuxtLink v-if="user" to="/panel">
       <img
-        h="5vh" aria-label="User profile picture" alt="" rounded-full
+        h-9 aria-label="User profile picture" alt="" rounded-full
         :src="user?.user_metadata.avatar_url"
         :class="user?.user_metadata.avatar_url ? '' : 'i-carbon:user-avatar-filled'"
       >

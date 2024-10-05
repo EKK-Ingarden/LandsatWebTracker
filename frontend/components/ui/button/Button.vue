@@ -2,7 +2,7 @@
   <Primitive
     :as="as"
     :as-child="asChild"
-    :class="cn(buttonVariants({ variant, size, textSize }), props.class)"
+    :class="cn(buttonVariants({ variant, size, textSize, bgColor }), props.class)"
   >
     <slot />
   </Primitive>
@@ -18,6 +18,7 @@ interface Props extends PrimitiveProps {
   variant?: ButtonVariants["variant"]
   size?: ButtonVariants["size"]
   textSize?: ButtonVariants["textSize"]
+  bgColor?: ButtonVariants["bgColor"]
   class?: HTMLAttributes["class"]
 }
 
