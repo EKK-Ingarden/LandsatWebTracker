@@ -22,7 +22,7 @@
     "clsx": "^2.1.1",
     "leaflet-geosearch": "^4.0.0",
     "lucide-vue-next": "^0.441.0",
-    "nuxt": "^3.13.0",
+    "nuxt": "^3.13.2",
     "radix-vue": "^1.9.5",
     "tailwind-merge": "^2.5.2",
     "vee-validate": "^4.13.2",
