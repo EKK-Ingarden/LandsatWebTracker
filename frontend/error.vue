@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <div class="bg-[url(assets/img/background.png)]" max-w-screen bg-cover bg-no-repeat full-height-without-header>
+    <div class="bg-[url(assets/img/background.webp)]" max-w-screen bg-cover bg-no-repeat full-height-without-header>
       <div h-full w-full flex flex-col items-center justify-center bg-black bg-opacity-85>
         <h1 text-7xl>
           Error {{ error?.statusCode }}
