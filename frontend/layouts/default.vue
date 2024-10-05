@@ -33,3 +33,12 @@ useSeoMeta({
   ogDescription: description
 });
 </script>
+
+<style>
+@font-face {
+    font-family: "Inter";
+    src: url("assets/fonts/Inter.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
