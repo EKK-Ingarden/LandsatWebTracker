@@ -25,7 +25,7 @@ export default defineConfig({
     })
   ],
   rules: [
-    ["full-height-without-header", { height: "calc(100% - 5rem)" }]
+    ["full-height-without-header", { height: "calc(100vh - 5rem)" }]
   ],
   transformers: [
     transformerDirectives(),
