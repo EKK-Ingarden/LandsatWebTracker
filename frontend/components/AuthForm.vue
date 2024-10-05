@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[url(assets/img/background.png)]" bg-cover bg-center full-height-without-header>
+  <div class="bg-[url(assets/img/background.webp)]" bg-cover bg-center full-height-without-header>
     <div h-full flex items-center justify-center bg-black bg-opacity-85>
       <div h-95 w-85 flex flex-col items-center rounded-lg bg-black bg-opacity-60 mb="20vh" p-5>
         <div w="90%" mb-5 ml-3 self-start text-2xl font-bold>
