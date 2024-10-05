@@ -19,7 +19,7 @@ useHead({
     lang: "en"
   },
   bodyAttrs: {
-    class: "dark dark-mode font-inter"
+    class: "dark dark-mode inter"
   }
 });
 
@@ -33,3 +33,16 @@ useSeoMeta({
   ogDescription: description
 });
 </script>
+
+<style lang="scss">
+@font-face {
+    font-family: "inter";
+    src: url("assets/fonts/Inter.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.inter{
+  font-family: inter, serif;
+}
+</style>

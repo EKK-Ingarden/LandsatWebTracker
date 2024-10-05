@@ -18,10 +18,6 @@ export default defineConfig({
     presetAttributify(),
     presetTypography(),
     presetWebFonts({
-      provider: "google",
-      fonts: {
-        inter: "Inter"
-      }
     }),
     presetIcons(),
     presetShadcn({
