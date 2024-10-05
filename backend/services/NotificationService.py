@@ -33,8 +33,7 @@ class NotificationService:
             "subject": "Landsat notification",
             "html": f"{content}",
         }
-        email = resend.Emails.send(params)
-        print(email)
+        resend.Emails.send(params)
         return
 
     @staticmethod
