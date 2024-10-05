@@ -1,22 +1,3 @@
-<script setup lang="ts">
-import { type HTMLAttributes, computed } from 'vue'
-import {
-  AccordionHeader,
-  AccordionTrigger,
-  type AccordionTriggerProps,
-} from 'radix-vue'
-import { ChevronDownIcon } from '@radix-icons/vue'
-import { cn } from '@/lib/utils'
-
-const props = defineProps<AccordionTriggerProps & { class?: HTMLAttributes['class'] }>()
-
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-
-  return delegated
-})
-</script>
-
 <template>
   <AccordionHeader class="flex">
     <AccordionTrigger
@@ -37,3 +18,22 @@ const delegatedProps = computed(() => {
     </AccordionTrigger>
   </AccordionHeader>
 </template>
+
+<script setup lang="ts">
+import { type HTMLAttributes, computed } from "vue";
+import {
+  AccordionHeader,
+  AccordionTrigger,
+  type AccordionTriggerProps
+} from "radix-vue";
+import { ChevronDownIcon } from "@radix-icons/vue";
+import { cn } from "@/lib/utils";
+
+const props = defineProps<AccordionTriggerProps & { class?: HTMLAttributes["class"] }>();
+
+const delegatedProps = computed(() => {
+  const { class: _, ...delegated } = props;
+
+  return delegated;
+});
+</script>
