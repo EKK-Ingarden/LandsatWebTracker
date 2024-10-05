@@ -53,9 +53,9 @@ const props = defineProps<{
 const { auth } = useSupabaseClient();
 const user = useSupabaseUser();
 
-if (user) {
+if (user.value) {
   navigateTo("/confirm");
-};
+}
 
 const email = ref("");
 const password = ref("");
