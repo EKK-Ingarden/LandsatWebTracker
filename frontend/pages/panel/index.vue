@@ -18,16 +18,14 @@
 </template>
 
 <script setup lang="ts">
-const user = useSupabaseUser();
+import apiAuth from "~/utils/api-auth";
 
+const user = useSupabaseUser();
 const { auth } = useSupabaseClient();
+
 async function getUser() {
   console.log(useSupabaseSession().value?.access_token);
-  const { data, error } = await useApi("/auth/get_user", {
-    headers: {
-      Authorization: `Bearer ${useSupabaseSession().value?.access_token}`
-    }
-  });
+  const { data, error } = await apiAuth("/auth/get_user");
   console.log(data, error);
 }
 function signOut() {
