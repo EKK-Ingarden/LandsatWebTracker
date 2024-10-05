@@ -35,6 +35,7 @@ class Bands(BaseModel):
     tilejson: Url
     rendered_preview: Url
 
+
 class Mosaics(BaseModel):
     natural_color: str
     color_infrared: str
@@ -43,7 +44,6 @@ class Mosaics(BaseModel):
     vegetation: str
     moisture_index: str
     atmospheric_penetration: str
-
 
 
 class LandsatItem(BaseModel):

@@ -22,14 +22,9 @@ class LandsatAPIBySearch(LandsatAPI):
             collections=["landsat-c2-l2"],
             limit=self.limit,
             max_items=self.max_items,
-            intersects={
-                "type": "Point",
-                "coordinates": [self.coordinates.latitude, self.coordinates.longitude]
-            },
+            intersects={"type": "Point", "coordinates": [self.coordinates.latitude, self.coordinates.longitude]},
             query={
-                "eo:cloud_cover": {
-                    "lt": self.max_cloud_cover * 100
-                },
+                "eo:cloud_cover": {"lt": self.max_cloud_cover * 100},
             },
             datetime=f"{self.start_date.isoformat()}/{self.end_date.isoformat()}",
         )

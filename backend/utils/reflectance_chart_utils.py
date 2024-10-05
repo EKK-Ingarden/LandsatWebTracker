@@ -31,15 +31,15 @@ BANDS_WAVE_LENGTHS = {
     # TODO: Data is incomplete some1 must fill it, for now we will use only those bands
 }
 
+
 def generate_reflectance_chart_from_tiff(bands: Bands) -> List[ReflectanceChartElement]:
     """
     Generate the temperature chart from the bands
     """
     return [
         ReflectanceMatrix(
-            min_wave_length=BANDS_WAVE_LENGTHS[name][0],
-            max_wave_length=BANDS_WAVE_LENGTHS[name][1],
-            url=url
+            min_wave_length=BANDS_WAVE_LENGTHS[name][0], max_wave_length=BANDS_WAVE_LENGTHS[name][1], url=url
         ).to_reflectance_chart_element()
-        for name, url in bands.model_dump().items() if name in BANDS_WAVE_LENGTHS
+        for name, url in bands.model_dump().items()
+        if name in BANDS_WAVE_LENGTHS
     ]

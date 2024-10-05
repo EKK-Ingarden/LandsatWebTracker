@@ -38,10 +38,7 @@ class ReflectanceMatrix(BaseModel):
         self.matrix = self.matrix * 0.0000275 - 0.2
 
     def to_reflectance_chart_element(self):
-        return ReflectanceChartElement(
-            reflectance=float(self.mean),
-            wave_length=self.median_wave_length
-        )
+        return ReflectanceChartElement(reflectance=float(self.mean), wave_length=self.median_wave_length)
 
     @property
     def mean(self):

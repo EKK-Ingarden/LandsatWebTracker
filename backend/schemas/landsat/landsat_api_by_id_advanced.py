@@ -25,5 +25,5 @@ class LandsatAdvancedAPIById(LandsatAPIById):
             ),
             rendered_preview=item.assets["rendered_preview"].href,
             polygon=polygon_from_nested_list(item.geometry["coordinates"]),
-            temp_chart=generate_reflectance_chart_from_tiff(bands)
+            temp_chart=generate_reflectance_chart_from_tiff(bands),
         )

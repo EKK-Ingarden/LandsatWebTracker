@@ -18,7 +18,7 @@ class LandsatAPI(BaseModel):
 
     @staticmethod
     def landsat_mosaic_builder(result_params, collection_id, mosaic_type: MosaicType):
-        result_params = json.loads(base64.b64decode(result_params).decode('utf-8'))
+        result_params = json.loads(base64.b64decode(result_params).decode("utf-8"))
 
         r_register = requests.post(
             "https://planetarycomputer.microsoft.com/api/data/v1/mosaic/register",
@@ -38,8 +38,7 @@ class LandsatAPI(BaseModel):
             return s.split("=")[0]
 
         params = {
-            k: [x.split("=")[1] for x in v]
-            for k, v in itertools.groupby(render_config["options"].split("&"), key=key)
+            k: [x.split("=")[1] for x in v] for k, v in itertools.groupby(render_config["options"].split("&"), key=key)
         }
         params["collection"] = collection_id
 
@@ -47,23 +46,16 @@ class LandsatAPI(BaseModel):
 
     @staticmethod
     def bands_builder(item: Item) -> Bands:
-        return Bands(
-                **{
-                    key.replace(".", "_"): value.href
-                    for key, value in item.assets.items()
-                }
-            )
+        return Bands(**{key.replace(".", "_"): value.href for key, value in item.assets.items()})
 
     def mosaic_endpoint_builder(self, item: Item) -> Mosaics:
-        decoded_results = base64.urlsafe_b64encode(
-           json.dumps(self._result.get_parameters()).encode()
-       ).decode()
+        decoded_results = base64.urlsafe_b64encode(json.dumps(self._result.get_parameters()).encode()).decode()
         return Mosaics(
             **{
                 data.name.lower(): f"/landsat/mosaic"
-                                   f"?collection_id={item.collection_id}"
-                                   f"&results_param={decoded_results}"
-                                   f"&mosaic_type={data.value}"
+                f"?collection_id={item.collection_id}"
+                f"&results_param={decoded_results}"
+                f"&mosaic_type={data.value}"
                 for data in MosaicType
             }
         )
