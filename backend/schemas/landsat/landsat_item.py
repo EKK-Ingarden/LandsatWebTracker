@@ -35,8 +35,15 @@ class Bands(BaseModel):
     tilejson: Url
     rendered_preview: Url
 
-    def __init__(self, /, **data):
-        super().__init__(**data)
+
+class Mosaics(BaseModel):
+    natural_color: str
+    color_infrared: str
+    shortwave_infrared: str
+    agriculture: str
+    vegetation: str
+    moisture_index: str
+    atmospheric_penetration: str
 
 
 class LandsatItem(BaseModel):
@@ -45,5 +52,6 @@ class LandsatItem(BaseModel):
     eo_cloud_cover: CloudCoverageRatio
     wrs_coordinates: WrsCoordinates
     rendered_preview: str
+    mosaic_endpoints: Mosaics
     polygon: Polygon
     bands: Bands
