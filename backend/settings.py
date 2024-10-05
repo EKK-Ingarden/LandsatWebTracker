@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     database_url: str = Field()
     supabase_url: str = Field()
     supabase_key: str = Field()
+    resend_api_key: str = Field()
 
     model_config = SettingsConfigDict(env_file=(".env", ".env.production"), extra="ignore")
 
