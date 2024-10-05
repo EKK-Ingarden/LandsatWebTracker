@@ -9,6 +9,7 @@
     "backend:openapi": "poetry run openapi",
     "backend:lint": "poetry run ruff check && poetry run ruff format --check",
     "backend:format": "poetry run ruff check --fix && poetry run ruff format",
+    "frontend:build": "pnpm --prefix ./frontend/ build",
     "backend:test": "poetry run pytest ./backend.test/",
     "dev": "pnpm run /:dev$/",
     "lint": "pnpm run /:lint$/",
