@@ -10,5 +10,11 @@ class ReflectanceChartElement(BaseModel):
     reflectance: float
 
 
+class TemperatureChartElement(BaseModel):
+    temperature: float
+    distribution: float
+
+
 class LandsatAdvancedItem(LandsatItem):
-    temp_chart: List[ReflectanceChartElement]
+    reflectance_chart: List[ReflectanceChartElement]
+    temperature_chart: List[TemperatureChartElement]

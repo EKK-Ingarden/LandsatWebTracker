@@ -6,6 +6,7 @@ from backend.schemas.landsat.landsat_item import LandsatItem
 from backend.schemas.landsat.landsat_item_advanced import LandsatAdvancedItem
 from backend.utils.polygon_utils import polygon_from_nested_list
 from backend.utils.reflectance_chart_utils import generate_reflectance_chart_from_tiff
+from backend.utils.temperature_chart_utils import generate_temperature_chart_from_item
 
 
 class LandsatAdvancedAPIById(LandsatAPIById):
@@ -14,6 +15,7 @@ class LandsatAdvancedAPIById(LandsatAPIById):
 
     def landsat_item_builder(self, item: Item) -> LandsatItem:
         return LandsatAdvancedItem(
+            platform=item.properties["platform"],
             mosaic_endpoints=self.mosaic_endpoint_builder(item),
             bands=(bands := self.bands_builder(item)),
             id=item.id,
@@ -25,5 +27,6 @@ class LandsatAdvancedAPIById(LandsatAPIById):
             ),
             rendered_preview=item.assets["rendered_preview"].href,
             polygon=polygon_from_nested_list(item.geometry["coordinates"]),
-            temp_chart=generate_reflectance_chart_from_tiff(bands),
+            temperature_chart=generate_temperature_chart_from_item(item),
+            reflectance_chart=generate_reflectance_chart_from_tiff(bands),
         )

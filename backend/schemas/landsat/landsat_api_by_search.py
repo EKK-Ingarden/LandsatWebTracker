@@ -25,6 +25,7 @@ class LandsatAPIBySearch(LandsatAPI):
             intersects={"type": "Point", "coordinates": [self.coordinates.longitude, self.coordinates.latitude]},
             query={
                 "eo:cloud_cover": {"lt": self.max_cloud_cover * 100},
+                "platform": {"in": ["landsat-8", "landsat-9"]},
             },
             datetime=f"{self.start_date.isoformat()}/{self.end_date.isoformat()}",
         )
