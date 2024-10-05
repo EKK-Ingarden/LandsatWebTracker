@@ -19,7 +19,7 @@ useHead({
     lang: "en"
   },
   bodyAttrs: {
-    class: "dark dark-mode font-inter"
+    class: "dark dark-mode inter"
   }
 });
 
@@ -34,7 +34,7 @@ useSeoMeta({
 });
 </script>
 
-<style>
+<style lang="scss">
 @font-face {
     font-family: "inter";
     src: url("assets/fonts/Inter.ttf") format("truetype");
@@ -43,6 +43,6 @@ useSeoMeta({
 }
 
 .inter{
-  font-family: inter;
+  font-family: inter, serif;
 }
 </style>
