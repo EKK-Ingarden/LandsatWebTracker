@@ -1,3 +1,4 @@
+import resend
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -7,8 +8,10 @@ class Settings(BaseSettings):
     database_url: str = Field()
     supabase_url: str = Field()
     supabase_key: str = Field()
+    resend_api_key: str = Field()
 
     model_config = SettingsConfigDict(env_file=(".env", ".env.production"), extra="ignore")
 
 
 settings = Settings()
+resend.api_key = settings.resend_api_key

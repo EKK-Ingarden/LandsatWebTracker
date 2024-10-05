@@ -1,5 +1,7 @@
 from enum import Enum
 
+import resend
+
 
 class Notification(Enum):
     EMAIL = 1
@@ -20,7 +22,18 @@ class NotificationService:
 
     @staticmethod
     def sendEmailNotification(user, message):
-        raise NotImplementedError("Email notification not implemented")
+        with open("backend/assets/email/template.html") as template:
+            content = template.read()
+            content = content.replace("{{ message.coordinates }}", f"{message['coordinates']}")
+            content = content.replace("{{ message.time_left }}", f"{message['time_left']}")
+
+        params: resend.Emails.SendParams = {
+            "from": "Notifications staff <notifications@landsat.wyniki.zip>",
+            "to": [f"{user['email']}"],
+            "subject": "Landsat notification",
+            "html": f"{content}",
+        }
+        resend.Emails.send(params)
         return
 
     @staticmethod
