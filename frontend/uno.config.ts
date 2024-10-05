@@ -10,6 +10,8 @@ import {
   transformerVariantGroup
 } from "unocss";
 import { presetShadcn } from "unocss-preset-shadcn";
+import { createLocalFontProcessor } from '@unocss/preset-web-fonts/local'
+
 
 export default defineConfig({
   presets: [
@@ -20,8 +22,13 @@ export default defineConfig({
     presetWebFonts({
       provider: "none",
       fonts: {
-        inter: "assets/fonts/Inter-Font.ttf"
-      }
+        inter: "Inter"
+      },
+      processors: createLocalFontProcessor({
+        cacheDir: 'node_modules/.cache/unocss/fonts',
+        fontAssetsDir: '/assets/fonts',
+        fontServeBaseUrl: '/assets/fonts'
+      }),
     }),
     presetIcons(),
     presetShadcn({
