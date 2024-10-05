@@ -62,6 +62,7 @@ class LandsatAPI(BaseModel):
 
     def landsat_item_builder(self, item: Item) -> LandsatItem:
         return LandsatItem(
+            platform=item.properties["platform"],
             mosaic_endpoints=self.mosaic_endpoint_builder(item),
             bands=self.bands_builder(item),
             id=item.id,

@@ -2,7 +2,7 @@ from typing import List
 
 from backend.schemas.landsat.landsat_item import Bands
 from backend.schemas.landsat.landsat_item_advanced import ReflectanceChartElement
-from backend.schemas.structures.reflectance_matrix import ReflectanceMatrix
+from backend.schemas.structures.matrix_reflectance import ReflectanceMatrix
 
 """
 Source of the constans: https://www.usgs.gov/faqs/what-are-band-designations-landsat-satellites
@@ -38,7 +38,11 @@ def generate_reflectance_chart_from_tiff(bands: Bands) -> List[ReflectanceChartE
     """
     return [
         ReflectanceMatrix(
-            min_wave_length=BANDS_WAVE_LENGTHS[name][0], max_wave_length=BANDS_WAVE_LENGTHS[name][1], url=url
+            min_wave_length=BANDS_WAVE_LENGTHS[name][0],
+            max_wave_length=BANDS_WAVE_LENGTHS[name][1],
+            url=url,
+            add_transformation=-0.2,
+            multiply_transformation=2.75e-05,
         ).to_reflectance_chart_element()
         for name, url in bands.model_dump().items()
         if name in BANDS_WAVE_LENGTHS
