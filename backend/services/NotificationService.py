@@ -2,15 +2,10 @@ from enum import Enum
 
 import resend
 
-from backend.settings import settings
-
 
 class Notification(Enum):
     EMAIL = 1
     PUSH = 2
-
-
-resend.api_key = settings.resend_api_key
 
 
 class NotificationService:
