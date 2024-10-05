@@ -36,9 +36,13 @@ useSeoMeta({
 
 <style>
 @font-face {
-    font-family: "Inter";
+    font-family: "inter";
     src: url("assets/fonts/Inter.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
+}
+
+.inter{
+  font-family: inter;
 }
 </style>
