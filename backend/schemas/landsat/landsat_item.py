@@ -47,6 +47,7 @@ class Mosaics(BaseModel):
 
 
 class LandsatItem(BaseModel):
+    platform: str
     id: str
     datetime: datetime
     eo_cloud_cover: CloudCoverageRatio

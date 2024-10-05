@@ -4,13 +4,11 @@ from PIL import Image
 from pydantic import BaseModel
 from pydantic_core import Url
 
-from backend.schemas.landsat.landsat_item_advanced import ReflectanceChartElement
 
-
-class ReflectanceMatrix(BaseModel):
-    min_wave_length: float
-    max_wave_length: float
+class Matrix(BaseModel):
     url: Url
+    add_transformation: float
+    multiply_transformation: float
     matrix: np.ndarray = None
 
     def __init__(self, /, **data):
@@ -35,18 +33,7 @@ class ReflectanceMatrix(BaseModel):
         Apply the transformation to the matrix.
         Constans are based on the reflectance matrix documentation and mtl files of the bands
         """
-        self.matrix = self.matrix * 0.0000275 - 0.2
-
-    def to_reflectance_chart_element(self):
-        return ReflectanceChartElement(reflectance=float(self.mean), wave_length=self.median_wave_length)
-
-    @property
-    def mean(self):
-        return np.mean(self.matrix)
-
-    @property
-    def median_wave_length(self):
-        return (self.min_wave_length + self.max_wave_length) / 2
+        self.matrix = self.matrix * self.multiply_transformation + self.add_transformation
 
     class Config:
         arbitrary_types_allowed = True
