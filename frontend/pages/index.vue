@@ -6,20 +6,20 @@
           <div flex flex-col items-center justify-center text-center text-gray-100>
             <div md="text-5xl leading-14" text-3xl font-bold w="55%">
               <span
-                from-indigo-300 via-blue-300 to-green-300 bg-gradient-to-r bg-clip-text text-transparent
-              >Landsat</span>: Where Every Pixel Tells a Story!
+                from="#6983EA" via="#5BC0BE" to="#9EF01A" bg-gradient-to-r bg-clip-text text-transparent
+              ><span bg-white bg-opacity-50 bg-clip-text>Landsat</span></span>: Where Every Pixel Tells a Story!
             </div>
             <div mt-6 w="50%" md="leading-5 text-base" text-sm>
               We provide a wealth of satellite imagery data that can be accessed through our web application.
             </div>
-            <Button bg-color="green" md="mt-10" mt-5 text-size="xs">
+            <Button from="#b4c3f3" via="#b5e5cd" to="#cbf596" text-size="xs" md="mt-10" mt-5 bg-gradient-to-r>
               <NuxtLink to="login" flex items-center justify-center>
                 Get started<img md="text-xl" text-base text-black class="i-ci:play-arrow">
               </NuxtLink>
             </Button>
           </div>
-          <Arch stroke-width="0.2" mb="-20vh" md="block" arch-number="1" hidden w-screen />
-          <Arch stroke-width="0.5" mb="-10vh" md="hidden" block arch-number="2" w-screen />
+          <!--          <Arch stroke-width="0.2" mb="-20vh" md="block" arch-number="1" hidden w-screen /> -->
+          <!--          <Arch stroke-width="0.5" mb="-10vh" md="hidden" block arch-number="2" w-screen /> -->
         </div>
       </div>
     </div>
