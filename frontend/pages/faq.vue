@@ -42,10 +42,6 @@ const faqList = [
     answer: "Yes, users will need to create an account to access certain features, such as saving locations and receiving notifications."
   },
   {
-    question: "What if I forget my password?",
-    answer: "The application includes a password recovery option, allowing you to reset your password via email verification."
-  },
-  {
     question: "How reliable is the Landsat data used in this application?",
     answer: "Landsat data is collected by NASA and the USGS, and it undergoes rigorous calibration and validation processes to ensure its accuracy and reliability."
   },
