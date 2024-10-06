@@ -1,21 +1,33 @@
 <template h-screen>
   <div flex full-height-without-header>
     <div class="w-1/4 p-4">
-      <div overflow-auto h="1/4" p-5>
-        <div v-for="(polygon, index) in polygons" :key="index" @click="selectPolygon(polygon)">
-          <button>
-            <span>{{ polygon.coordinates.path }} {{ polygon.coordinates.row }}</span><br>
-          </button>
+      <div h="1/4" flex flex-col overflow-auto p-5>
+        <div flex items-center justify-around border-b-2 border-gray-800 rounded-t-md bg-gray-900 py-2>
+          <p>Path</p>
+          <p>Row</p>
         </div>
+        <button
+          v-for="(polygon, index) in polygons" :key="index" flex
+          items-center justify-around border-b-2 border-gray-900 py-2 hover="bg-gray-600" :class="{ 'bg-gray-600': polygon === selectedPolygonData }" @click="selectPolygon(polygon)"
+        >
+          <p>{{ polygon.coordinates.path }}</p>
+          <p>{{ polygon.coordinates.row }}</p>
+        </button>
       </div>
-      <div overflow-auto h="3/5" p-5>
-        <div v-for="(aquasition, index) in aquasitions" :key="index" :class="{ 'font-bold': aquasition === selectedAcquisition }" @click="selectAcquisition(aquasition)">
-          <button>
-            {{ aquasition[0] }} {{ aquasition[1] }}
-          </button>
+      <div h="3/5" flex flex-col overflow-auto p-5>
+        <div flex items-center justify-around border-b-2 border-gray-800 rounded-t-md bg-gray-900 py-2>
+          <p>Landsat version</p>
+          <p>Reminder date</p>
         </div>
+        <button
+          v-for="(aquasition, index) in aquasitions" :key="index" flex
+          items-center justify-around border-b-2 border-gray-900 py-2 hover="bg-gray-600" :class="{ 'bg-gray-600': aquasition === selectedAcquisition }" @click="selectAcquisition(aquasition)"
+        >
+          <p>{{ aquasition[0] }}</p>
+          <p>{{ aquasition[1] }}</p>
+        </button>
       </div>
-      <WatchMyPixelDialog v-if="selectedAcquisition" mb-5 :selected-acquisition="selectedAcquisition" :polygon-data="selectedPolygonData" :selected-position="selectedPosition" />
+      <WatchMyPixelDialog v-if="selectedAcquisition" my-5 :selected-acquisition="selectedAcquisition" :polygon-data="selectedPolygonData" :selected-position="selectedPosition" w-full p-5 />
     </div>
     <div class="w-3/4">
       <Map :selected-polygon="selectedPolygon" :tile-layer-overlay="tileLayer" @updated-marker-position="updateMarkerPosition" @search-location="search" />
@@ -44,7 +56,7 @@ function selectAcquisition(aquasition: any) {
   selectedAcquisition.value = aquasition;
 }
 
-interface Polygon {
+export interface Polygon {
   coordinates: {
     path: number
     row: number
