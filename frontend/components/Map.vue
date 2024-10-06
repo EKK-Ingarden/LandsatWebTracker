@@ -42,7 +42,9 @@
             <img text-xl class="i-material-symbols:search">
           </button>
         </div>
-        <p v-if="error" w-50 pl-2 h-auto mt-5 rounded-r-md border-2 border-l-none border-gray-500 text-base bg-white text-red>{{ error ? error : "" }}</p>
+        <p v-if="error" mt-5 h-auto w-50 border-2 border-gray-500 rounded-r-md border-l-none bg-white pl-2 text-base text-red>
+          {{ error ? error : "" }}
+        </p>
       </LControl>
 
       <LImageOverlay v-if="imageOverlay" :url="imageOverlay.url" :bounds="imageOverlay.bounds" />
