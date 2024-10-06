@@ -38,6 +38,7 @@
     "@iconify-json/logos": "^1.2.2",
     "@iconify-json/lucide": "^1.2.7",
     "@iconify-json/material-symbols": "^1.2.2",
+    "@iconify-json/material-symbols-light": "^1.2.2",
     "@nuxt/eslint": "^0.4.0",
     "@types/aos": "^3.0.7",
     "@unocss/eslint-plugin": "^0.61.9",
