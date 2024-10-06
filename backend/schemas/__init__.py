@@ -8,3 +8,4 @@ from .structures.satellite import Satellite
 from .structures.tile_attributes import TileAttributes
 from .structures.user import User, UserBase
 from .structures.wrs_coordinates import WrsCoordinates
+from .structures.report import Report
