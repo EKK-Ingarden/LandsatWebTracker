@@ -1,32 +1,28 @@
 <template h-screen>
   <div flex full-height-without-header>
     <div class="w-1/4 p-4">
-
-
-
-
-      <div flex-col flex justify-center items-center>
+      <div flex flex-col items-center justify-center>
         <p font-size="0.90rem">
-        Enter Date
-      </p>
-      <p font-size="0.75rem" mt-2>
+          Enter Date
+        </p>
+        <p font-size="0.75rem" mt-2>
           Start
-      </p>
-        <DatePicker  v-model="dateFrom" placeholder="Start" mt-4 text-align-center/>
+        </p>
+        <DatePicker v-model="dateFrom" placeholder="Start" mt-4 text-align-center />
         <p font-size="0.75rem" mt-2>
           End
         </p>
-        <DatePicker v-model="dateTo" placeholder="End"/>
-        </div>
-      <div flex justify-center mt-3>
-      <p >
-        Max Cloud Coverage {{maxCloudCover[0]}}%
-      </p>
+        <DatePicker v-model="dateTo" placeholder="End" />
       </div>
-      <Slider mt-3 v-model="maxCloudCover" :default-value="20" :max="100" :step="1"/>
+      <div mt-3 flex justify-center>
+        <p>
+          Max Cloud Coverage {{ maxCloudCover[0] }}%
+        </p>
+      </div>
+      <Slider v-model="maxCloudCover" mt-3 :default-value="20" :max="100" :step="1" />
 
       <div overflow-auto h="5/7" p-5>
-        <div v-for="(polygon, index) in polygons" :key="index" @mouseover="logPolygon(polygon)" @click="showPolygon(polygon)" bg-white>
+        <div v-for="(polygon, index) in polygons" :key="index" bg-white @mouseover="logPolygon(polygon)" @click="showPolygon(polygon)">
           <button>
             <img h-20 :src="polygon.rendered_preview">
             <span font-size="0.75rem">{{ polygon.id }}</span><br><br>
@@ -54,7 +50,7 @@
 <script setup lang="ts">
 import L, { LatLng } from "leaflet";
 import type { DateValue } from "@internationalized/date";
-import { Slider } from '@/components/ui/slider'
+import { Slider } from "@/components/ui/slider";
 
 const marker = ref<LatLng | undefined>(undefined);
 const tileLayer = ref<{
