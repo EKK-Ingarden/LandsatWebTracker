@@ -23,7 +23,7 @@
     <Arch :stroke-width="0.2" md="block" hidden arch-number="1" w-screen mt="-15" />
     <Arch :stroke-width="0.5" md="hidden" block arch-number="2" w-screen mt="-5" />
 
-    <div h-screen md="gmt-10 mb-40" mt="-25">
+    <div h-screen md="mt-10 mb-40" mt="-25">
       <SlidingTextBlock data-aos="fade-right" header="Our mission">
         is to grant users the access to the corresponding Landsat Surface Reflection data.
       </SlidingTextBlock>
