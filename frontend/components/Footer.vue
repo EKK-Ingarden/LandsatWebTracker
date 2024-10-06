@@ -1,6 +1,6 @@
 <template>
   <div md="gap-10" my-10 h-10 w-screen flex flex-col items-center justify-center bg-black>
-    <hr w="80%" b-1 border-gray-700>
+    <hr w="80%" md="mb-0" mb-5 b-1 border-gray-700>
     <div w="70%" md="text-base" text-center text-sm>
       Made by EKK Ingarden for
       <NuxtLink to="https://www.spaceappschallenge.org/" font-bold>
