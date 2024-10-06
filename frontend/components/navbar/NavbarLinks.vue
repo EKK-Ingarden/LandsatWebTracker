@@ -5,6 +5,12 @@
     <NavbarLink url="/faq" :variant="firstLinkVariant">
       FAQ
     </NavbarLink>
+    <NavbarLink url="/how-does-it-work" :variant="linksVariant">
+      How does it work?
+    </NavbarLink>
+    <NavbarLink url="#" :variant="linksVariant">
+      Landsat Locator
+    </NavbarLink>
     <NavbarLink url="/panel/select_scene" :variant="linksVariant">
       Select tile
     </NavbarLink>
