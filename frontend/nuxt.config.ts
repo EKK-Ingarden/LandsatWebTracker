@@ -43,7 +43,7 @@ export default defineNuxtConfig({
   openFetch: {
     clients: {
       api: {
-        baseURL: "http://localhost:8000/"
+        baseURL: process.env.NUXT_OPEN_FETCH_API_BASE_URL || "http://localhost:8000/"
       }
     }
   },

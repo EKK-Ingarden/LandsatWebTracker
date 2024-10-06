@@ -4,8 +4,8 @@ from fastapi import FastAPI
 
 from backend.routers.index_router import index_router
 from backend.routers.landsat_api_router import landsat_api_router
-from backend.routers.watch_my_pixel import watch_my_pixel_router
 from backend.routers.report_router import report_router
+from backend.routers.watch_my_pixel import watch_my_pixel_router
 
 
 def create_app():

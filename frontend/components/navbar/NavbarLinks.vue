@@ -8,17 +8,17 @@
     <NavbarLink url="/how_does_it_work" :variant="linksVariant">
       How does it work?
     </NavbarLink>
-    <NavbarLink url="/panel/select_scene" :variant="linksVariant">
-      Select tile
-    </NavbarLink>
-    <NavbarLink url="/panel/watch_my_pixel" :variant="linksVariant">
-      Watch My Pixel
-    </NavbarLink>
-    <NavbarLink url="/panel/my_pixel_watches" :variant="linksVariant">
-      My Pixel Watches
+    <NavbarLink v-if="user" url="/panel/select_scene" :variant="linksVariant">
+      Select scene
     </NavbarLink>
     <NavbarLink url="/panel/reports" :variant="linksVariant">
       Reports
+    </NavbarLink>
+    <NavbarLink v-if="user" url="/panel/watch_my_pixel" :variant="linksVariant">
+      Watch My Pixel
+    </NavbarLink>
+    <NavbarLink v-if="user" url="/panel/my_pixel_watches" :variant="linksVariant">
+      My Pixel Watches
     </NavbarLink>
     <NuxtLink v-if="user" to="/panel">
       <UserNav :avatar-url="user?.user_metadata.avatar_url" />
