@@ -1,5 +1,5 @@
 <template>
-  <div h-screen>
+  <div>
     <Navbar sticky top-0 />
     <slot />
   </div>
