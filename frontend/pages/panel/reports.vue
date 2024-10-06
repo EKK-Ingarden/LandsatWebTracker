@@ -9,21 +9,22 @@
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Satelite</TableHead>
-            <TableHead>Date</TableHead>
+            <TableHead>Is Processed</TableHead>
+            <TableHead>Created at</TableHead>
             <TableHead>Status</TableHead>
+            <TableHead>Scene</TableHead>
             <TableHead><!-- extends table header to full width --></TableHead>
             <TableHead><!-- extends table header to full width --></TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow v-for="(report, index) in reports" :key="report.row">
-            <TableCell>{{ report.satelite }}</TableCell>
-            <TableCell>{{ report.date }}</TableCell>
-            <TableCell>{{ report.status }}</TableCell>
-            <TableCell><NuxtLink :to="`/panel/report/${report.id}`"><img class="i-material-symbols-light:open-in-new" text-2xl></NuxtLink></TableCell>
+          <TableRow v-for="(report, index) in reports" :key="index">
+            <TableCell>{{ report.is_processed }}</TableCell>
+            <TableCell>{{ report.created_at }}</TableCell>
+            <TableCell>{{ report.scene_id }}</TableCell>
+            <TableCell><NuxtLink :to="`/panel/report/${report.scene_id}`"><img class="i-material-symbols-light:open-in-new" text-2xl></NuxtLink></TableCell>
             <TableCell>
-              <button class="text-red-500 hover:text-red-700" @click="deleteReport(index)">
+              <button class="text-red-500 hover:text-red-700">
                 DELETE
               </button>
             </TableCell>
@@ -35,16 +36,20 @@
 </template>
 
 <script setup lang="ts">
-const reports = ref([
-  {
-    satelite: "Landsat 9",
-    date: "11.9.2024",
-    status: "Finished",
-    id: "1"
-  }
-]);
+const reports = ref<{
+  scene_id: string
+  is_processed: boolean
+  created_at: string
+  raw_data: string | null
+}[]>();
 
-const deleteReport = (rowIndex: number) => {
-  reports.value.splice(rowIndex, 1);
-};
+const { data, error } = useApi("/report/get_reports", {
+  headers: {
+    Authorization: `Bearer ${useSupabaseSession().value?.access_token}`
+  }
+});
+
+if (data.value) {
+  reports.value = data.value;
+}
 </script>

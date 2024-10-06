@@ -8,6 +8,7 @@
 <script setup lang="ts">
 const route = useRoute();
 
+
 const { data, error } = useApi("/report/get_report", {
   query: {
     scene_id: route.params.id.toString()

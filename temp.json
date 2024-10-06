@@ -1,0 +1,170 @@
+{
+  "platform": "landsat-8",
+  "id": "LC08_L2SP_182045_20240608_02_T1",
+  "datetime": "2024-06-08T09:02:25.335336Z",
+  "eo_cloud_cover": 0.0,
+  "wrs_coordinates": {
+    "wrs_path": 182,
+    "wrs_row": 45
+  },
+  "rendered_preview": "https://planetarycomputer.microsoft.com/api/data/v1/item/preview.png?collection=landsat-c2-l2&item=LC08_L2SP_182045_20240608_02_T1&assets=red&assets=green&assets=blue&color_formula=gamma+RGB+2.7%2C+saturation+1.5%2C+sigmoidal+RGB+15+0.55&format=png",
+  "mosaic_endpoints": {
+    "natural_color": "?collection_id=landsat-c2-l2&results_param=eyJpZHMiOiBbIkxDMDhfTDJTUF8xODIwNDVfMjAyNDA2MDhfMDJfVDEiXSwgImNvbGxlY3Rpb25zIjogWyJsYW5kc2F0LWMyLWwyIl19&mosaic_type=0",
+    "color_infrared": "?collection_id=landsat-c2-l2&results_param=eyJpZHMiOiBbIkxDMDhfTDJTUF8xODIwNDVfMjAyNDA2MDhfMDJfVDEiXSwgImNvbGxlY3Rpb25zIjogWyJsYW5kc2F0LWMyLWwyIl19&mosaic_type=1",
+    "shortwave_infrared": "?collection_id=landsat-c2-l2&results_param=eyJpZHMiOiBbIkxDMDhfTDJTUF8xODIwNDVfMjAyNDA2MDhfMDJfVDEiXSwgImNvbGxlY3Rpb25zIjogWyJsYW5kc2F0LWMyLWwyIl19&mosaic_type=2",
+    "agriculture": "?collection_id=landsat-c2-l2&results_param=eyJpZHMiOiBbIkxDMDhfTDJTUF8xODIwNDVfMjAyNDA2MDhfMDJfVDEiXSwgImNvbGxlY3Rpb25zIjogWyJsYW5kc2F0LWMyLWwyIl19&mosaic_type=3",
+    "vegetation": "?collection_id=landsat-c2-l2&results_param=eyJpZHMiOiBbIkxDMDhfTDJTUF8xODIwNDVfMjAyNDA2MDhfMDJfVDEiXSwgImNvbGxlY3Rpb25zIjogWyJsYW5kc2F0LWMyLWwyIl19&mosaic_type=4",
+    "moisture_index": "?collection_id=landsat-c2-l2&results_param=eyJpZHMiOiBbIkxDMDhfTDJTUF8xODIwNDVfMjAyNDA2MDhfMDJfVDEiXSwgImNvbGxlY3Rpb25zIjogWyJsYW5kc2F0LWMyLWwyIl19&mosaic_type=5",
+    "atmospheric_penetration": "?collection_id=landsat-c2-l2&results_param=eyJpZHMiOiBbIkxDMDhfTDJTUF8xODIwNDVfMjAyNDA2MDhfMDJfVDEiXSwgImNvbGxlY3Rpb25zIjogWyJsYW5kc2F0LWMyLWwyIl19&mosaic_type=6"
+  },
+  "polygon": {
+    "coordinates": [
+      {
+        "latitude": 22.71383627762965,
+        "longitude": 19.8434897775217
+      },
+      {
+        "latitude": 20.982497253672886,
+        "longitude": 19.4461348833091
+      },
+      {
+        "latitude": 20.620279157709664,
+        "longitude": 21.18682299762253
+      },
+      {
+        "latitude": 22.353175582837196,
+        "longitude": 21.606275857525887
+      },
+      {
+        "latitude": 22.71383627762965,
+        "longitude": 19.8434897775217
+      }
+    ]
+  },
+  "bands": {
+    "qa": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_ST_QA.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "ang": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_ANG.txt?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "red": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_SR_B4.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "blue": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_SR_B2.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "drad": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_ST_DRAD.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "emis": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_ST_EMIS.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "emsd": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_ST_EMSD.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "trad": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_ST_TRAD.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "urad": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_ST_URAD.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "atran": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_ST_ATRAN.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "cdist": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_ST_CDIST.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "green": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_SR_B3.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "nir08": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_SR_B5.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "lwir11": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_ST_B10.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "swir16": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_SR_B6.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "swir22": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_SR_B7.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "coastal": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_SR_B1.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "mtl_txt": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_MTL.txt?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "mtl_xml": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_MTL.xml?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "mtl_json": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_MTL.json?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "qa_pixel": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_QA_PIXEL.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "qa_radsat": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_QA_RADSAT.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "qa_aerosol": "https://landsateuwest.blob.core.windows.net/landsat-c2/level-2/standard/oli-tirs/2024/182/045/LC08_L2SP_182045_20240608_20240627_02_T1/LC08_L2SP_182045_20240608_20240627_02_T1_SR_QA_AEROSOL.TIF?st=2024-10-05T13%3A32%3A38Z&se=2024-10-06T14%3A17%3A38Z&sp=rl&sv=2024-05-04&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-10-06T06%3A09%3A10Z&ske=2024-10-13T06%3A09%3A10Z&sks=b&skv=2024-05-04&sig=mXNbLaYFM10kSROgl0uJ1KVWN%2BTuHtKD5nfsO0qKIzM%3D",
+    "tilejson": "https://planetarycomputer.microsoft.com/api/data/v1/item/tilejson.json?collection=landsat-c2-l2&item=LC08_L2SP_182045_20240608_02_T1&assets=red&assets=green&assets=blue&color_formula=gamma+RGB+2.7%2C+saturation+1.5%2C+sigmoidal+RGB+15+0.55&format=png",
+    "rendered_preview": "https://planetarycomputer.microsoft.com/api/data/v1/item/preview.png?collection=landsat-c2-l2&item=LC08_L2SP_182045_20240608_02_T1&assets=red&assets=green&assets=blue&color_formula=gamma+RGB+2.7%2C+saturation+1.5%2C+sigmoidal+RGB+15+0.55&format=png"
+  },
+  "reflectance_chart": [],
+  "temperature_chart": [
+    {
+      "temperature": 38.0,
+      "distribution": 45.0
+    },
+    {
+      "temperature": 39.0,
+      "distribution": 158.0
+    },
+    {
+      "temperature": 40.0,
+      "distribution": 799.0
+    },
+    {
+      "temperature": 41.0,
+      "distribution": 4250.0
+    },
+    {
+      "temperature": 42.0,
+      "distribution": 22853.0
+    },
+    {
+      "temperature": 43.0,
+      "distribution": 134356.0
+    },
+    {
+      "temperature": 44.0,
+      "distribution": 1051278.0
+    },
+    {
+      "temperature": 45.0,
+      "distribution": 1955959.0
+    },
+    {
+      "temperature": 46.0,
+      "distribution": 2417153.0
+    },
+    {
+      "temperature": 47.0,
+      "distribution": 3455851.0
+    },
+    {
+      "temperature": 48.0,
+      "distribution": 6783316.0
+    },
+    {
+      "temperature": 49.0,
+      "distribution": 8266126.0
+    },
+    {
+      "temperature": 50.0,
+      "distribution": 7380383.0
+    },
+    {
+      "temperature": 51.0,
+      "distribution": 5557028.0
+    },
+    {
+      "temperature": 52.0,
+      "distribution": 2281785.0
+    },
+    {
+      "temperature": 53.0,
+      "distribution": 738730.0
+    },
+    {
+      "temperature": 54.0,
+      "distribution": 251816.0
+    },
+    {
+      "temperature": 55.0,
+      "distribution": 100828.0
+    },
+    {
+      "temperature": 56.0,
+      "distribution": 53703.0
+    },
+    {
+      "temperature": 57.0,
+      "distribution": 20129.0
+    },
+    {
+      "temperature": 58.0,
+      "distribution": 4535.0
+    },
+    {
+      "temperature": 59.0,
+      "distribution": 526.0
+    },
+    {
+      "temperature": 60.0,
+      "distribution": 38.0
+    },
+    {
+      "temperature": 61.0,
+      "distribution": 2.0
+    }
+  ]
+}

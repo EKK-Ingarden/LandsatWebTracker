@@ -24,8 +24,8 @@ class LandsatAdvancedAPIById(LandsatAPIById):
             datetime=item.datetime,
             eo_cloud_cover=item.properties["eo:cloud_cover"] / 100,
             wrs_coordinates=WrsCoordinates(
-                path=item.properties["landsat:wrs_path"],
-                row=item.properties["landsat:wrs_row"],
+                wrs_path=item.properties["landsat:wrs_path"],
+                wrs_row=item.properties["landsat:wrs_row"],
             ),
             rendered_preview=item.assets["rendered_preview"].href,
             polygon=polygon_from_nested_list(item.geometry["coordinates"]),

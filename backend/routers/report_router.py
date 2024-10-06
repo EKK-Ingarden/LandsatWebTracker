@@ -83,7 +83,7 @@ async def get_report(scene_id: str, db: Session = Depends(get_db)) -> ReportResu
 async def get_reports(user: UserResponse = Depends(get_current_user), db: Session = Depends(get_db)):
     # todo: return only user reports
     reports = (
-        db.query(models.Report).join(models.User).all()
+        db.query(models.Report).all()
     )
 
     return reports
