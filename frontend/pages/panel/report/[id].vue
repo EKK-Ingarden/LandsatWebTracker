@@ -14,7 +14,7 @@ const { data, error } = useApi("/report/get_report", {
   }
 });
 
-data.value.
+// data.value.
 console.log(data, error)
 
 </script>
