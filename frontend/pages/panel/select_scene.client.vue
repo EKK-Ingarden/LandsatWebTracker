@@ -1,31 +1,39 @@
 <template h-screen>
   <div flex full-height-without-header>
     <div class="w-1/4 p-4">
-      <p font-size="0.90rem">
+
+
+
+
+      <div flex-col flex justify-center items-center>
+        <p font-size="0.90rem">
         Enter Date
       </p>
-      <div mt-3 flex gap-35>
-        <p font-size="0.75rem">
+      <p font-size="0.75rem" mt-2>
           Start
-        </p>
-        <p font-size="0.75rem">
+      </p>
+        <DatePicker  v-model="dateFrom" placeholder="Start" mt-4 text-align-center/>
+        <p font-size="0.75rem" mt-2>
           End
         </p>
+        <DatePicker v-model="dateTo" placeholder="End"/>
+        </div>
+      <div flex justify-center mt-3>
+      <p >
+        Max Cloud Coverage {{maxCloudCover[0]}}%
+      </p>
       </div>
-      <div flex gap-4>
-        <DatePicker v-model="dateFrom" placeholder="Start" />
-
-        <DatePicker v-model="dateTo" placeholder="End" />
-      </div>
-      <Input v-model="maxCloudCover" type="number" placeholder="Max cloud cover" max="100" min="0" step="1" />
+      <Slider mt-3 v-model="maxCloudCover" :default-value="20" :max="100" :step="1"/>
 
       <div overflow-auto h="5/7" p-5>
-        <div v-for="(polygon, index) in polygons" :key="index" @mouseover="logPolygon(polygon)" @click="showPolygon(polygon)">
+        <div v-for="(polygon, index) in polygons" :key="index" @mouseover="logPolygon(polygon)" @click="showPolygon(polygon)" bg-white>
           <button>
             <img h-20 :src="polygon.rendered_preview">
-            <span>{{ polygon.id }}</span><br>
-            <span>{{ polygon.datetime }}</span><br>
-            <span>{{ polygon.eo_cloud_cover }}</span>
+            <span font-size="0.75rem">{{ polygon.id }}</span><br><br>
+            <div flex gap-2>
+              <span font-size="0.5rem" color="#a3a3a3">{{ polygon.datetime }}</span>
+              <span font-size="0.5rem" color="#a3a3a3">{{ polygon.eo_cloud_cover }}</span>
+            </div>
           </button>
         </div>
         <div v-if="polygons.length === 0">
@@ -46,6 +54,7 @@
 <script setup lang="ts">
 import L, { LatLng } from "leaflet";
 import type { DateValue } from "@internationalized/date";
+import { Slider } from '@/components/ui/slider'
 
 const marker = ref<LatLng | undefined>(undefined);
 const tileLayer = ref<{
@@ -58,7 +67,7 @@ const selectedPolygon = ref<LatLng[] | undefined>(undefined);
 
 const dateFrom = ref<DateValue | null>(null); // Parent holds the selected date
 const dateTo = ref<DateValue | null>(null); // Parent holds the selected date
-const maxCloudCover = ref<string>("20");
+const maxCloudCover = ref([20]);
 
 const error = ref<string | undefined>(undefined);
 const map = ref<any | undefined>(undefined);
@@ -98,7 +107,7 @@ async function updateMarkerPosition(latlng: LatLng) {
       longitude: latlng.lng,
       start_date: dateFrom.value!.toString(),
       end_date: dateTo.value!.toString(),
-      max_cloud_cover: Number.parseFloat(maxCloudCover.value) / 100
+      max_cloud_cover: maxCloudCover.value / 100
     }
   });
 
