@@ -4,7 +4,8 @@
   >
     <NavbarLink url="/faq" :variant="firstLinkVariant">
       FAQ
-    </NavbarLink><NavbarLink url="/how-does-it-work" :variant="linksVariant">
+    </NavbarLink>
+    <NavbarLink url="/how-does-it-work" :variant="linksVariant">
       How does it work?
     </NavbarLink>
     <NavbarLink url="#" :variant="linksVariant">
