@@ -1,9 +1,24 @@
 <template h-screen>
   <div flex full-height-without-header>
     <div class="w-1/4 p-4">
-      <DatePicker v-model="dateFrom" placeholder="Start" />
-      <DatePicker v-model="dateTo" placeholder="End" />
+      <p font-size="0.90rem">
+        Enter Date
+      </p>
+      <div mt-3 flex gap-35>
+        <p font-size="0.75rem">
+          Start
+        </p>
+        <p font-size="0.75rem">
+          End
+        </p>
+      </div>
+      <div flex gap-4>
+        <DatePicker v-model="dateFrom" placeholder="Start" />
+
+        <DatePicker v-model="dateTo" placeholder="End" />
+      </div>
       <Input v-model="maxCloudCover" type="number" placeholder="Max cloud cover" max="100" min="0" step="1" />
+
       <div overflow-auto h="5/7" p-5>
         <div v-for="(polygon, index) in polygons" :key="index" @mouseover="logPolygon(polygon)" @click="showPolygon(polygon)">
           <button>
