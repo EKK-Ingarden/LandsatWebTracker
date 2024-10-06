@@ -1,12 +1,12 @@
 <template>
   <div
-    md="h-10vh mt-10vh" mt-15vh h-5vh w-30vw bg-none text-left
-    :class="props.isRight ? 'md:mr-10vw mr-15vw ml-auto' : 'md:ml-10vw ml-15vw mr-auto'"
+    md="mt-20vh w-30vw" mt-20vh h-5vh w-70vw bg-none
+    :class="props.isRight ? 'mr-10vw ml-auto text-right' : 'ml-10vw mr-auto text-left'"
   >
-    <h2 md="text-4xl" text-xl font-bold>
+    <h2 md="text-4xl" text-2xl font-bold>
       {{ props.header }}
     </h2>
-    <p ml-3 md="text-base" text-sm>
+    <p text-base>
       <slot />
     </p>
   </div>

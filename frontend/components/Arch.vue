@@ -7,7 +7,7 @@
         <stop offset="100%" style="stop-color:#9EF01A; stop-opacity:1" />
       </linearGradient>
     </defs>
-    <path d="M 0 20 Q 50 15 100 20" :stroke="`url(#grad${archNumber})`" :stroke-width="strokeWidth" fill="transparent" />
+    <path d="M 0 20 Q 50 15 100 20" :stroke="`url(#grad${archNumber})`" :stroke-width="strokeWidth" fill="black" />
   </svg>
 </template>
 

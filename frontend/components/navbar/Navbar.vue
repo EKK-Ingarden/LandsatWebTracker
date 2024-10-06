@@ -1,5 +1,5 @@
 <template>
-  <div h-20 w-full bg-black>
+  <div h-20 w-full bg-black z-2>
     <div mx-5 h-full flex items-center justify-between>
       <NuxtLink to="/" flex items-center gap-3>
         <img alt="LandsatWebTracker logo" src="~/assets/img/logo.svg" h-11>
