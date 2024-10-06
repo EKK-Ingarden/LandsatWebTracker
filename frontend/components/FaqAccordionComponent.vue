@@ -1,7 +1,7 @@
 <template>
   <div bg="#232323" mt-6 border-rd-sm>
     <Accordion type="single" collapsible mx-4>
-      <AccordionItem :value="item.value">
+      <AccordionItem value=":3">
         <AccordionTrigger>
           <p>{{ item.question }}</p>
         </AccordionTrigger>
@@ -20,13 +20,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 defineProps<{
   item: {
-    value: string
     question: string
     answer: string
   }
 }>();
 </script>
-
-<style scoped lang="scss">
-
-</style>
