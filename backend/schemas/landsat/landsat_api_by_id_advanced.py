@@ -1,3 +1,4 @@
+import structlog
 from pystac import Item
 
 from backend.schemas import WrsCoordinates
@@ -14,6 +15,7 @@ class LandsatAdvancedAPIById(LandsatAPIById):
         super().__init__(**data)
 
     def landsat_item_builder(self, item: Item) -> LandsatItem:
+        structlog.get_logger().debug(f"Building LandsatItem from {item.id}")
         return LandsatAdvancedItem(
             platform=item.properties["platform"],
             mosaic_endpoints=self.mosaic_endpoint_builder(item),

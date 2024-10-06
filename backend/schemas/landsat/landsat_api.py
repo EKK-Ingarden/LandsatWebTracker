@@ -4,6 +4,7 @@ import json
 
 import requests
 from pydantic import BaseModel
+from pydantic_core import Url
 from pystac import Item
 
 from backend.schemas.enums.mosaic_type import MosaicType
@@ -17,7 +18,7 @@ class LandsatAPI(BaseModel):
     base_url: str = settings.landsat_provider_url
 
     @staticmethod
-    def landsat_mosaic_builder(scene_id: str, collection_id: str, mosaic_type: MosaicType):
+    def landsat_mosaic_builder(scene_id: str, collection_id: str, mosaic_type: MosaicType) -> Url:
         r_register = requests.post(
             "https://planetarycomputer.microsoft.com/api/data/v1/mosaic/register",
             json={"collections": ["landsat-c2-l2"], "ids": [scene_id]},

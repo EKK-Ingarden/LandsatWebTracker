@@ -1,5 +1,7 @@
 from typing import List
 
+import structlog
+
 from backend.schemas.landsat.landsat_item import Bands
 from backend.schemas.landsat.landsat_item_advanced import ReflectanceChartElement
 from backend.schemas.structures.matrix_reflectance import ReflectanceMatrix
@@ -33,8 +35,9 @@ BANDS_WAVE_LENGTHS = {
 
 
 def generate_reflectance_chart_from_tiff(bands: Bands) -> List[ReflectanceChartElement]:
+    structlog.get_logger().debug(f"Generating reflectance chart from {bands}")
     """
-    Generate the temperature chart from the bands
+    Generate the reflectance chart from the bands
     """
     return [
         ReflectanceMatrix(
