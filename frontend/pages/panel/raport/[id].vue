@@ -8,8 +8,13 @@
 <script setup lang="ts">
 const route = useRoute();
 
-const { data, error}
+const { data, error } = useApi("/report/get_report", {
+  query: {
+    scene_id: route.params.id.toString()
+  }
+});
 
-// When accessing /posts/1, route.params.id will be 1
-console.log(route.params.id)
+data.value.
+console.log(data, error)
+
 </script>

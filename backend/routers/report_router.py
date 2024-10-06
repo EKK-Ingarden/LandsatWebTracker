@@ -1,13 +1,15 @@
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 import structlog
 from fastapi import APIRouter, BackgroundTasks, Depends
 from gotrue import UserResponse
 from sqlalchemy.orm import Session
 
+from backend import models, schemas
 from backend.database import get_db
-from backend import schemas, models
-from backend.schemas.structures.report_result import *
+from backend.schemas.landsat.landsat_item_advanced import LandsatAdvancedItem
+from backend.schemas.structures.report_result import ReportResultError, ReportResultProcess, ReportResultSuccess, \
+    ReportResult
 from backend.tasks.write_report import write_report_to_db
 from backend.utils.auth import get_current_user
 
