@@ -1,5 +1,5 @@
 <template>
-  <input v-model="modelValue" :class="cn(inputVariants({ size, bgColor, borderSetup }), props.class)">
+  <input v-model="modelValue" :class="cn(inputVariants({ size, bgColor, borderSetup, rounded }), props.class)">
 </template>
 
 <script setup lang="ts">
@@ -15,6 +15,7 @@ const props = defineProps<{
   size?: InputVariants["size"]
   bgColor?: InputVariants["bgColor"]
   borderSetup?: InputVariants["borderSetup"]
+  rounded?: InputVariants["rounded"]
   class?: HTMLAttributes["class"]
 }>();
 
