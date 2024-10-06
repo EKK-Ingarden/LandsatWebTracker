@@ -9,6 +9,7 @@ export const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         grayDefault: "bg-gray-400 text-gray-700 shadow hover:bg-gray-600",
+        wmpDialog: "hover:bg-gray-600 border-2 border-gray-900",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
@@ -23,7 +24,8 @@ export const buttonVariants = cva(
         xs: "h-7 rounded px-2",
         sm: "h-8 rounded-md px-3",
         lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9"
+        icon: "h-9 w-9",
+        wmpDialog: "h-auto py-2 w-full"
       },
       textSize: {
         default: "text-sm",

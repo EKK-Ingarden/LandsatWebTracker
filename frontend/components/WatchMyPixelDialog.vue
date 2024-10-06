@@ -1,7 +1,7 @@
 <template>
   <AlertDialog>
-    <AlertDialogTrigger as-child>
-      <Button variant="outline">
+    <AlertDialogTrigger w-full flex justify-center>
+      <Button variant="wmpDialog" size="wmpDialog" mx-5>
         Watch My Pixel
       </Button>
     </AlertDialogTrigger>
