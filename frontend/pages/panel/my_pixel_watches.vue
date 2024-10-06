@@ -1,8 +1,8 @@
 <template>
   <div mx-35 mt-20>
-    <p text-10>
+    <h1 text-10>
       Incoming Notifications
-    </p>
+    </h1>
     <span>Your upcoming "watch my pixel" notifications</span>
 
     <div mt-8 border rounded-md border-color="#737373">

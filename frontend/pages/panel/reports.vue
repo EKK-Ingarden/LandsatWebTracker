@@ -1,8 +1,9 @@
 <template>
   <div mx-35 mt-20>
-    <p text-xl>
+    <h1 text-10>
       Reports
-    </p>
+    </h1>
+    <span>Your generated reports</span>
 
     <div mt-8 border rounded-md border-color="#737373">
       <Table>
