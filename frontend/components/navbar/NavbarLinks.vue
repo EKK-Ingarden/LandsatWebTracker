@@ -4,21 +4,18 @@
   >
     <NavbarLink url="/faq" :variant="firstLinkVariant">
       FAQ
-    </NavbarLink><NavbarLink url="#" :variant="linksVariant">
-      Landsat Locator
     </NavbarLink>
-    <NavbarLink url="#" :variant="linksVariant">
-      Search for data
+    <NavbarLink url="/panel/select_scene" :variant="linksVariant">
+      Select tile
     </NavbarLink>
-    <NavbarLink url="/map" :variant="linksVariant">
-      Map
+    <NavbarLink url="/panel/watch_my_pixel" :variant="linksVariant">
+      Watch My Pixel
+    </NavbarLink>
+    <NavbarLink url="/panel/my_pixel_watches" :variant="linksVariant">
+      My Pixel Watches
     </NavbarLink>
     <NuxtLink v-if="user" to="/panel">
-      <img
-        h-9 aria-label="User profile picture" alt="" rounded-full
-        :src="user?.user_metadata.avatar_url"
-        :class="user?.user_metadata.avatar_url ? '' : 'i-carbon:user-avatar-filled'"
-      >
+      <UserNav :avatar-url="user?.user_metadata.avatar_url" />
     </NuxtLink>
     <NavbarLink v-else url="/register" :variant="linksVariant">
       Sign in
@@ -30,6 +27,7 @@
 import type { HTMLAttributes } from "vue";
 import { type NavbarLinksVariants, navbarLinksVariants } from ".";
 import { cn } from "@/lib/utils";
+import UserNav from "~/components/navbar/UserNav.vue";
 
 interface Props {
   variant?: NavbarLinksVariants["variant"]

@@ -1,11 +1,38 @@
+import asyncio
+from datetime import date
 from enum import Enum
 
 import resend
+
+from backend.database import get_db
+from backend.models import PixelWatch
 
 
 class Notification(Enum):
     EMAIL = 1
     PUSH = 2
+
+
+async def run_every_hour():
+    while True:
+        print("Sending notifications processing...")
+
+        db = next(get_db())
+
+        today = date.today()
+
+        user_pixel_watches = db.query(PixelWatch).all()
+
+        for watch in user_pixel_watches:
+            if watch.datetime.date() == today:
+                NotificationService.sendEmailNotification(
+                    watch.user, {"coordinates": [watch.latitude, watch.longitude], "time_left": "today"}
+                )
+                db.delete(watch)
+
+        db.commit()
+
+        await asyncio.sleep(3600)
 
 
 class NotificationService:
@@ -29,7 +56,7 @@ class NotificationService:
 
         params: resend.Emails.SendParams = {
             "from": "Notifications staff <notifications@landsat.wyniki.zip>",
-            "to": [f"{user['email']}"],
+            "to": [f"{user.email}"],
             "subject": "Landsat notification",
             "html": f"{content}",
         }
@@ -39,4 +66,3 @@ class NotificationService:
     @staticmethod
     def sendPushNotification(user, message):
         raise NotImplementedError("Push notification not implemented")
-        return

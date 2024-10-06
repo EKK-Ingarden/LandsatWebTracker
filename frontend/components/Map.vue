@@ -1,11 +1,12 @@
 <template>
-  <div h-screen w-screen>
+  <div text-black full-height-without-header>
     <LMap
       ref="map"
+      z-0
       :zoom="zoom"
       :center="currentPosition"
       :use-global-leaflet="true"
-      @click="$emit('mapClick', $event.latlng)"
+      @click="mapClick"
       @ready="mapReady"
     >
       <LTileLayer
@@ -15,19 +16,12 @@
         name="OpenStreetMap"
       />
 
-      <LTileLayer
-        url="https://planetarycomputer.microsoft.com/api/data/v1/mosaic/41a94eed11ae5df9b6a03cfd5806c0c0/tiles/WebMercatorQuad/{z}/{x}/{y}?assets=nir08&assets=red&assets=green&color_formula=gamma+RGB+2.7%2C+saturation+1.5%2C+sigmoidal+RGB+15+0.55&nodata=0&collection=landsat-c2-l2&format=png"
-        layer-type="base"
-        name="Landsat"
-        :min-zoom="8"
-      />
-
       <LPolygon
         v-if="selectedPolygon"
         :lat-lngs="selectedPolygon"
         color="#41b782"
         :fill="true"
-        :fill-opacity="0.5"
+        :fill-opacity="0.1"
         fill-color="#41b782"
       />
 
@@ -42,10 +36,13 @@
             <img text-xl class="i-material-symbols:search">
           </button>
         </div>
-        <p v-if="error" w-50 pl-2 h-auto mt-5 rounded-r-md border-2 border-l-none border-gray-500 text-base bg-white text-red>{{ error ? error : "" }}</p>
+        <p v-if="error" mt-5 h-auto w-50 border-2 border-gray-500 rounded-r-md border-l-none bg-white pl-2 text-base text-red>
+          {{ error ? error : "" }}
+        </p>
       </LControl>
 
       <LImageOverlay v-if="imageOverlay" :url="imageOverlay.url" :bounds="imageOverlay.bounds" />
+      <LTileLayer v-if="tileLayerOverlay" :url="tileLayerOverlay.url" :bounds="tileLayerOverlay.bounds" />
 
       <LMarker v-model="marker" :lat-lng="marker" />
     </LMap>
@@ -53,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import type { LatLng, Map } from "leaflet";
+import { LatLng, type Map } from "leaflet";
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
 import "leaflet-geosearch/dist/geosearch.css";
 import { LMarker } from "#components";
@@ -64,10 +61,15 @@ defineProps<{
     url: string
     bounds: L.LatLngBoundsLiteral
   }
+  tileLayerOverlay?: {
+    url: string
+    bounds: L.LatLngBoundsLiteral
+  }
 }>();
 
-defineEmits<{
+const emit = defineEmits<{
   (event: "mapClick", latlng: LatLng): void
+  (event: "updatedMarkerPosition", data: any): void
 }>();
 
 const marker = ref<LatLng | undefined>(undefined);
@@ -81,11 +83,21 @@ const zoom = ref(6);
 const error = ref<string | false>(false);
 const currentPosition = ref<[number, number]>([50.9, 15.73]);
 
+function mapClick(event: any) {
+  emit("mapClick", event.latlng);
+  emit("updatedMarkerPosition", event.latlng);
+  marker.value = event.latlng;
+}
+
 function mapReady(map: Map) {
   const search: any = new (GeoSearchControl as any)({
     provider: new OpenStreetMapProvider()
   });
   map.addControl(search);
+  map.on("geosearch/showlocation", (event: any) => {
+    emit("updatedMarkerPosition", event);
+    marker.value = new LatLng(event.marker.location.y, event.marker.location.x);
+  });
 }
 
 function coordinatesSearch(lat, lng) {
