@@ -2,7 +2,9 @@
   <div
     :class="cn(navbarLinksVariants({ variant }), props.class)"
   >
-    <NavbarLink url="#" :variant="firstLinkVariant">
+    <NavbarLink url="/faq" :variant="firstLinkVariant">
+      FAQ
+    </NavbarLink><NavbarLink url="#" :variant="linksVariant">
       Landsat Locator
     </NavbarLink>
     <NavbarLink url="#" :variant="linksVariant">
