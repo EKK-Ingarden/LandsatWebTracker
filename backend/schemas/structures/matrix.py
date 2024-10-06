@@ -18,7 +18,9 @@ class Matrix(BaseModel):
         self.apply_transformations()
 
     def data_downloader(self):
+        print("downloading")
         response = requests.get(self.url.unicode_string(), stream=True)
+        print("downloaded")
         response.raise_for_status()
         return response.raw
 

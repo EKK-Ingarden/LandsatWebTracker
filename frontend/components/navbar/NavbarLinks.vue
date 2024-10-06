@@ -17,6 +17,9 @@
     <NavbarLink url="/panel/my_pixel_watches" :variant="linksVariant">
       My Pixel Watches
     </NavbarLink>
+    <NavbarLink url="/panel/reports" :variant="linksVariant">
+      Reports
+    </NavbarLink>
     <NuxtLink v-if="user" to="/panel">
       <UserNav :avatar-url="user?.user_metadata.avatar_url" />
     </NuxtLink>
