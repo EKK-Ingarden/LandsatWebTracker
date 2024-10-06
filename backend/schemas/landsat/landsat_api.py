@@ -17,12 +17,10 @@ class LandsatAPI(BaseModel):
     base_url: str = settings.landsat_provider_url
 
     @staticmethod
-    def landsat_mosaic_builder(result_params, collection_id, mosaic_type: MosaicType):
-        result_params = json.loads(base64.b64decode(result_params).decode("utf-8"))
-
+    def landsat_mosaic_builder(scene_id: str, collection_id: str, mosaic_type: MosaicType):
         r_register = requests.post(
             "https://planetarycomputer.microsoft.com/api/data/v1/mosaic/register",
-            json=result_params,
+            json={"collections": ["landsat-c2-l2"], "ids": [scene_id]},
         )
         registered = r_register.json()
         tilejson_url = registered["links"][0]["href"]
@@ -52,8 +50,7 @@ class LandsatAPI(BaseModel):
         decoded_results = base64.urlsafe_b64encode(json.dumps(self._result.get_parameters()).encode()).decode()
         return Mosaics(
             **{
-                data.name.lower(): f"/landsat/mosaic"
-                f"?collection_id={item.collection_id}"
+                data.name.lower(): f"?collection_id={item.collection_id}"
                 f"&results_param={decoded_results}"
                 f"&mosaic_type={data.value}"
                 for data in MosaicType

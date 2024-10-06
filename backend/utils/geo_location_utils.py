@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import List, Optional
 
 import httpx
 
@@ -31,7 +31,7 @@ class WRS2Utils:
         raise NotImplementedError
 
     @staticmethod
-    async def get_wrs2_tiles(lat: float, lng: float, mode: Optional[Mode] = None):
+    async def get_wrs2_tiles(lat: float, lng: float, mode: Optional[Mode] = None) -> List[TileAttributes]:
         """
         Get the WRS-2 tile for a given latitude and longitude.
         """
@@ -48,7 +48,7 @@ class WRS2Utils:
         }
 
         if mode is not None:
-            params["where"] = f"MODE='{mode}'"
+            params["where"] = f"MODE='{mode.value}'"
 
         async with httpx.AsyncClient() as client:
             response = await client.get(url, params=params)

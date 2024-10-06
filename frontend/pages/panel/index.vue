@@ -1,35 +1,12 @@
 <template>
   <div>
-    <h1>This page is only visible for logged users</h1>
-
-    <Button @click="getUser">
-      Get user from backend
-    </Button>
-
-    {{ user?.email }}
-    <Button @click="signOut">
-      Sign out
-    </Button>
-
-    <Button>
-      <a href="/panel/wmpform" font-bold underline>WMP Form</a>
-    </Button>
+    <h1>Welcome to Landsat Web Tracker panel!</h1>
+    <span>Click on profile icon to view more data</span>
+    <NuxtLink to="/panel/select_scene">
+      Select scene
+    </NuxtLink>
+    <NuxtLink to="/panel/watch_my_pixel">
+      Watch my pixel
+    </NuxtLink>
   </div>
 </template>
-
-<script setup lang="ts">
-import apiAuth from "~/utils/api-auth";
-
-const user = useSupabaseUser();
-const { auth } = useSupabaseClient();
-
-async function getUser() {
-  console.log(useSupabaseSession().value?.access_token);
-  const { data, error } = await apiAuth("/auth/get_user");
-  console.log(data, error);
-}
-function signOut() {
-  auth.signOut();
-  navigateTo("/");
-}
-</script>

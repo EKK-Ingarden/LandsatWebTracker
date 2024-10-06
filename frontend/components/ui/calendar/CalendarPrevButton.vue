@@ -2,13 +2,13 @@
   <CalendarPrev
     :class="cn(
       buttonVariants({ variant: 'outline' }),
-      'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100',
+      'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 text-white',
       props.class,
     )"
     v-bind="forwardedProps"
   >
     <slot>
-      <ChevronLeftIcon class="h-4 w-4" />
+      &lt;-
     </slot>
   </CalendarPrev>
 </template>
@@ -16,7 +16,6 @@
 <script lang="ts" setup>
 import { type HTMLAttributes, computed } from "vue";
 import { CalendarPrev, type CalendarPrevProps, useForwardProps } from "radix-vue";
-import { ChevronLeftIcon } from "@radix-icons/vue";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
