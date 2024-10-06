@@ -6,10 +6,11 @@ from backend.schemas.structures.user import UserBase
 
 
 class PixelWatch(BaseModel):
-    id: int
     user: UserBase
     latitude: float
     longitude: float
+    path: int
+    row: int
     datetime: datetime
 
     class Config:
