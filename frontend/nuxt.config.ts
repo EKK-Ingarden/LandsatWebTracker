@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     "nuxt-aos"
   ],
   css: [
-    "@unocss/reset/tailwind.css"
+    "@unocss/reset/tailwind.css",
+    "~/assets/css/uno.css"
   ],
   devtools: { enabled: true },
   compatibilityDate: "2024-04-03",

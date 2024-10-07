@@ -47,7 +47,7 @@ const reports = ref<{
   raw_data: string | null
 }[]>();
 
-const { data, _ } = useApi("/report/get_reports", {
+const { data } = await useApi("/report/get_reports", {
   headers: {
     Authorization: `Bearer ${useSupabaseSession().value?.access_token}`
   }

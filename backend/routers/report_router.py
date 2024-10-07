@@ -9,7 +9,6 @@ from backend import models, schemas
 from backend.database import get_db
 from backend.schemas.landsat.landsat_item_advanced import LandsatAdvancedItem
 from backend.schemas.structures.report_result import (
-    ReportResult,
     ReportResultError,
     ReportResultProcess,
     ReportResultSuccess,
@@ -57,7 +56,7 @@ async def generate_report(scene_id: str, background_tasks: BackgroundTasks, db: 
 
 
 @report_router.get("/get_report")
-async def get_report(scene_id: str, db: Session = Depends(get_db)) -> ReportResult:
+async def get_report(scene_id: str, db: Session = Depends(get_db)):
     query = db.query(models.Report).filter_by(scene_id=scene_id)
     report = query.first()
 
