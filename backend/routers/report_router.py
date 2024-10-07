@@ -21,7 +21,7 @@ logger = structlog.get_logger()
 report_router = APIRouter()
 
 
-@report_router.get("/generate_report")
+@report_router.post("/generate_report")
 async def generate_report(scene_id: str, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     query = db.query(models.Report).filter_by(scene_id=scene_id)
     report = query.first()

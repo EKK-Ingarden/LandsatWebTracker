@@ -11,7 +11,7 @@
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow v-for="(value, key) in metadata">
+        <TableRow v-for="(value, key) in metadata" :key="key">
           <TableCell class="font-medium">
             {{ key }}
           </TableCell>

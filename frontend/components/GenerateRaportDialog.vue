@@ -14,7 +14,7 @@
       </AlertDialogHeader>
       <AlertDialogFooter>
         <AlertDialogCancel>Cancel</AlertDialogCancel>
-        <AlertDialogAction @click="console.log('Generate raporot')">
+        <AlertDialogAction @click="generateReport">
           Continue
         </AlertDialogAction>
       </AlertDialogFooter>
@@ -35,4 +35,18 @@ import {
   AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+
+const props = defineProps<{
+  sceneId: string
+}>();
+
+async function generateReport() {
+  await useApi("/report/generate_report", {
+    method: "POST",
+    query: {
+      scene_id: props.sceneId
+    }
+  });
+  navigateTo("/panel/reports");
+}
 </script>

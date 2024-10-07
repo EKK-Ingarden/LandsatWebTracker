@@ -5,9 +5,9 @@
       <DatePicker v-model="dateTo" placeholder="End" />
       <Input v-model="maxCloudCover" type="number" placeholder="Max cloud cover" max="100" min="0" step="1" />
       <div overflow-auto h="5/7" p-5>
-        <div v-for="(polygon, index) in polygons" :key="index" @mouseover="logPolygon(polygon)" @click="showPolygon(polygon)">
+        <div v-for="(polygon, index) in polygons" :key="index" @mouseover="logPolygon(polygon)" @mouseleave="selectedPolygon = undefined" @click="showPolygon(polygon)">
           <button>
-            <img h-20 :src="polygon.rendered_preview">
+            <img h-20 :src="polygon.rendered_preview" :class="{ 'bg-gray-600': polygon === selectedPolygonData }">
             <span>{{ polygon.id }}</span><br>
             <span>{{ polygon.datetime }}</span><br>
             <span>{{ polygon.eo_cloud_cover }}</span>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <!--      todo: get which raport is selected -->
-      <GenerateRaportDialog v-if="polygons.length !== 0" mb-5 />
+      <GenerateRaportDialog v-if="selectedPolygonData" :scene-id="selectedPolygonData.id" mb-5 />
     </div>
     <div class="w-3/4">
       <Map :marker="marker" :selected-polygon="selectedPolygon" :tile-layer-overlay="tileLayer" @map-click="updateMarkerPosition" @search-location="search" />
@@ -41,6 +41,7 @@ const tileLayer = ref<{
 
 const polygons = ref<Polygon[]>([]);
 const selectedPolygon = ref<LatLng[] | undefined>(undefined);
+const selectedPolygonData = ref<Polygon | undefined>(undefined);
 
 const dateFrom = ref<DateValue | null>(null); // Parent holds the selected date
 const dateTo = ref<DateValue | null>(null); // Parent holds the selected date
@@ -106,11 +107,7 @@ function logPolygon(polygon: Polygon) {
 async function showPolygon(polygon: Polygon) {
   const sceneId = polygon.id;
 
-  // L.map("map").setView([polygon.polygon.coordinates[0].lat, polygon.polygon.coordinates[0].lon], 6);
-
-  // map.value.curentPosition = [polygon.polygon.coordinates[0].lat, polygon.polygon.coordinates[0].lon];
-
-  // marker.value
+  selectedPolygonData.value = polygon;
 
   // todo: swithcc to useApi
   const { data } = await useApi("/landsat/mosaic", {
