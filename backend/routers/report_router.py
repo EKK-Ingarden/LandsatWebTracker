@@ -30,7 +30,7 @@ def add_new_processing_report(scene_id: str, db: Session):
     db.commit()
 
 
-@report_router.get("/generate_report")
+@report_router.get("/generate_report", status_code=202)
 async def generate_report(scene_id: str, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     report = get_report_by_scene_id(scene_id, db)
     if report:
