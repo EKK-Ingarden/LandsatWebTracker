@@ -9,10 +9,8 @@ from backend.schemas import AcquisitionDetails, CloudCoverageRatio, Coordinates
 from backend.schemas.enums.mosaic_type import MosaicType
 from backend.schemas.landsat.landsat_api import LandsatAPI
 from backend.schemas.landsat.landsat_api_by_id import LandsatAPIById
-from backend.schemas.landsat.landsat_api_by_id_advanced import LandsatAdvancedAPIById
 from backend.schemas.landsat.landsat_api_by_search import LandsatAPIBySearch
 from backend.schemas.landsat.landsat_item import LandsatItem
-from backend.schemas.landsat.landsat_item_advanced import LandsatAdvancedItem
 from backend.schemas.structures.tile_attributes import Mode, TileAttributes
 from backend.utils.acquisitions_utils import AcquisitionsUtils
 from backend.utils.geo_location_utils import WRS2Utils
@@ -44,11 +42,6 @@ async def get_landsat_by_search(
     results = list(landsat_api.all_results)
 
     return results
-
-
-@landsat_api_router.get("/generate_report")
-async def generate_report(scene_id: str) -> LandsatAdvancedItem:
-    return LandsatAdvancedAPIById(scene_id=scene_id).first_result
 
 
 @landsat_api_router.get("/id")

@@ -69,7 +69,8 @@
 </template>
 
 <script setup lang="ts">
-import L, { LatLng } from "leaflet";
+import type L from "leaflet";
+import { LatLng } from "leaflet";
 import type { DateValue } from "@internationalized/date";
 import { Slider } from "@/components/ui/slider";
 
@@ -87,7 +88,6 @@ const dateTo = ref<DateValue | null>(null); // Parent holds the selected date
 const maxCloudCover = ref([20]);
 
 const error = ref<string | undefined>(undefined);
-const map = ref<any | undefined>(undefined);
 
 interface Polygon {
   id: string
@@ -147,9 +147,9 @@ function logPolygon(polygon: Polygon) {
 async function showPolygon(polygon: Polygon) {
   const sceneId = polygon.id;
 
-  L.map("map").setView([polygon.polygon.coordinates[0].lat, polygon.polygon.coordinates[0].lon], 6);
+  // L.map("map").setView([polygon.polygon.coordinates[0].lat, polygon.polygon.coordinates[0].lon], 6);
 
-  map.value.curentPosition = [polygon.polygon.coordinates[0].lat, polygon.polygon.coordinates[0].lon];
+  // map.value.curentPosition = [polygon.polygon.coordinates[0].lat, polygon.polygon.coordinates[0].lon];
 
   // marker.value
 

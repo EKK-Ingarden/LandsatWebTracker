@@ -8,16 +8,16 @@
     <NavbarLink url="/how_does_it_work" :variant="linksVariant">
       How does it work?
     </NavbarLink>
-    <NavbarLink url="#" :variant="linksVariant">
-      Landsat Locator
+    <NavbarLink v-if="user" url="/panel/select_scene" :variant="linksVariant">
+      Select scene
     </NavbarLink>
-    <NavbarLink url="/panel/select_scene" :variant="linksVariant">
-      Select tile
+    <NavbarLink url="/panel/reports" :variant="linksVariant">
+      Reports
     </NavbarLink>
-    <NavbarLink url="/panel/watch_my_pixel" :variant="linksVariant">
+    <NavbarLink v-if="user" url="/panel/watch_my_pixel" :variant="linksVariant">
       Watch My Pixel
     </NavbarLink>
-    <NavbarLink url="/panel/my_pixel_watches" :variant="linksVariant">
+    <NavbarLink v-if="user" url="/panel/my_pixel_watches" :variant="linksVariant">
       My Pixel Watches
     </NavbarLink>
     <NuxtLink v-if="user" to="/panel">

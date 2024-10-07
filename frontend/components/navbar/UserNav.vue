@@ -16,7 +16,7 @@
             <span>Dashboard</span>
           </DropdownMenuItem>
         </NuxtLink>
-        <NuxtLink to="/pane/watch_my_pixell">
+        <NuxtLink to="/panel/watch_my_pixel">
           <DropdownMenuItem>
             <span>Watch my pixel</span>
           </DropdownMenuItem>
@@ -26,9 +26,6 @@
             <span>My pixel watches</span>
           </DropdownMenuItem>
         </NuxtLink>
-        <DropdownMenuItem>
-          <span>Watch my pixel</span>
-        </DropdownMenuItem>
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuItem cursor-pointer @click="signOut()">
