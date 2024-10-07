@@ -4,12 +4,12 @@
       <Button
         variant="outline"
         :class="cn(
-          'w-[280px] justify-start text-left font-normal',
+          'justify-start text-center font-normal border-white',
           !value && 'text-muted-foreground',
         )"
       >
         <div mr-2 h-4 w-4 class="i-material-symbols:calendar-month" />
-        {{ value ? df.format(value.toDate(getLocalTimeZone())) : "Pick a date" }}
+        {{ value ? df.format(value.toDate(getLocalTimeZone())) : "Date" }}
       </Button>
     </PopoverTrigger>
     <PopoverContent class="w-auto p-0">

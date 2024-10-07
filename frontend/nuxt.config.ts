@@ -43,7 +43,7 @@ export default defineNuxtConfig({
   openFetch: {
     clients: {
       api: {
-        baseURL: "http://localhost:8000/"
+        baseURL: "https://landsat.wyniki.zip/api"
       }
     }
   },

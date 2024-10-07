@@ -1,36 +1,55 @@
 <template h-screen>
   <div flex full-height-without-header>
     <div class="w-1/4 p-4">
-      <div flex flex-col items-center justify-center>
-        <p font-size="0.90rem">
-          Enter Date
+      <div flex flex-col>
+        <p text-xl>
+          Enter date
         </p>
-        <p font-size="0.75rem" mt-2>
-          Start
-        </p>
-        <DatePicker v-model="dateFrom" placeholder="Start" mt-4 text-align-center />
-        <p font-size="0.75rem" mt-2>
-          End
-        </p>
-        <DatePicker v-model="dateTo" placeholder="End" />
+        <div mt-4 flex flex-row gap-4>
+          <div flex flex-col class="w-1/2">
+            <p text-xs>
+              Start
+            </p>
+            <DatePicker v-model="dateFrom" placeholder="Start" />
+          </div>
+          <div flex flex-col class="w-1/2">
+            <p text-xs>
+              End
+            </p>
+            <DatePicker v-model="dateTo" placeholder="End" />
+          </div>
+        </div>
       </div>
-      <div mt-3 flex justify-center>
+      <div mt-10 flex>
         <p>
-          Max Cloud Coverage {{ maxCloudCover[0] }}%
+          Max Cloud Coverage
         </p>
+        <div flex-1 text-right>
+          <p>
+            {{ maxCloudCover[0] }}%
+          </p>
+        </div>
       </div>
       <Slider v-model="maxCloudCover" mt-3 :default-value="20" :max="100" :step="1" />
 
       <div overflow-auto h="5/7" p-5>
-        <div v-for="(polygon, index) in polygons" :key="index" bg-white @mouseover="logPolygon(polygon)" @click="showPolygon(polygon)">
-          <button>
-            <img h-20 :src="polygon.rendered_preview">
-            <span font-size="0.75rem">{{ polygon.id }}</span><br><br>
-            <div flex gap-2>
-              <span font-size="0.5rem" color="#a3a3a3">{{ polygon.datetime }}</span>
-              <span font-size="0.5rem" color="#a3a3a3">{{ polygon.eo_cloud_cover }}</span>
-            </div>
-          </button>
+        <div v-for="(polygon, index) in polygons" :key="index" @mouseover="logPolygon(polygon)" @click="showPolygon(polygon)">
+          <div mt-5 border border-2 border-white border-rounded-md>
+            <button h-full w-full>
+              <div flex>
+                <div mx-4 mb-4 mt-4 flex-shrink-0 border-rd border-solid bg-white>
+                  <img h-25 :src="polygon.rendered_preview">
+                </div>
+                <div mt-8 flex flex-col overflow-auto>
+                  <span text-m break-words>{{ polygon.id }}</span><br><br>
+                  <div mt-8 flex gap-2>
+                    <span text-xs color="#a3a3a3">{{ formatDate(polygon.datetime) }}</span>
+                    <span text-right text-xs color="#a3a3a3">{{ roundToThreeDigits(polygon.eo_cloud_cover) }} %</span>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
         </div>
         <div v-if="polygons.length === 0">
           <p>No data</p>
@@ -38,8 +57,10 @@
           <span v-if="error" text-red>{{ error }}</span>
         </div>
       </div>
-      <!--      todo: get which raport is selected -->
-      <GenerateRaportDialog v-if="polygons.length !== 0" mb-5 />
+      <div flex justify-center mt-5>
+        <!--      todo: get which raport is selected -->
+        <GenerateRaportDialog v-if="polygons.length !== 0" mb-5 />
+      </div>
     </div>
     <div class="w-3/4">
       <Map :marker="marker" :selected-polygon="selectedPolygon" :tile-layer-overlay="tileLayer" @map-click="updateMarkerPosition" @search-location="search" />
@@ -153,5 +174,20 @@ async function showPolygon(polygon: Polygon) {
 
 function search(data: any) {
   updateMarkerPosition(new LatLng(data.location.y, data.location.x));
+}
+
+function formatDate(datetime: string): string {
+  const date = new Date(datetime);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
+
+function roundToThreeDigits(num: number): number {
+  return Math.round(num * 1000) / 1000;
 }
 </script>
