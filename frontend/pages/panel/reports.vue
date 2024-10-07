@@ -22,7 +22,11 @@
             <TableCell>{{ report.is_processed }}</TableCell>
             <TableCell>{{ report.created_at }}</TableCell>
             <TableCell>{{ report.scene_id }}</TableCell>
-            <TableCell><NuxtLink :to="`/panel/report/${report.scene_id}`"><img class="i-material-symbols-light:open-in-new" text-2xl></NuxtLink></TableCell>
+            <TableCell>
+              <NuxtLink :to="`/panel/report/${report.scene_id}`">
+                <img class="i-material-symbols-light:open-in-new" text-2xl>
+              </NuxtLink>
+            </TableCell>
             <TableCell>
               <button class="text-red-500 hover:text-red-700">
                 DELETE
@@ -43,7 +47,7 @@ const reports = ref<{
   raw_data: string | null
 }[]>();
 
-const { data, error } = useApi("/report/get_reports", {
+const { data, _ } = useApi("/report/get_reports", {
   headers: {
     Authorization: `Bearer ${useSupabaseSession().value?.access_token}`
   }

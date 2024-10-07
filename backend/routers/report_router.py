@@ -1,4 +1,4 @@
-from datetime import timedelta, datetime
+from datetime import datetime, timedelta
 
 import structlog
 from fastapi import APIRouter, BackgroundTasks, Depends
@@ -8,8 +8,12 @@ from sqlalchemy.orm import Session
 from backend import models, schemas
 from backend.database import get_db
 from backend.schemas.landsat.landsat_item_advanced import LandsatAdvancedItem
-from backend.schemas.structures.report_result import ReportResultError, ReportResultProcess, ReportResultSuccess, \
-    ReportResult
+from backend.schemas.structures.report_result import (
+    ReportResult,
+    ReportResultError,
+    ReportResultProcess,
+    ReportResultSuccess,
+)
 from backend.tasks.write_report import write_report_to_db
 from backend.utils.auth import get_current_user
 
@@ -29,15 +33,11 @@ async def generate_report(scene_id: str, background_tasks: BackgroundTasks, db: 
                 is_processed=report.is_processed,
                 scene_id=report.scene_id,
                 created_at=report.created_at,
-                data=LandsatAdvancedItem.model_validate(report.raw_data)
+                data=LandsatAdvancedItem.model_validate(report.raw_data),
             )
 
         if datetime.now() - report.created_at < timedelta(minutes=10):
-            return ReportResultProcess(
-                is_processed=False,
-                scene_id=report.scene_id,
-                created_at=report.created_at
-            )
+            return ReportResultProcess(is_processed=False, scene_id=report.scene_id, created_at=report.created_at)
 
         if datetime.now() - report.created_at > timedelta(minutes=10):
             db.delete(report)
@@ -82,8 +82,6 @@ async def get_report(scene_id: str, db: Session = Depends(get_db)) -> ReportResu
 @report_router.get("/get_reports", response_model=list[schemas.Report])
 async def get_reports(user: UserResponse = Depends(get_current_user), db: Session = Depends(get_db)):
     # todo: return only user reports
-    reports = (
-        db.query(models.Report).all()
-    )
+    reports = db.query(models.Report).all()
 
     return reports
