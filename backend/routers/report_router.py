@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from typing import List
 
 import structlog
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
@@ -22,17 +23,23 @@ def get_report_by_scene_id(scene_id: str, db: Session):
     return query.first()
 
 
-def add_new_processing_report(scene_id: str, db: Session):
+def add_new_processing_report(scene_id: str, db: Session, user: UserResponse):
     new_report = models.Report(
         scene_id=scene_id,
         created_at=datetime.now(),
+        user_id=user.user.id,
     )
     db.add(new_report)
     db.commit()
 
 
 @report_router.post("/generate_report", status_code=202)
-async def generate_report(scene_id: str, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
+async def generate_report(
+    scene_id: str,
+    background_tasks: BackgroundTasks,
+    user: UserResponse = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
     report = get_report_by_scene_id(scene_id, db)
     if report:
         if report.is_processed:
@@ -40,7 +47,7 @@ async def generate_report(scene_id: str, background_tasks: BackgroundTasks, db: 
         else:
             raise HTTPException(status_code=402, detail="Report is being processed")
 
-    add_new_processing_report(scene_id, db)
+    add_new_processing_report(scene_id, db, user)
     background_tasks.add_task(write_report_to_db, scene_id, db)
 
     return {"message": "Report added to processing queue"}
@@ -59,9 +66,8 @@ async def get_report(scene_id: str, db: Session = Depends(get_db)) -> LandsatAdv
     return LandsatAdvancedItem.model_validate(json.loads(str(report.raw_data)))
 
 
-@report_router.get("/get_reports", response_model=list[schemas.Report])
+@report_router.get("/get_reports", response_model=List[schemas.Report])
 async def get_reports(user: UserResponse = Depends(get_current_user), db: Session = Depends(get_db)):
-    # todo: return only user reports
-    reports = db.query(models.Report).all()
+    reports = db.query(models.Report).join(models.User).filter(models.Report.user_id == user.user.id).all()
 
     return reports

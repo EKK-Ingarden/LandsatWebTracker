@@ -56,7 +56,7 @@ if (error.value) {
 
 const metadata = {
   "Scene ID": reportData.value.id,
-  Satellite: reportData.value.platform,
+  Satellite: reportData.value.platform.replace("-", " ").replace("landsat", "Landsat"),
   "Cloud Coverage": reportData.value.eo_cloud_cover,
   Path: reportData.value.wrs_coordinates.wrs_path,
   Row: reportData.value.wrs_coordinates.wrs_row

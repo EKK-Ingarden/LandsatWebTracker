@@ -9,17 +9,16 @@
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Is Processed</TableHead>
-            <TableHead>Created at</TableHead>
             <TableHead>Status</TableHead>
+            <TableHead>Created at</TableHead>
             <TableHead>Scene</TableHead>
-            <TableHead><!-- extends table header to full width --></TableHead>
-            <TableHead><!-- extends table header to full width --></TableHead>
+            <TableHead>Action</TableHead>
+            <TableHead />
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow v-for="(report, index) in reports" :key="index">
-            <TableCell>{{ report.is_processed }}</TableCell>
+          <TableRow v-for="(report, index) in data" :key="index">
+            <TableCell>{{ report.is_processed ? "Processed" : "Processing..." }}</TableCell>
             <TableCell>{{ report.created_at }}</TableCell>
             <TableCell>{{ report.scene_id }}</TableCell>
             <TableCell>
@@ -40,20 +39,30 @@
 </template>
 
 <script setup lang="ts">
-const reports = ref<{
-  scene_id: string
-  is_processed: boolean
-  created_at: string
-  raw_data: string | null
-}[]>();
+import type { RealtimeChannel } from "@supabase/supabase-js";
 
-const { data } = await useApi("/report/get_reports", {
+const supabase = useSupabaseClient();
+
+const { data, refresh } = await useApi("/report/get_reports", {
   headers: {
     Authorization: `Bearer ${useSupabaseSession().value?.access_token}`
   }
 });
 
-if (data.value) {
-  reports.value = data.value;
-}
+let realtimeChannel: RealtimeChannel;
+
+onMounted(() => {
+  realtimeChannel = supabase.channel("public:reports").on(
+    "postgres_changes",
+    { event: "*", schema: "public", table: "reports" },
+    () => {
+      refresh();
+    }
+  );
+  realtimeChannel.subscribe();
+});
+
+onUnmounted(() => {
+  supabase.removeChannel(realtimeChannel);
+});
 </script>
