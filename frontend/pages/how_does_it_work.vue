@@ -33,11 +33,17 @@
           <p text-4xl color="#a3a3a3">
             Landsat Data
           </p>
-          <p mt-4>
+          <div mt-4>
             Landsat provides two main types of data products:<br><br>
-            Level 1 products: These are raw, unprocessed data directly captured by the satellite.<br>
-            Level 2 products: These are preprocessed data, corrected and enhanced for easier analysis.
-          </p>
+            <ul>
+              <li>
+                Level 1 products: These are raw, unprocessed data directly captured by the satellite.
+              </li>
+              <li>
+                Level 2 products: These are preprocessed data, corrected and enhanced for easier analysis.
+              </li>
+            </ul>
+          </div>
         </div>
         <div mt-8>
           <p text-4xl color="#a3a3a3">

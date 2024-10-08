@@ -1,79 +1,73 @@
+import json
 from datetime import datetime
+from typing import List
 
 import structlog
-from fastapi import APIRouter, BackgroundTasks, Depends
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
+from gotrue import UserResponse
 from sqlalchemy.orm import Session
 
-from backend import models
+from backend import models, schemas
 from backend.database import get_db
 from backend.schemas.landsat.landsat_item_advanced import LandsatAdvancedItem
-from backend.schemas.structures.report_result import ReportResultError, ReportResultProcess, ReportResultSuccess
 from backend.tasks.write_report import write_report_to_db
+from backend.utils.auth import get_current_user
 
 logger = structlog.get_logger()
 
 report_router = APIRouter()
 
 
-@report_router.get("/generate_report")
-async def generate_report(scene_id: str, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
+def get_report_by_scene_id(scene_id: str, db: Session):
     query = db.query(models.Report).filter_by(scene_id=scene_id)
-    report = query.first()
+    return query.first()
 
-    if query.scalar():
-        db.delete(report)
 
-    # if query.scalar():
-    #     if report.is_processed:
-    #         return ReportResultSuccess(
-    #             is_processed=report.is_processed,
-    #             scene_id=report.scene_id,
-    #             created_at=report.created_at,
-    #             data=LandsatAdvancedItem.model_validate(report.raw_data)
-    #         )
-    #
-    #     if datetime.now() - report.created_at < timedelta(minutes=10):
-    #         return ReportResultProcess(
-    #             is_processed=False,
-    #             scene_id=report.scene_id,
-    #             created_at=report.created_at
-    #         )
-    #
-    #     if datetime.now() - report.created_at > timedelta(minutes=10):
-    #         db.delete(report)
-
-    db.add(
-        models.Report(
-            scene_id=scene_id,
-            created_at=datetime.now(),
-        )
+def add_new_processing_report(scene_id: str, db: Session, user: UserResponse):
+    new_report = models.Report(
+        scene_id=scene_id,
+        created_at=datetime.now(),
+        user_id=user.user.id,
     )
-
+    db.add(new_report)
     db.commit()
 
+
+@report_router.post("/generate_report", status_code=202)
+async def generate_report(
+    scene_id: str,
+    background_tasks: BackgroundTasks,
+    user: UserResponse = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    report = get_report_by_scene_id(scene_id, db)
+    if report:
+        if report.is_processed:
+            raise HTTPException(status_code=409, detail="Report already processed")
+        else:
+            raise HTTPException(status_code=402, detail="Report is being processed")
+
+    add_new_processing_report(scene_id, db, user)
     background_tasks.add_task(write_report_to_db, scene_id, db)
 
-    return ReportResultProcess(is_processed=False, scene_id=scene_id, created_at=datetime.now())
+    return {"message": "Report added to processing queue"}
 
 
 @report_router.get("/get_report")
-async def get_report(scene_id: str, db: Session = Depends(get_db)):
-    query = db.query(models.Report).filter_by(scene_id=scene_id)
-    report = query.first()
+async def get_report(scene_id: str, db: Session = Depends(get_db)) -> LandsatAdvancedItem:
+    report = get_report_by_scene_id(scene_id, db)
 
-    if not query.scalar():
-        return ReportResultError(scene_id=scene_id, error="Report not found")
+    if not report:
+        raise HTTPException(status_code=404, detail="Report not found")
 
     if not report.is_processed:
-        return ReportResultProcess(
-            is_processed=report.is_processed,
-            scene_id=report.scene_id,
-            created_at=report.created_at,
-        )
+        raise HTTPException(status_code=402, detail="Report is not processed yet")
 
-    return ReportResultSuccess(
-        is_processed=report.is_processed,
-        scene_id=report.scene_id,
-        created_at=report.created_at,
-        data=LandsatAdvancedItem.model_validate_json(report.raw_data),
-    )
+    return LandsatAdvancedItem.model_validate(json.loads(str(report.raw_data)))
+
+
+@report_router.get("/get_reports", response_model=List[schemas.Report])
+async def get_reports(user: UserResponse = Depends(get_current_user), db: Session = Depends(get_db)):
+    reports = db.query(models.Report).join(models.User).filter(models.Report.user_id == user.user.id).all()
+
+    return reports

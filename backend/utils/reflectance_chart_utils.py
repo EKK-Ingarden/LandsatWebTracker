@@ -23,13 +23,11 @@ Band 11 - Thermal Infrared (TIRS) 2	    11.50-12.51
 """
 
 BANDS_WAVE_LENGTHS = {
-    "costal": (0.43, 0.45),
-    # "blue": (0.45, 0.51),
-    # "green": (0.53, 0.59),
-    # "red": (0.64, 0.67),
-    # "nir08": (0.85, 0.88),
-    # "swir16": (1.57, 1.65),
-    # "swir22": (2.11, 2.29),
+    "coastal": (0.43, 0.45),
+    "blue": (0.45, 0.51),
+    "green": (0.53, 0.59),
+    "red": (0.64, 0.67),
+    "nir08": (0.85, 0.88),
     # TODO: Data is incomplete some1 must fill it, for now we will use only those bands
 }
 
@@ -44,6 +42,7 @@ def generate_reflectance_chart_from_tiff(bands: Bands) -> List[ReflectanceChartE
             min_wave_length=BANDS_WAVE_LENGTHS[name][0],
             max_wave_length=BANDS_WAVE_LENGTHS[name][1],
             url=url,
+            # Constants from the MTL band file
             add_transformation=-0.2,
             multiply_transformation=2.75e-05,
         ).to_reflectance_chart_element()
