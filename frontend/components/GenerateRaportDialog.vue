@@ -43,6 +43,9 @@ const props = defineProps<{
 async function generateReport() {
   await useApi("/report/generate_report", {
     method: "POST",
+    headers: {
+      Authorization: `Bearer ${useSupabaseSession().value?.access_token}`
+    },
     query: {
       scene_id: props.sceneId
     }

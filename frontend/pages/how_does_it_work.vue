@@ -33,7 +33,7 @@
           <p text-4xl color="#a3a3a3">
             Landsat Data
           </p>
-          <p mt-4>
+          <div mt-4>
             Landsat provides two main types of data products:<br><br>
             <ul>
               <li>
@@ -43,7 +43,7 @@
                 Level 2 products: These are preprocessed data, corrected and enhanced for easier analysis.
               </li>
             </ul>
-          </p>
+          </div>
         </div>
         <div mt-8>
           <p text-4xl color="#a3a3a3">
