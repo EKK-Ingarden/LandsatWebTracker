@@ -16,6 +16,8 @@
     "@nuxtjs/leaflet": "^1.2.3",
     "@nuxtjs/supabase": "^1.4.0",
     "@radix-icons/vue": "^1.0.0",
+    "@unovis/ts": "^1.4.3-beta.0",
+    "@unovis/vue": "^1.4.3-beta.0",
     "@vee-validate/zod": "^4.13.2",
     "@vueuse/core": "^11.1.0",
     "class-variance-authority": "^0.7.0",
