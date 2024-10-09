@@ -1,17 +1,57 @@
 <template h-screen>
   <div flex full-height-without-header>
     <div class="w-1/4 p-4">
-      <DatePicker v-model="dateFrom" placeholder="Start" />
-      <DatePicker v-model="dateTo" placeholder="End" />
-      <Input v-model="maxCloudCover" type="number" placeholder="Max cloud cover" max="100" min="0" step="1" />
+      <div flex flex-col>
+        <p text-xl>
+          Enter a date
+        </p>
+        <div mt-4 flex flex-row gap-4>
+          <div flex flex-col class="w-1/2">
+            <p text-xs>
+              Start
+            </p>
+            <DatePicker v-model="dateFrom" placeholder="Start" />
+          </div>
+          <div flex flex-col class="w-1/2">
+            <p text-xs>
+              End
+            </p>
+            <DatePicker v-model="dateTo" placeholder="End" />
+          </div>
+        </div>
+      </div>
+      <div mt-10 flex>
+        <p>
+          Max Cloud Coverage
+        </p>
+        <div flex-1 text-right>
+          <p>
+            {{ maxCloudCover[0] }}%
+          </p>
+        </div>
+      </div>
+      <Slider v-model="maxCloudCover" mt-3 :default-value="20" :max="100" :step="1" />
+
       <div overflow-auto h="5/7" p-5>
+
         <div v-for="(polygon, index) in polygons" :key="index" @mouseover="logPolygon(polygon)" @mouseleave="selectedPolygon = undefined" @click="showPolygon(polygon)">
-          <button>
-            <img h-20 :src="polygon.rendered_preview" :class="{ 'bg-gray-600': polygon === selectedPolygonData }">
-            <span>{{ polygon.id }}</span><br>
-            <span>{{ polygon.datetime }}</span><br>
-            <span>{{ polygon.eo_cloud_cover }}</span>
-          </button>
+          <div mt-5 border border-2 border-white border-rounded-md>
+            <button h-full w-full>
+              <div flex>
+                <div mx-4 mb-4 mt-4 flex-shrink-0 border-rd border-solid bg-white>
+                  <img h-25 :src="polygon.rendered_preview" :class="{ 'bg-gray-600': polygon === selectedPolygonData }">
+                </div>
+                <div mt-8 flex flex-col overflow-auto>
+                  <span text-m break-words>{{ polygon.id }}</span><br><br>
+                  <div mt-8 flex gap-2>
+                    <span text-xs color="#a3a3a3">{{ formatDate(polygon.datetime) }}</span>
+                    <span text-right text-xs color="#a3a3a3">{{ roundToThreeDigits(polygon.eo_cloud_cover) }} %</span>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+
         </div>
         <div v-if="polygons.length === 0">
           <p>No data</p>
@@ -19,8 +59,10 @@
           <span v-if="error" text-red>{{ error }}</span>
         </div>
       </div>
-      <!--      todo: get which raport is selected -->
-      <GenerateRaportDialog v-if="selectedPolygonData" :scene-id="selectedPolygonData.id" mb-5 />
+      <div flex justify-center mt-5>
+        <GenerateRaportDialog v-if="polygons.length !== 0" mb-5 />
+      </div>
+
     </div>
     <div class="w-3/4">
       <Map :marker="marker" :selected-polygon="selectedPolygon" :tile-layer-overlay="tileLayer" @map-click="updateMarkerPosition" @search-location="search" />
@@ -32,6 +74,7 @@
 import type L from "leaflet";
 import { LatLng } from "leaflet";
 import type { DateValue } from "@internationalized/date";
+import { Slider } from "@/components/ui/slider";
 
 const marker = ref<LatLng | undefined>(undefined);
 const tileLayer = ref<{
@@ -45,7 +88,7 @@ const selectedPolygonData = ref<Polygon | undefined>(undefined);
 
 const dateFrom = ref<DateValue | null>(null); // Parent holds the selected date
 const dateTo = ref<DateValue | null>(null); // Parent holds the selected date
-const maxCloudCover = ref<string>("20");
+const maxCloudCover = ref([20]);
 
 const error = ref<string | undefined>(undefined);
 
@@ -84,7 +127,7 @@ async function updateMarkerPosition(latlng: LatLng) {
       longitude: latlng.lng,
       start_date: dateFrom.value!.toString(),
       end_date: dateTo.value!.toString(),
-      max_cloud_cover: Number.parseFloat(maxCloudCover.value) / 100
+      max_cloud_cover: maxCloudCover.value / 100
     }
   });
 
@@ -109,7 +152,6 @@ async function showPolygon(polygon: Polygon) {
 
   selectedPolygonData.value = polygon;
 
-  // todo: swithcc to useApi
   const { data } = await useApi("/landsat/mosaic", {
     query: {
       scene_id: sceneId.toString(),
@@ -130,5 +172,20 @@ async function showPolygon(polygon: Polygon) {
 
 function search(data: any) {
   updateMarkerPosition(new LatLng(data.location.y, data.location.x));
+}
+
+function formatDate(datetime: string): string {
+  const date = new Date(datetime);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
+
+function roundToThreeDigits(num: number): number {
+  return Math.round(num * 1000) / 1000;
 }
 </script>

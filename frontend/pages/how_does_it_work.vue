@@ -53,7 +53,6 @@
             Landsat 9: <br><br>
             Level-1 Products: Delivered within 4-6 hours after image acquisition. <br>
             Level-2 Products (Surface Reflectance and Surface Temperature): Available in about 3 days. <br><br>
-
             Landsat 8: <br><br>
             Level-1 Products: Initially processed as Real-Time (RT) products. To create the complete products, data on the sensor's line of sight is needed, which can take up to 10 days. <br>
             Level-2 Products (Surface Reflectance and Surface Temperature): Typically available within 24 hours after the complete product is generated.
