@@ -3,7 +3,7 @@
     <div class="w-1/4 p-4">
       <div flex flex-col>
         <p text-xl>
-          Enter date
+          Enter a date
         </p>
         <div mt-4 flex flex-row gap-4>
           <div flex flex-col class="w-1/2">
@@ -60,7 +60,6 @@
         </div>
       </div>
       <div flex justify-center mt-5>
-        <!--      todo: get which raport is selected -->
         <GenerateRaportDialog v-if="polygons.length !== 0" mb-5 />
       </div>
 
@@ -153,7 +152,6 @@ async function showPolygon(polygon: Polygon) {
 
   selectedPolygonData.value = polygon;
 
-  // todo: swithcc to useApi
   const { data } = await useApi("/landsat/mosaic", {
     query: {
       scene_id: sceneId.toString(),
