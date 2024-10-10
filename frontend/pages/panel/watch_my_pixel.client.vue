@@ -10,8 +10,8 @@
           v-for="(polygon, index) in polygons" :key="index" flex
           items-center justify-around border-b-2 border-gray-900 py-2 hover="bg-gray-600" :class="{ 'bg-gray-600': polygon === selectedPolygonData }" @click="selectPolygon(polygon)"
         >
-          <p>{{ polygon.coordinates.path }}</p>
-          <p>{{ polygon.coordinates.row }}</p>
+          <p>{{ polygon.coordinates.wrs_path }}</p>
+          <p>{{ polygon.coordinates.wrs_row }}</p>
         </button>
       </div>
       <div h="3/5" flex flex-col overflow-auto p-5>
