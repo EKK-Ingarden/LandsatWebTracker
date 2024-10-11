@@ -8,7 +8,7 @@ from backend.schemas.landsat.landsat_api import LandsatAPI
 
 
 class LandsatAPIBySearch(LandsatAPI):
-    max_items: int = 5
+    max_items: int = 15
     limit: int = 5
     coordinates: Coordinates
     start_date: datetime
