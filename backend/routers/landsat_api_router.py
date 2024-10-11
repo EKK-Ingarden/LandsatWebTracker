@@ -27,7 +27,7 @@ async def get_landsat_by_search(
     start_date: datetime,
     end_date: datetime,
     max_cloud_cover: CloudCoverageRatio = 0.2,
-    max_items: int = 5,
+    max_items: int = 15,
     limit: int = 5,
 ) -> List[LandsatItem]:
     landsat_api = LandsatAPIBySearch(
