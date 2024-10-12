@@ -1,6 +1,25 @@
 <template>
   <div>
     <h1>Report</h1>
+    <Map :tile-layer-overlay="selectedMosaic" />
+    <Button @click="selectMosaic(0)">
+      Natural Color
+    </Button>
+    <Button @click="selectMosaic(1)">
+      Temperature
+    </Button>
+    <Button @click="selectMosaic(3)">
+      Agriculture
+    </Button>
+    <Button @click="selectMosaic(4)">
+      Vegetation
+    </Button>
+    <Button @click="selectMosaic(5)">
+      Moisture
+    </Button>
+    <Button @click="selectMosaic(6)">
+      Atmospheric Penetration
+    </Button>
     <Table>
       <TableHeader>
         <TableRow>
@@ -37,10 +56,34 @@
 </template>
 
 <script setup lang="ts">
+import type { LatLngBoundsLiteral } from "leaflet";
 import { LineChart } from "~/components/ui/chart-line";
 
 const route = useRoute();
 const reportData: any = ref(null);
+const selectedMosaic = ref<{
+  url: string
+  bounds: LatLngBoundsLiteral
+} | undefined>(undefined);
+
+async function selectMosaic(type: number) {
+  const { data } = await useApi("/landsat/mosaic", {
+    query: {
+      scene_id: reportData.value.id,
+      collection_id: "landsat-c2-l2",
+      mosaic_type: type.toString() as any
+    }
+  });
+  let url: string = data.value!.toString();
+  url = url.replace("%7Bz%7D", "{z}");
+  url = url.replace("%7Bx%7D", "{x}");
+  url = url.replace("%7By%7D", "{y}");
+  console.log(url);
+  selectedMosaic.value = {
+    url,
+    bounds: reportData.value.polygon.coordinates.map(({ latitude, longitude }) => [latitude, longitude] as [number, number])
+  };
+}
 
 const { data, error } = await useApi("/report/get_report", {
   query: {
