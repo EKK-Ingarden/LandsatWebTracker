@@ -59,10 +59,8 @@
           <span v-if="error" text-red>{{ error }}</span>
         </div>
       </div>
-      <div flex justify-center mt-5>
-        <GenerateRaportDialog v-if="polygons.length !== 0" mb-5 />
-      </div>
-
+      <div mt-5 flex justify-center >
+        <GenerateRaportDialog v-if="selectedPolygonData" :scene-id="selectedPolygonData.id" mb-5 />      </div>
     </div>
     <div class="w-3/4">
       <Map :marker="marker" :selected-polygon="selectedPolygon" :tile-layer-overlay="tileLayer" @map-click="updateMarkerPosition" @search-location="search" />
@@ -93,12 +91,13 @@ const maxCloudCover = ref([20]);
 const error = ref<string | undefined>(undefined);
 
 interface Polygon {
+  platform: string
   id: string
   datetime: string
   eo_cloud_cover: number
   wrs_coordinates: {
-    path: number
-    row: number
+    wrs_path: number
+    wrs_row: number
   }
   rendered_preview: string
   mosaic_endpoints: {
@@ -108,8 +107,8 @@ interface Polygon {
   }
   polygon: {
     coordinates: {
-      lat: number
-      lon: number
+      latitude: number
+      longitude: number
     }[]
   }
 }
@@ -127,7 +126,7 @@ async function updateMarkerPosition(latlng: LatLng) {
       longitude: latlng.lng,
       start_date: dateFrom.value!.toString(),
       end_date: dateTo.value!.toString(),
-      max_cloud_cover: maxCloudCover.value / 100
+      max_cloud_cover: maxCloudCover.value[0] / 100
     }
   });
 
