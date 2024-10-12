@@ -91,12 +91,13 @@ const maxCloudCover = ref([20]);
 const error = ref<string | undefined>(undefined);
 
 interface Polygon {
+  platform: string
   id: string
   datetime: string
   eo_cloud_cover: number
   wrs_coordinates: {
-    path: number
-    row: number
+    wrs_path: number
+    wrs_row: number
   }
   rendered_preview: string
   mosaic_endpoints: {
@@ -106,8 +107,8 @@ interface Polygon {
   }
   polygon: {
     coordinates: {
-      lat: number
-      lon: number
+      latitude: number
+      longitude: number
     }[]
   }
 }
