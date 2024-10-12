@@ -33,7 +33,6 @@
       <Slider v-model="maxCloudCover" mt-3 :default-value="20" :max="100" :step="1" />
 
       <div overflow-auto h="5/7" p-5>
-
         <div v-for="(polygon, index) in polygons" :key="index" @mouseover="logPolygon(polygon)" @mouseleave="selectedPolygon = undefined" @click="showPolygon(polygon)">
           <div mt-5 border border-2 border-white border-rounded-md>
             <button h-full w-full>
@@ -51,7 +50,6 @@
               </div>
             </button>
           </div>
-
         </div>
         <div v-if="polygons.length === 0">
           <p>No data</p>
@@ -59,8 +57,9 @@
           <span v-if="error" text-red>{{ error }}</span>
         </div>
       </div>
-      <div mt-5 flex justify-center >
-        <GenerateRaportDialog v-if="selectedPolygonData" :scene-id="selectedPolygonData.id" mb-5 />      </div>
+      <div mt-5 flex justify-center>
+        <GenerateRaportDialog v-if="selectedPolygonData" :scene-id="selectedPolygonData.id" mb-5 />
+      </div>
     </div>
     <div class="w-3/4">
       <Map :marker="marker" :selected-polygon="selectedPolygon" :tile-layer-overlay="tileLayer" @map-click="updateMarkerPosition" @search-location="search" />

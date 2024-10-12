@@ -59,6 +59,12 @@ const metadata = {
   Satellite: reportData.value.platform.replace("-", " ").replace("landsat", "Landsat"),
   "Cloud Coverage": reportData.value.eo_cloud_cover,
   Path: reportData.value.wrs_coordinates.wrs_path,
-  Row: reportData.value.wrs_coordinates.wrs_row
+  Row: reportData.value.wrs_coordinates.wrs_row,
+  "Collection Category": reportData.value.metadata.collection_category,
+  "Collection Number": reportData.value.metadata.collection_number,
+  "Created At": reportData.value.metadata.created,
+  "Sun Azimuth": reportData.value.metadata.sun_azimuth,
+  "Sun Elevation": reportData.value.metadata.sun_elevation,
+  Instruments: reportData.value.metadata.instruments.join(", ")
 };
 </script>
