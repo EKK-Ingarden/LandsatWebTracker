@@ -139,7 +139,7 @@ function logPolygon(polygon: Polygon) {
   const coordinates = polygon.polygon.coordinates;
   const new_polygon = [];
   for (let i = 0; i < coordinates.length; i++) {
-    new_polygon.push(new LatLng(coordinates[i].lat, coordinates[i].lon));
+    new_polygon.push(new LatLng(coordinates[i].latitude, coordinates[i].longitude));
   }
   selectedPolygon.value = new_polygon;
   console.log(selectedPolygon.value);
@@ -163,7 +163,7 @@ async function showPolygon(polygon: Polygon) {
   url = url.replace("%7By%7D", "{y}");
   tileLayer.value = {
     url,
-    bounds: polygon.polygon.coordinates.map(({ lat, lon }) => [lat, lon] as [number, number])
+    bounds: polygon.polygon.coordinates.map(({ latitude, longitude }) => [latitude, longitude] as [number, number])
   };
   console.log(url);
 }
