@@ -37,11 +37,11 @@
           <div mt-5 border border-2 border-white border-rounded-md>
             <button h-full w-full>
               <div flex>
-                <div mx-4 mb-4 mt-4 flex-shrink-0 border-rd border-solid bg-white>
-                  <img h-25 :src="polygon.rendered_preview" :class="{ 'bg-gray-600': polygon === selectedPolygonData }">
+                <div mx-4 mb-4 mt-4 flex-shrink-0>
+                  <img h-25 border-rd border-solid :src="polygon.rendered_preview" :class="{ 'bg-gray-600': polygon === selectedPolygonData }">
                 </div>
                 <div mt-8 flex flex-col overflow-auto>
-                  <span text-m break-words>{{ polygon.id }}</span><br><br>
+                  <span break-words text-sm>{{ polygon.id }}</span>
                   <div mt-8 flex gap-2>
                     <span text-xs color="#a3a3a3">{{ formatDate(polygon.datetime) }}</span>
                     <span text-right text-xs color="#a3a3a3">{{ roundToThreeDigits(polygon.eo_cloud_cover) }} %</span>
