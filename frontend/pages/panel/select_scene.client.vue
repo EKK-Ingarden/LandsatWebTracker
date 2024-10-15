@@ -1,5 +1,5 @@
 <template h-screen>
-  <div flex full-height-without-header class="flex-col-reverse md:flex-row" >
+  <div flex full-height-without-header class="flex-col-reverse md:flex-row">
     <div class="p-4 2xl:w-1/4 lg:w-2/4 md:w-3/5 xl:w-2/5">
       <div flex flex-col>
         <p text-xl>

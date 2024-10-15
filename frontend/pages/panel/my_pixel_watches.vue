@@ -1,5 +1,5 @@
 <template>
-  <div mt-20 class="lg:mx-35 md:mx-20 mx-10">
+  <div mt-20 class="mx-10 lg:mx-35 md:mx-20">
     <h1 text-10>
       Incoming Notifications
     </h1>
