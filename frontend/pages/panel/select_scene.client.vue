@@ -1,6 +1,6 @@
 <template h-screen>
   <div class="flex-col-reverse md:flex-row" flex full-height-without-header>
-    <div class="2xl:w-1/4 xl:w-2/5 lg:w-2/4 md:w-3/5 p-4">
+    <div class="p-4 2xl:w-1/4 lg:w-2/4 md:w-3/5 xl:w-2/5">
       <div flex flex-col>
         <p text-xl>
           Enter a date
