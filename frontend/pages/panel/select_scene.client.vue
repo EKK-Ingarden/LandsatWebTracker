@@ -1,5 +1,5 @@
 <template h-screen>
-  <div class="md:flex-row flex-col-reverse" flex full-height-without-header>
+  <div class="flex-col-reverse md:flex-row" flex full-height-without-header>
     <div class="2xl:w-1/4 xl:w-2/5 lg:w-2/4 md:w-3/5 p-4">
       <div flex flex-col>
         <p text-xl>
@@ -61,7 +61,7 @@
         <GenerateRaportDialog v-if="selectedPolygonData" :scene-id="selectedPolygonData.id" mb-5 />
       </div>
     </div>
-    <div class="md:w-3/4 w-full">
+    <div class="w-full md:w-3/4">
       <Map :marker="marker" :selected-polygon="selectedPolygon" :tile-layer-overlay="tileLayer" @map-click="updateMarkerPosition" @search-location="search" />
     </div>
   </div>
