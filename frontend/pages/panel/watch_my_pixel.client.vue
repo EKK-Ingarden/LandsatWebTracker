@@ -58,14 +58,14 @@ function selectAcquisition(aquasition: any) {
 
 export interface Polygon {
   coordinates: {
-    path: number
-    row: number
+    wrs_path: number
+    wrs_row: number
   }
   mode: "A" | "D"
   polygon: {
     coordinates: {
-      lat: number
-      lon: number
+      latitude: number
+      longitude: number
     }[]
   }
 }
@@ -90,11 +90,10 @@ async function updateMarkerPosition(latlng: LatLng) {
 }
 
 async function selectPolygon(polygon: Polygon) {
-  // console.log(polygon);
   const coordinates = polygon.polygon.coordinates;
   const new_polygon = [];
   for (let i = 0; i < coordinates.length; i++) {
-    new_polygon.push(new LatLng(coordinates[i].lat, coordinates[i].lon));
+    new_polygon.push(new LatLng(coordinates[i].latitude, coordinates[i].longitude));
   }
   selectedPolygon.value = new_polygon;
   selectedPolygonData.value = polygon;
@@ -102,7 +101,7 @@ async function selectPolygon(polygon: Polygon) {
   const today = new Date();
   const { data } = await useApi("/landsat/get_acquisitions", {
     query: {
-      path: polygon.coordinates.path,
+      path: polygon.coordinates.wrs_path,
       from_date: today.toISOString().split("T")[0]
     }
   });
