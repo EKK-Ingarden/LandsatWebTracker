@@ -25,22 +25,6 @@
         fill-color="#41b782"
       />
 
-      <LControl position="topLeft" absolute left="0" top="50">
-        <div w-13 border-2 border-gray-500 rounded-r-md border-l-none>
-          <Input v-model="inputCoordinates.lat" bg-color="white" border-setup="borderB2Gray500" rounded="topRight" text-black placeholder="Lat" />
-          <Input v-model="inputCoordinates.lng" bg-color="white" border-setup="borderB2Gray500" rounded="none" text-black placeholder="Lng" />
-          <button
-            h-9 w-full flex items-center justify-center rounded-br-md bg-white text-black
-            @click="coordinatesSearch(inputCoordinates.lat, inputCoordinates.lng)"
-          >
-            <img text-xl class="i-material-symbols:search">
-          </button>
-        </div>
-        <p v-if="error" mt-5 h-auto w-50 border-2 border-gray-500 rounded-r-md border-l-none bg-white pl-2 text-base text-red>
-          {{ error ? error : "" }}
-        </p>
-      </LControl>
-
       <LImageOverlay v-if="imageOverlay" :url="imageOverlay.url" :bounds="imageOverlay.bounds" />
       <LTileLayer v-if="tileLayerOverlay" :url="tileLayerOverlay.url" :bounds="tileLayerOverlay.bounds" />
 
@@ -75,12 +59,7 @@ const emit = defineEmits<{
 const marker = ref<LatLng | undefined>(undefined);
 
 const map = ref(null);
-const inputCoordinates = ref<{
-  lat: string
-  lng: string
-}>;
 const zoom = ref(6);
-const error = ref<string | false>(false);
 const currentPosition = ref<[number, number]>([50.9, 15.73]);
 
 function mapClick(event: any) {
@@ -98,30 +77,5 @@ function mapReady(map: Map) {
     emit("updatedMarkerPosition", event);
     marker.value = new LatLng(event.marker.location.y, event.marker.location.x);
   });
-}
-
-function coordinatesSearch(lat, lng) {
-  let newLatLng;
-
-  try {
-    newLatLng = L.latLng(Number(lat), Number(lng));
-  } catch {
-    error.value = "Excepted number, got string";
-    console.log(error.value);
-    return;
-  }
-
-  if (Number(lat) > 90 || Number(lat) < -90) {
-    error.value = "Latitude value out of range <-90, 90>";
-    console.log(error.value);
-    return;
-  } else if (Number(lng) > 180 || Number(lng) < -180) {
-    error.value = "Longitude value out of range <-180, 180>";
-    console.log(error.value);
-    return;
-  }
-
-  marker.value = newLatLng;
-  currentPosition.value = [Number(lat), Number(lng)];
 }
 </script>
