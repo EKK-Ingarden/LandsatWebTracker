@@ -1,10 +1,10 @@
 <template>
-  <div text-black full-height-without-header>
+  <div text-black :class="{ 'full-height-without-header': notFullHeight !== true }">
     <LMap
       ref="map"
       z-0
       :zoom="zoom"
-      :center="currentPosition"
+      :center="currentPosition ? currentPosition : [50.9, 15.73]"
       :use-global-leaflet="true"
       @click="mapClick"
       @ready="mapReady"
@@ -49,6 +49,8 @@ defineProps<{
     url: string
     bounds: L.LatLngBoundsLiteral
   }
+  notFullHeight?: boolean
+  currentPosition?: [number, number]
 }>();
 
 const emit = defineEmits<{
@@ -59,8 +61,7 @@ const emit = defineEmits<{
 const marker = ref<LatLng | undefined>(undefined);
 
 const map = ref(null);
-const zoom = ref(6);
-const currentPosition = ref<[number, number]>([50.9, 15.73]);
+const zoom = ref(10);
 
 function mapClick(event: any) {
   emit("mapClick", event.latlng);

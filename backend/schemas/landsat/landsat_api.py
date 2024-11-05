@@ -24,7 +24,7 @@ class LandsatAPI(BaseModel):
             json={"collections": ["landsat-c2-l2"], "ids": [scene_id]},
         )
         registered = r_register.json()
-        tilejson_url = registered["links"][0]["href"]
+        tilejson_url = next((item for item in registered["links"] if item["rel"] == "tilejson"), None)["href"]
 
         mosaic_info = requests.get(
             "https://planetarycomputer.microsoft.com/api/data/v1/mosaic/info",

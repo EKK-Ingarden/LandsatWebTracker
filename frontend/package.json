@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@internationalized/date": "^3.5.5",
-    "@nuxtjs/leaflet": "^1.2.3",
+    "@nuxtjs/leaflet": "^1.2.4",
     "@nuxtjs/supabase": "^1.4.0",
     "@radix-icons/vue": "^1.0.0",
     "@unovis/ts": "^1.4.3-beta.0",
@@ -24,7 +24,7 @@
     "clsx": "^2.1.1",
     "leaflet-geosearch": "^4.0.0",
     "lucide-vue-next": "^0.441.0",
-    "nuxt": "3.13.1",
+    "nuxt": "3.14.0",
     "nuxt-aos": "^1.2.5",
     "radix-vue": "^1.9.5",
     "tailwind-merge": "^2.5.2",
