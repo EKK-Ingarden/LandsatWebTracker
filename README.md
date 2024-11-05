@@ -1,6 +1,9 @@
-# Landsat Web Tracker
+# 🚀 Landsat Web Tracker
 
 Project made by EKK Ingarden for [Nasa Space Apps 2024](https://www.spaceappschallenge.org/).
+
+https://github.com/user-attachments/assets/c1c3b7da-9f4d-4ddc-b531-02a951505b03
+
 
 ## Prerequisites
 - Node.js
