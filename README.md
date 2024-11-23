@@ -44,7 +44,7 @@ Generate reports containing advanced metadata, band visualizations, and reflecta
 Empower users to explore and understand environmental changes, such as vegetation health, urban expansion, and climate patterns.
 
 # 🎯 Objectives
-The Landsat Web Application aims to:
+The Landsat Web Tracker aims to:
 
 - Make high-quality satellite data easily accessible to researchers and enthusiasts.
 - Support amateur and professional measurements with easy error correction and calibration.
