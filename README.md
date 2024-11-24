@@ -24,9 +24,11 @@ Users can determine when Landsat 8 & 9 will pass over a specific location.
 ### Data Visualization
 Explore satellite imagery and visualize data through various bands such as:
 
-- NDVI (Normalized Difference Vegetation Index)
-- True Color
-- False Color
+- Temperature
+- Agriculture
+- Vegetation
+- Moisture
+- Atmospheric Penetration
 
 ### Notifications
 
