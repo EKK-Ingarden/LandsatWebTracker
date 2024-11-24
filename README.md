@@ -20,7 +20,7 @@ Our solution allows users to:
 
 ### Landsat Route Tracking
 
-Users can examine satellite routes and determine when Landsat 8 & 9 will pass over a specific location.
+Users can determine when Landsat 8 & 9 will pass over a specific location.
 
 ### Data Visualization
 Explore satellite imagery and visualize data through various bands such as:
@@ -29,7 +29,7 @@ Explore satellite imagery and visualize data through various bands such as:
 - True Color
 - False Color
 
-### Custom Notifications
+### Notifications
 
 Receive email reminders when Landsat flies above selected locations.
 
