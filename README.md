@@ -14,7 +14,6 @@ Our solution allows users to:
 - Receive notifications when Landsat satellites pass over their chosen location.
 - Access and visualize Landsat data, including key environmental metrics like temperature, cloud coverage, and Earth-Sun distance.
 - Generate reports with advanced metadata, band views, and reflectance analyses.
-- Download data in PDF and CSV formats.
 
 # 💡 Features
 
@@ -36,7 +35,7 @@ Receive email reminders when Landsat flies above selected locations.
 ### Simplified Data Access
 
 - Skip the complex process of searching and applying for Landsat data.
-- Download curated datasets tailored to your selected conditions.
+- Explore curated datasets tailored to your selected conditions.
 
 ### Report Generation
 
