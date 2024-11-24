@@ -55,6 +55,28 @@ The Landsat Web Tracker aims to:
 - Promote informed discussions on environmental issues.
 - Encourage interdisciplinary approaches to climate action and urban planning.
 
+# 🌟 Hackathon
+
+## Challenge
+
+As part of NASA Space Apps 2024, our team tackled the challenge:
+“Develop a web-based application that supports the comparison of ground-based observations with Landsat data.”
+
+The objective was to create a solution that enables users to:
+
+- Define a target location.
+- Receive notifications when Landsat satellites are scheduled to pass over that location.
+- Access and display Landsat Surface Reflectance (SR) data for the corresponding place and time.
+
+## Hackathon Experience
+
+The hackathon was an intense, collaborative, and highly rewarding experience. Over the span of 24 hours, our team:
+
+- Developed a functional prototype to simplify the process of comparing ground-based spectral measurements with Landsat SR data.
+- Implemented key features like satellite route tracking, notifications, and data visualization.
+- Met a lot of amazing people from various backgrounds, sharing ideas and learning from one another.
+- Consumed 19 cups of coffee to keep the energy levels high throughout the event.
+
 # 🛠️ How to setup project
 
 ## Prerequisites
